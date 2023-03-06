@@ -1,0 +1,181 @@
+- 서브젝트 요구 조건
+    - 인증 기능 ✅
+    - 닉네임 설정 ✅
+       - 첫 설정 ✅
+       - 접속 중간에 닉네임 변경 (서버 전체에 알려줘야함) :: 채널 여러개 입장 -> 닉네임 변경 알림 1번 | 채널 입장 x상태-> 닉네임 변경 알림 x ✅
+    - 유저네임 설정 ✅
+    - 채널 입장/퇴장 ✅
+       - JOIN (입장 명령어) ✅
+       - PART (퇴장 명령어) ✅
+       - NAMES (채널 및 서버 접속자 표시 명령어) ✅
+    - 메시지 보내기 및 받기 ✅
+       - PRIVMSG (개인-채널 및 개인-개인 모두 사용.) ✅
+    - 운영자(operators) 및 일반 유저가 각각 있어야 한다.
+
+	https://datatracker.ietf.org/doc/html/rfc1459#section-4.2.3
+    - 운영자 전용 명령어 구현.
+       - MODE 명령어 (임명) 4.2.3.1
+		User modes (o - operator flag.)
+
+       - KILL message :: <닉네임> <코멘트>  (쫓아낼 때 사용)
+
+- 서브젝트 요구 조건 불확실 (RFC문서)
+    - 연결 유지 관련
+      - PING, PONG 명령 ✅
+        - 일정 시간 내 응답이 오지 않으면 강제 접속 종료 ✅
+        - 클라이언트의 PING 요청에 대한 응답 ✅
+    - 클라이언트 정보 관련
+      - WHOIS 명령
+        - 대상의 정보를 얻는 명령 (아래 응답 순서 참고)
+    - 채팅 관련
+      - NOTICE 명령 ✅
+        - PRIVMSG와 용법이 같으나, 자동 응답을 하지 않음.
+      - AWAY 명령
+        - 클라이언트가 보내는 AWAY 메시지를 그대로 전송.
+    - 채널 관련
+      - TOPIC 명령 ✅
+        - 채널의 주제를 설정하는 명령
+      - LIST 명령
+        - 공개 채널의 목록을 띄우는 명령 ✅
+        - mode도 띄워야함!!! 구현하기! (구현할 mode o, p, s, n ?정도??)
+          - mode 종류:
+            **- o - give/take channel operator privileges; (0)
+            **- p - private channel flag;(1)
+            **- s - secret channel flag;(2)
+            - i - invite-only channel flag;(3)
+            - t - topic settable by channel operator only flag;(4)
+            **- n - no messages to channel from clients on the outside;(5)
+            - m - moderated channel;
+            - l - set the user limit to channel;
+            - b - set a ban mask to keep users out;
+            - v - give/take the ability to speak on a moderated channel;
+            - k - set a channel key (password).
+          - 기본 상태 : [+]
+          - topic설정시 : -> 오징어서버는 다를 수 있으니 주의!!
+    - 서버 정보 관련
+      - INFO 명령
+        - 서버 정보를 출력하는 명령 [RPL_INFO, RPL_ENDOFINFO]
+      - ADMIN 명령
+        - 서버의 관리자 정보를 출력하는 명령 [RPL_ADMINME, RPL_ADMINLOC1, RPL_ADMINLOC2, RPL_ADMINEMAIL]
+
+- 보너스 요구 조건
+    - 파일 전송 (DCC 프로토콜은 PRIVMSG 명령을 통해 전달되므로... 서버가 더 할 게 없음!) ✅
+    - 봇 구현
+
+- USER, NICK 명령어가 각각 잘 수행되어야 서버에 접속시켜주는 flag 추가하기!! ✅
+
+<message>  ::= [':' <prefix> <SPACE> ] <command> <params> <crlf>
+<prefix>   ::= <servername> | <nick> [ '!' <user> ] [ '@' <host> ]
+<command>  ::= <letter> { <letter> } | <number> <number> <number>
+<SPACE>    ::= ' ' { ' ' }
+<params>   ::= <SPACE> [ ':' <trailing> | <middle> <params> ]
+
+<middle>   ::= <Any *non-empty* sequence of octets not including SPACE
+               or NUL or CR or LF, the first of which may not be ':'>
+<trailing> ::= <Any, possibly *empty*, sequence of octets not including
+                 NUL or CR or LF>
+
+<crlf>     ::= CR LF
+
+NOTES:
+
+  1)    <SPACE> is consists only of SPACE character(s) (0x20).
+        Specially notice that TABULATION, and all other control
+        characters are considered NON-WHITE-SPACE.
+
+  2)    After extracting the parameter list, all parameters are equal,
+        whether matched by <middle> or <trailing>. <Trailing> is just
+        a syntactic trick to allow SPACE within parameter.
+
+  3)    The fact that CR and LF cannot appear in parameter strings is
+        just artifact of the message framing. This might change later.
+
+  4)    The NUL character is not special in message framing, and
+        basically could end up inside a parameter, but as it would
+        cause extra complexities in normal C string handling. Therefore
+        NUL is not allowed within messages.
+
+  5)    The last parameter may be an empty string.
+
+  6)    Use of the extended prefix (['!' <user> ] ['@' <host> ]) must
+        not be used in server to server communications and is only
+        intended for server to client messages in order to provide
+        clients with more useful information about who a message is
+        from without the need for additional queries.
+
+   Most protocol messages specify additional semantics and syntax for
+   the extracted parameter strings dictated by their position in the
+   list.  For example, many server commands will assume that the first
+   parameter after the command is the list of targets, which can be
+   described with:
+
+   <target>     ::= <to> [ "," <target> ]
+   <to>         ::= <channel> | <user> '@' <servername> | <nick> | <mask>
+   <channel>    ::= ('#' | '&') <chstring>
+   <servername> ::= <host>
+   <host>       ::= see RFC 952 [DNS:4] for details on allowed hostnames
+   <nick>       ::= <letter> { <letter> | <number> | <special> }
+   <mask>       ::= ('#' | '$') <chstring>
+   <chstring>   ::= <any 8bit code except SPACE, BELL, NUL, CR, LF and
+                     comma (',')>
+
+   Other parameter syntaxes are:
+
+   <user>       ::= <nonwhite> { <nonwhite> }
+   <letter>     ::= 'a' ... 'z' | 'A' ... 'Z'
+   <number>     ::= '0' ... '9'
+   <special>    ::= '-' | '[' | ']' | '\' | '`' | '^' | '{' | '}'
+   <nonwhite>   ::= <any 8bit code except SPACE (0x20), NUL (0x0), CR
+                     (0xd), and LF (0xa)>
+
+---
+
+<발견시>
+
+:scarlet.irc.ozinger.org 311 aaabbbccc aaabbbccc aaabbbccc 121.135.181.44 * :aaa
+:scarlet.irc.ozinger.org 378 aaabbbccc aaabbbccc :is connecting from aaabbbccc@121.135.181.44 121.135.181.44
+:scarlet.irc.ozinger.org 312 aaabbbccc aaabbbccc scarlet.irc.ozinger.org :Ozinger IRC Network
+:scarlet.irc.ozinger.org 379 aaabbbccc aaabbbccc :is using modes +
+:scarlet.irc.ozinger.org 318 aaabbbccc aaabbbccc :End of /WHOIS list.
+
+311, 378, 312, 379, 318
+RPL_WHOISUSER, RPL_WHOISHOST, RPL_WHOISSERVER, ?, RPL_ENDOFWHOIS
+
+
+<미발견시>
+
+:scarlet.irc.ozinger.org 401 aaabbbccc asdfc :No such nick/channel
+:scarlet.irc.ozinger.org 318 aaabbbccc asdfc :End of /WHOIS list.
+
+401
+ERR_NOSUCHNICK
+
+---
+
+:scarlet.irc.ozinger.org 256 aaabbbccc :Administrative info for scarlet.irc.ozinger.org
+:scarlet.irc.ozinger.org 257 aaabbbccc :Name     - Junehyeon Bae
+:scarlet.irc.ozinger.org 258 aaabbbccc :Nickname - devunt
+:scarlet.irc.ozinger.org 259 aaabbbccc :E-Mail   - devunt@gmail.com
+
+---
+
+:bassoon.irc.ozinger.org 371 aaabbbccc :Thanks To:
+:bassoon.irc.ozinger.org 371 aaabbbccc :   searchirc.com   irc-junkie.org  Brik           fraggeln
+:bassoon.irc.ozinger.org 371 aaabbbccc :
+:bassoon.irc.ozinger.org 371 aaabbbccc : Best experienced with: An IRC client
+:bassoon.irc.ozinger.org 374 aaabbbccc :End of /INFO list
+
+----
+
+챈봇
+
+기본적인 기능
+ - 채널에서 자동 응답 (OnMessage)
+ - 귓속말에서 자동 응답 (OnMessage)
+ - 메시지 구조체
+   - IRCMessage 구조체
+ - 봇 스크립팅 기반
+   - 메시지 전송 (SendTo(target, message))
+   - 채널 조정
+   - 유저 조정
+
