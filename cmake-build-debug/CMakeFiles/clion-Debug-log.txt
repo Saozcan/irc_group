@@ -1,0 +1,4 @@
+/home/saozcan/Apps/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/saozcan/Apps/clion/bin/ninja/linux/ninja -G Ninja -S /home/saozcan/Desktop/irc_group -B /home/saozcan/Desktop/irc_group/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/saozcan/Desktop/irc_group/cmake-build-debug
