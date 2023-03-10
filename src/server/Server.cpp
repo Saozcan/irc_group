@@ -3,10 +3,10 @@
 Server::Server() {
     _hostName = "127.0.0.1";
     _serverName = "ircserv";
-    _port = "1234";
+    _port = 1234;
 }
 
-Server::Server(std::string const &hostName, std::string const &serverName, std::string const &port)
+Server::Server(std::string const &hostName, std::string const &serverName, unsigned short port)
 {
     _hostName = hostName;
     _serverName = serverName;
@@ -32,6 +32,15 @@ Server::~Server() {
     #pragma endregion
 };
 
+void Server::createSocketFd() {
+    _server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (_server_fd == 0)
+        std::cout << "Error\n";
+    _address.sin_family = AF_INET;
+    _address.sin_addr.s_addr = INADDR_ANY;
+
+}
+
 void Server::setHostName(const std::string &hostName) {
     _hostName = hostName;
 };
@@ -40,7 +49,7 @@ void Server::setServerName(const std::string &serverName) {
     _serverName = serverName;
 }
 
-void Server::setPort(const std::string &port) {
+void Server::setPort(unsigned short port) {
     _port = port;
 };
 
@@ -52,7 +61,7 @@ const std::string &Server::getServerName() const {
     return _serverName;
 }
 
-const std::string &Server::getPort() const {
+unsigned short Server::getPort() const {
     return _port;
 }
 
