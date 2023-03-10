@@ -1,13 +1,13 @@
-NAME = fixed
+NAME = ircserv
 SRC = main.cpp\
-	../Channel.cpp\
-	../ACommand.hpp\
-	../CommandExecuter.cpp\
-	../Server.cpp\
-	../AUser.cpp\
-	../NormalUser.cpp
+	src/channel/Channel.cpp\
+	src/command/ACommand.cpp\
+	src/command/CommandExecuter.cpp\
+	src/server/Server.cpp\
+	src/user/AUser.cpp\
+	src/user/NormalUser.cpp
 CC = c++
-CPPFLAGS = -Wall -Wextra  -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 OBJ = $(SRC:.cpp=.o)
 

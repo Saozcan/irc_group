@@ -3,7 +3,7 @@
 CommandExecuter::CommandExecuter() {}
 
 CommandExecuter::~CommandExecuter() {
-#pragma region FreeChannels
+//#pragma region FreeChannels
     std::map<std::string, ACommand*>::iterator it = _commands.begin();
     while (it != _commands.end())
     {
@@ -11,7 +11,7 @@ CommandExecuter::~CommandExecuter() {
         it++;
     }
     _commands.clear();
-#pragma endregion
+//#pragma endregion
 }
 
 void CommandExecuter::executeCommand(std::string command) {
@@ -24,7 +24,7 @@ void CommandExecuter::executeCommand(std::string command) {
 }
 
 void CommandExecuter::addCommand(ACommand *Command) {
-    _commands.insert({Command->getName(), Command});
+    _commands.insert(std::make_pair(Command->getName(), Command));
 }
 
 void CommandExecuter::forgetCommand(ACommand *Command) {

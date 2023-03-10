@@ -1,4 +1,4 @@
-#include "ACommand.hpp"
+
 /*
 Basic Commands
 * KICK - ...
@@ -28,57 +28,8 @@ message will be sent only to that user.
 needs to support querying channels on the local server. It should do an exact match on
 the channel name and return the users on that channel.
 */
-class Nick: public ACommand
-{
-    private:
-    public:
-        Nick()
-        {
 
-        };
-        ~Nick()
-        {
 
-        };
-        void execute()
-        {
-            std::cout << "nicked user" << std::endl;
-        };
-};
 
-class Kick: public ACommand
-{
-    private:
-    public:
-        Kick()
-        {
 
-        };
-        ~Kick()
-        {
-
-        };
-        void execute()
-        {
-            std::cout << "kicked user" << std::endl;
-        };
-};
-
-class Join: public ACommand
-{
-    private:
-    public:
-        Join()
-        {
-
-        };
-        ~Join()
-        {
-
-        };
-        void execute()
-        {
-            std::cout << "joined user" << std::endl;
-        };
-};
 

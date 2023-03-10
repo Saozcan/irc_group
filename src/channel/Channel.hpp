@@ -2,11 +2,12 @@
 #include <vector>
 #include <map>
 
-#include "../../irc.hpp"
-
+#include "../user/AUser.hpp"
 /**
  * Mesajlar tutulabilir.
  */
+
+class AUser;
 
 class Channel
 {

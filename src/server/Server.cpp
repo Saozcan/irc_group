@@ -18,7 +18,7 @@ Server::Server(std::string const &hostName, std::string const &serverName, unsig
 };
 
 Server::~Server() {
-    #pragma region FreeChannels
+//    #pragma region FreeChannels
     std::map<std::string, Channel*>::iterator it = _channels.begin();
     std::map<std::string, AUser*>::iterator uIt = _users.begin();
     while (it != _channels.end())
@@ -33,13 +33,13 @@ Server::~Server() {
         uIt++;
     }
     _users.clear();
-    #pragma endregion
+//    #pragma endregion
 };
 
 void Server::createSocketFd() {
     //createFd
     _server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (_server_fd == 0)
+    if (_server_fd == -1)
         std::cout << "Error\n";
     _address.sin_family = AF_INET;
     _address.sin_addr.s_addr = INADDR_ANY;
@@ -57,9 +57,11 @@ void Server::acceptClient() {
     int index = 0;
     char buffer[1024] = {0};
     fcntl(_server_fd, F_SETFL, O_NONBLOCK);
+    socklen_t address_size = sizeof(_address);
+
     while (true) {
         while (true) {
-            if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, (socklen_t*)&_address)) < 0) {
+            if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, &address_size)) < 0){
                 break;
             }
             _pollfd[index].fd = _new_socket;
@@ -120,7 +122,7 @@ unsigned short Server::getPort() const {
 }
 
 void Server::addChannel(Channel *channel) {
-    _channels.insert({channel->getChannelName(), channel});
+    _channels.insert(std::make_pair(channel->getChannelName(), channel));
 }
 
 void Server::removeChannel(Channel *channel) {
@@ -128,7 +130,7 @@ void Server::removeChannel(Channel *channel) {
 }
 
 void Server::addUser(AUser *user) {
-    _users.insert({user->getName(), user});
+    _users.insert(std::make_pair(user->getName(), user));
 }
 
 void Server::removeUser(AUser *user) {

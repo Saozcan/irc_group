@@ -7,9 +7,11 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <cstring>
+#include <cerrno>
 
-#include "../../irc.hpp"
 
+//#include "../user/AUser.hpp"
+#include "../channel/Channel.hpp"
 class Channel;
 class AUser;
 
@@ -21,8 +23,7 @@ class AUser;
  *
  */
 
-class Server
-{
+class Server{
     private:
         std::string _hostName;
         std::string _serverName;
@@ -61,3 +62,5 @@ class Server
         void addUser(AUser* user);
         void removeUser(AUser* user);
 };
+
+

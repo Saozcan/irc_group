@@ -13,4 +13,4 @@ add_executable(irc_group
         src/command/Commands.hpp
         main.cpp
         src/user/NormalUser.hpp
-        src/server/Server.hpp irc.hpp src/user/AUser.cpp src/user/NormalUser.cpp src/server/Server.cpp src/channel/Channel.cpp src/command/ACommand.cpp src/command/CommandExecuter.cpp)
+        src/server/Server.hpp src/user/AUser.cpp src/user/NormalUser.cpp src/server/Server.cpp src/channel/Channel.cpp src/command/ACommand.cpp src/command/CommandExecuter.cpp)
