@@ -28,6 +28,9 @@ message will be sent only to that user.
 needs to support querying channels on the local server. It should do an exact match on
 the channel name and return the users on that channel.
 */
+
+class ACommand;
+
 class Nick: public ACommand
 {
     private:

@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include "../user/AUser.hpp"
 
-#include "../../irc.hpp"
-
+class AUser;
 /**
  * Mesajlar tutulabilir.
  */

@@ -1,6 +1,7 @@
-#include "ACommand.hpp"
 #include "Commands.hpp"
 #include <map>
+
+class ACommand;
 
 class CommandExecuter
 {

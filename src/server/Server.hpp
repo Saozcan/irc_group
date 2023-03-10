@@ -1,14 +1,12 @@
 #include <iostream>
-#include <map>
-#include <netinet/in.h>
-#include <poll.h>
-#include <sys/socket.h>
+#include <string.h>
 #include "fcntl.h"
+#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <cstring>
+#include <poll.h>
 
-#include "../../irc.hpp"
+#include "../channel/Channel.hpp"
 
 class Channel;
 class AUser;
@@ -31,7 +29,7 @@ class Server
         int _server_fd;
         int _new_socket;
         struct sockaddr_in _address;
-        int _enable;
+        int _addrlen;
 
         struct pollfd _pollfd[1024];
 
