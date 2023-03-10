@@ -1,14 +1,17 @@
 #include <iostream>
 #include <map>
 #include <netinet/in.h>
-#include "../channel/Channel.hpp"
-#include "../user/AUser.hpp"
 #include <poll.h>
 #include <sys/socket.h>
 #include "fcntl.h"
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <cstring>
+
+#include "../../irc.hpp"
+
+class Channel;
+class AUser;
 
 
 /**
@@ -28,11 +31,15 @@ class Server
         int _server_fd;
         int _new_socket;
         struct sockaddr_in _address;
+        int _enable;
+
+        struct pollfd _pollfd[1024];
 
         std::map<std::string, Channel*> _channels;
         std::map<std::string, AUser*> _users;
 
         void createSocketFd();
+        void acceptClient();
     public:
         Server();
         Server(std::string const &hostName, std::string const &serverName, unsigned short port);

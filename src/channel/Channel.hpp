@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "src/user/AUser.hpp"
-#include "src/user/NormalUser.hpp"
 #include <map>
+
+#include "../../irc.hpp"
 
 /**
  * Mesajlar tutulabilir.

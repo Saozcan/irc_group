@@ -4,6 +4,8 @@ Server::Server() {
     _hostName = "127.0.0.1";
     _serverName = "ircserv";
     _port = 1234;
+    this->createSocketFd();
+    this->acceptClient();
 }
 
 Server::Server(std::string const &hostName, std::string const &serverName, unsigned short port)
@@ -11,6 +13,8 @@ Server::Server(std::string const &hostName, std::string const &serverName, unsig
     _hostName = hostName;
     _serverName = serverName;
     _port = port;
+    this->createSocketFd();
+    this->acceptClient();
 };
 
 Server::~Server() {
@@ -33,12 +37,62 @@ Server::~Server() {
 };
 
 void Server::createSocketFd() {
+    //createFd
     _server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (_server_fd == 0)
         std::cout << "Error\n";
     _address.sin_family = AF_INET;
     _address.sin_addr.s_addr = INADDR_ANY;
+    _address.sin_port = htons(_port);
 
+    if (setsockopt(_server_fd, SOL_SOCKET, SO_REUSEADDR, &_enable, sizeof(int)) < 0)
+        std::cout << ("setsockopt(SO_REUSEADDR) failed") << std::endl;
+
+    //bind
+    if (listen(_server_fd, 3) < 0)
+        std::cout << "Listen failed" << std::endl;
+}
+
+void Server::acceptClient() {
+    int index = 0;
+    char buffer[1024] = {0};
+    fcntl(_server_fd, F_SETFL, O_NONBLOCK);
+    while (true) {
+        while (true) {
+            if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, (socklen_t*)&_address)) < 0) {
+                break;
+            }
+            _pollfd[index].fd = _new_socket;
+            _pollfd[index].events = POLLIN;
+            send(_pollfd[index].fd, "Hello", strlen("Hello"), 0);
+            index++;
+        }
+        if (index > 0) {
+            int pollReturn = poll(_pollfd, index, 1000);
+            if (pollReturn == 0) {
+                continue;
+            }
+            for (int i = 0; i < index; i++) {
+                int requestCount = 0;
+                if (_pollfd[i].revents & POLLIN) {
+                    int valread;
+                    while ((valread = recv(_pollfd[i].fd, buffer, 1024, MSG_DONTWAIT)) > 0) {
+                        buffer[valread] = '\0';
+                        std::cout << "Client: " << buffer << std::endl;
+                        send(_pollfd[i].fd, "I'll take it\n", strlen("I'll take it\n"),0 );
+                        memset(buffer, 0, sizeof(buffer));
+                    }
+                    requestCount++;
+                    if (valread == 0) {
+                        _pollfd[i].fd = -1;
+                        _pollfd[i].events = 0;
+                    }
+                }
+                if (requestCount == pollReturn)
+                    break;
+            }
+        }
+    }
 }
 
 void Server::setHostName(const std::string &hostName) {
