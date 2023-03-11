@@ -31,8 +31,6 @@ class Server
         struct sockaddr_in _address;
         int _addrlen;
 
-        struct pollfd _pollfd[1024];
-
         std::map<std::string, Channel*> _channels;
         std::map<std::string, AUser*> _users;
 
