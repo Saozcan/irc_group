@@ -1,5 +1,10 @@
 #include "Server.hpp"
 
+enum loop {
+    BREAK,
+    CONTINUE,
+};
+
 Server::Server() {
     _hostName = "127.0.0.1";
     _serverName = "ircserv";
@@ -58,9 +63,11 @@ void Server::createSocketFd() {
 
 void Server::acceptClient() {
     std::vector<pollfd> _clients;
+    std::vector<pollfd> _clientNotActives;
+    std::vector<int> check;
+
     char buffer[1024] = {0};
     fcntl(_server_fd, F_SETFL, O_NONBLOCK); // dinleme yaptığım server nonblock oldu
-    // Accept incoming connections and echo messages back to the client
     while (true) {
         while (true) {
             if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, (socklen_t*)&_addrlen)) < 0) {
@@ -69,49 +76,114 @@ void Server::acceptClient() {
             struct pollfd tmp;
             tmp.fd = _new_socket;
             tmp.events = POLLIN; // ekstra için | kullanılabilir.
-            send(tmp.fd, "Welcome to channel.", strlen("Welcome to channel."), 0);
-            _clients.push_back(tmp);
+            send(tmp.fd, "Welcome to channel.\n", strlen("Welcome to channel.\n"), 0);
+            _clientNotActives.push_back(tmp);
+            check.push_back(0);
         }
-        if (!_clients.empty()) {
-            int pollReturn = poll(_clients.data(), _clients.size(), 1000);
-            std::cout << pollReturn << std::endl;
-            if (pollReturn == -1) {
-                perror("poll() error");
-                break;
-            }
-            if (pollReturn == 0) {
-                continue;
-            } // -1 hiç bekleme süresi koymaz
-            std::cout << "client size: "<< _clients.size() << std::endl;
+        listenNotActiveClients(_clients, _clientNotActives, check, buffer);
+        if (listenClients(_clients, buffer) == BREAK)
+            break;
+        else
+            continue;
+    }
+}
 
-            for (std::vector<pollfd>::iterator it = _clients.begin(); it < _clients.end(); it++) {
-                int requestCount = 0;
-                if ((*it).revents & POLLIN) {
-                    int valread;
-                    while ((valread = recv((*it).fd, buffer, 1024, MSG_DONTWAIT)) > 0) { //MSG_DONT... non blcok için
-                        buffer[valread] = '\0';
-                        std::cout << "Client: " << buffer << std::endl;
-                        send((*it).fd, buffer, strlen(buffer), 0);
-                        memset(buffer, 0, sizeof(buffer));
-                    }
-                    requestCount++;
-                    if (valread == 0) {
-                        (*it).fd = -1;
-                        (*it).events = 0;
-                    }
-                }
-                for (std::vector<pollfd>::iterator it = _clients.begin(); it < _clients.end(); ) {
-                    if ((*it).fd == -1) {
-                        it = _clients.erase(it);
+int Server::listenNotActiveClients(std::vector<pollfd> &_clients, std::vector<pollfd>& notActiveClients, std::vector<int> &check, char* buffer) {
+    if (!notActiveClients.empty()) {
+        std::cout << "test\n";
+        int pollReturn = poll(notActiveClients.data(), notActiveClients.size(), 1000);
+//            std::cout << pollReturn << std::endl;
+        if (pollReturn == -1) {
+            perror("poll() error");
+            return BREAK;
+        }
+        if (pollReturn == 0) {
+            return CONTINUE;
+        } // -1 hiç bekleme süresi koymaz
+        std::cout << "client size: "<< notActiveClients.size() << std::endl;
+        std::vector<int>::iterator checkIt = check.begin();
+        for (std::vector<pollfd>::iterator it = notActiveClients.begin(); it < notActiveClients.end(); it++) {
+            checkIt++;
+            int requestCount = 0;
+            if ((*it).revents & POLLIN && *checkIt == 0) {
+                int valread;
+                while ((valread = recv((*it).fd, buffer, 1024, MSG_DONTWAIT)) > 0) { //MSG_DONT... non blcok için
+                    buffer[valread] = '\0';
+                    if (checkAndParse(*this, (*it), buffer)) {
+                        _clients.push_back(*it);
+                        *checkIt = 1;
+                        std::cout << "New client added" << std::endl;
                     } else {
-                        ++it;
+                        send((*it).fd, "Please enter valid USER command.", strlen("Please enter valid USER command."), 0);
                     }
+                    memset(buffer, 0, strlen(buffer));
                 }
-                if (requestCount == pollReturn)
-                    break ;
+                requestCount++;
+                if (valread == 0) {
+                    (*it).fd = -1;
+                    (*it).events = 0;
+                }
             }
+            checkIt = check.begin();
+            for (std::vector<pollfd>::iterator it = notActiveClients.begin(); it < notActiveClients.end(); ) {
+                checkIt++;
+                if ((*it).fd == -1) {
+                    it = notActiveClients.erase(it);
+                    check.erase(checkIt);
+                } else {
+                    ++it;
+                }
+            }
+            if (requestCount == pollReturn)
+                break ;
         }
     }
+    return CONTINUE;
+}
+
+int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
+    std::cout << "listen test" << std::endl;
+    if (!_clients.empty()) {
+        int pollReturn = poll(_clients.data(), _clients.size(), 1000);
+//            std::cout << pollReturn << std::endl;
+        if (pollReturn == -1) {
+            perror("poll() error");
+            return BREAK;
+        }
+        if (pollReturn == 0) {
+            return CONTINUE;
+        } // -1 hiç bekleme süresi koymaz
+
+        for (std::vector<pollfd>::iterator it = _clients.begin(); it < _clients.end(); it++) {
+            int requestCount = 0;
+            if ((*it).revents & POLLIN) {
+                int valread;
+                while ((valread = recv((*it).fd, buffer, 1024, MSG_DONTWAIT)) > 0) { //MSG_DONT... non blcok için
+                    buffer[valread] = '\0';
+                    if (checkAndParse(*this, (*it), buffer)) {
+                        std::cout << buffer << std::endl;
+                    } else {
+                    }
+                    memset(buffer, 0, strlen(buffer));
+                }
+                requestCount++;
+                if (valread == 0) {
+                    (*it).fd = -1;
+                    (*it).events = 0;
+                }
+            }
+            for (std::vector<pollfd>::iterator it = _clients.begin(); it < _clients.end(); ) {
+                if ((*it).fd == -1) {
+                    it = _clients.erase(it);
+                } else {
+                    ++it;
+                }
+            }
+            if (requestCount == pollReturn)
+                break ;
+        }
+    }
+    return CONTINUE;
 }
 
 void Server::setHostName(const std::string &hostName) {
@@ -139,7 +211,7 @@ unsigned short Server::getPort() const {
 }
 
 void Server::addChannel(Channel *channel) {
-    _channels.insert({channel->getChannelName(), channel});
+    _channels.insert(std::pair<std::string, Channel*>(channel->getChannelName(), channel));
 }
 
 void Server::removeChannel(Channel *channel) {
@@ -147,13 +219,40 @@ void Server::removeChannel(Channel *channel) {
 }
 
 void Server::addUser(AUser *user) {
-    _users.insert({user->getName(), user});
+    _users.insert(std::pair<std::string, AUser*>(user->getName(), user));
 }
 
 void Server::removeUser(AUser *user) {
     _users.erase(user->getName());
 }
 
-static void listenEvents() {
 
+//Statics
+bool Server::checkAndParse(Server &server, pollfd &poll, char* str) {
+    std::string buffer(str);
+    std::vector<std::string> splitSpace = Server::split(buffer, " ");
+    if (splitSpace[0] == "USER")
+        return true;
+
+    return false;
+}
+
+std::vector<std::string> Server::split(const std::string& str, const std::string& delimiter) {
+    std::vector<std::string> tokens;
+    size_t start = 0;
+    size_t end = str.find(delimiter);
+
+    if (end > str.length()) {
+        tokens.push_back(str.substr(start, str.length()));
+        return tokens;
+    }
+    while (end != std::string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+        start = end + delimiter.length();
+        end = str.find(delimiter, start);
+    }
+    if (start != str.length()) {
+        tokens.push_back(str.substr(start));
+    }
+    return tokens;
 }

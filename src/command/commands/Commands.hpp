@@ -1,4 +1,4 @@
-#include "ACommand.hpp"
+#include "src/command/ACommand.hpp"
 /*
 Basic Commands
 * KICK - ...
@@ -84,4 +84,23 @@ class Join: public ACommand
             std::cout << "joined user" << std::endl;
         };
 };
+
+class User: public ACommand
+{
+private:
+public:
+    Join()
+    {
+
+    };
+    ~Join()
+    {
+
+    };
+    void execute()
+    {
+        std::cout << "joined user" << std::endl;
+    };
+};
+
 

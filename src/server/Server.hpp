@@ -5,12 +5,12 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <poll.h>
+#include "../../irc.hpp"
 
 #include "../channel/Channel.hpp"
 
 class Channel;
 class AUser;
-
 
 /**
  * userlarıda tutması gerek.
@@ -33,9 +33,11 @@ class Server
 
         std::map<std::string, Channel*> _channels;
         std::map<std::string, AUser*> _users;
-
         void createSocketFd();
         void acceptClient();
+        int listenClients(std::vector<pollfd> &_clients, char* buffer);
+        int listenNotActiveClients(std::vector<pollfd> &_clients, std::vector<pollfd>& notActiveClients, std::vector<int> &check, char* buffer);
+
     public:
         Server();
         Server(std::string const &hostName, std::string const &serverName, unsigned short port);
@@ -56,4 +58,8 @@ class Server
 
         void addUser(AUser* user);
         void removeUser(AUser* user);
+
+    static bool checkAndParse(Server &server, pollfd &poll, char* str);
+    static std::vector<std::string> split(const std::string& str, const std::string& delimiter);
+
 };

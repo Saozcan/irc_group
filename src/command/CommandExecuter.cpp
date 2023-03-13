@@ -1,6 +1,8 @@
 #include "CommandExecuter.hpp"
 
-CommandExecuter::CommandExecuter() {}
+CommandExecuter::CommandExecuter() {
+
+}
 
 CommandExecuter::~CommandExecuter() {
 #pragma region FreeChannels
