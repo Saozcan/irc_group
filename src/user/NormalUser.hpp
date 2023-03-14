@@ -1,3 +1,5 @@
+#pragma once
+
 #include "AUser.hpp"
 
 class NormalUser: public AUser

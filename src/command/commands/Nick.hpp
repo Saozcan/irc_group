@@ -2,10 +2,10 @@
 
 #include "../ACommand.hpp"
 
-class User : public ACommand {
+class Nick : public ACommand {
 public:
-    User();
-    ~User();
+    Nick();
+    ~Nick();
     void execute();
 private:
 };

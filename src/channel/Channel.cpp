@@ -28,7 +28,7 @@ std::string Channel::getChannelName() {
 }
 
 void Channel::AddUser(AUser *user) {
-    _users.insert({user->getName(), user});
+    _users.insert(std::pair<std::string, AUser* >(user->getName(), user));
 }
 
 void Channel::LeaveUser(AUser *user) {

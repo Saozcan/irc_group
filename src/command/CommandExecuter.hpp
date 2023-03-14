@@ -1,5 +1,7 @@
-#include "src/command/commands/Commands.hpp"
+#pragma once
+
 #include <map>
+#include "iostream"
 
 class ACommand;
 

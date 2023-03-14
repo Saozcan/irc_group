@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string.h>
 #include "fcntl.h"
@@ -8,6 +10,7 @@
 #include "../../irc.hpp"
 
 #include "../channel/Channel.hpp"
+#include "../command/CommandExecuter.hpp"
 
 class Channel;
 class AUser;
@@ -24,6 +27,7 @@ class Server
     private:
         std::string _hostName;
         std::string _serverName;
+        std::string _pass;
         unsigned short _port;
 
         int _server_fd;
@@ -33,15 +37,22 @@ class Server
 
         std::map<std::string, Channel*> _channels;
         std::map<std::string, AUser*> _users;
+
         void createSocketFd();
         void acceptClient();
         int listenClients(std::vector<pollfd> &_clients, char* buffer);
         int listenNotActiveClients(std::vector<pollfd> &_clients, std::vector<pollfd>& notActiveClients, std::vector<int> &check, char* buffer);
 
+        bool checkAndParseFirst(char *str, pollfd &poll, int& checkIt);
+
     public:
+        CommandExecuter _commands;
+
         Server();
         Server(std::string const &hostName, std::string const &serverName, unsigned short port);
         ~Server();
+
+        void listenServer();
 
         //setters
         void setHostName(const std::string &hostName);
@@ -61,5 +72,6 @@ class Server
 
     static bool checkAndParse(Server &server, pollfd &poll, char* str);
     static std::vector<std::string> split(const std::string& str, const std::string& delimiter);
+    static std::string& toUpper(std::string &str);
 
 };

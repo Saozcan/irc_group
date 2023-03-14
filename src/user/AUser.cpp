@@ -1,10 +1,6 @@
 #include "AUser.hpp"
 
-AUser::AUser() : _name("Default"), _role("user") {}
-
-AUser::AUser(const std::string &name) : _name(name), _role("user"){}
-
-AUser::AUser(const std::string &name, const std::string &role) : _name(name), _role(role) {}
+AUser::AUser() : _name(""), _role("user"), _nick("") {}
 
 AUser::~AUser() {}
 
@@ -12,8 +8,16 @@ void AUser::setName(std::string name) {
     _name = name;
 }
 
+void AUser::setNick(std::string nick) {
+    _nick = nick;
+}
+
 void AUser::setRole(std::string role) {
     _role = role;
+}
+
+void AUser::setPoll(pollfd &poll) {
+    _poll = &poll;
 }
 
 std::string AUser::getName() {
@@ -22,4 +26,12 @@ std::string AUser::getName() {
 
 std::string AUser::getRole() {
     return _role;
+}
+
+std::string AUser::getNick() {
+    return _nick;
+}
+
+pollfd* AUser::getPoll() {
+    return _poll;
 }

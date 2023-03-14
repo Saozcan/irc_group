@@ -9,9 +9,8 @@ Server::Server() {
     _hostName = "127.0.0.1";
     _serverName = "ircserv";
     _port = 8050;
+    _pass = "123abc";
     _addrlen = sizeof(_address);
-    this->createSocketFd();
-    this->acceptClient();
 }
 
 Server::Server(std::string const &hostName, std::string const &serverName, unsigned short port)
@@ -20,8 +19,6 @@ Server::Server(std::string const &hostName, std::string const &serverName, unsig
     _serverName = serverName;
     _port = port;
     _addrlen = sizeof(_address);
-    this->createSocketFd();
-    this->acceptClient();
 };
 
 Server::~Server() {
@@ -42,6 +39,11 @@ Server::~Server() {
     _users.clear();
     #pragma endregion
 };
+
+void Server::listenServer() {
+    this->createSocketFd();
+    this->acceptClient();
+}
 
 void Server::createSocketFd() {
     if ((_server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) { // Sock stream kullanılırsa TCP, sock dgram kullanılırsa UDP
@@ -90,9 +92,7 @@ void Server::acceptClient() {
 
 int Server::listenNotActiveClients(std::vector<pollfd> &_clients, std::vector<pollfd>& notActiveClients, std::vector<int> &check, char* buffer) {
     if (!notActiveClients.empty()) {
-        std::cout << "test\n";
         int pollReturn = poll(notActiveClients.data(), notActiveClients.size(), 1000);
-//            std::cout << pollReturn << std::endl;
         if (pollReturn == -1) {
             perror("poll() error");
             return BREAK;
@@ -109,12 +109,10 @@ int Server::listenNotActiveClients(std::vector<pollfd> &_clients, std::vector<po
                 int valread;
                 while ((valread = recv((*it).fd, buffer, 1024, MSG_DONTWAIT)) > 0) { //MSG_DONT... non blcok için
                     buffer[valread] = '\0';
-                    if (checkAndParse(*this, (*it), buffer)) {
+                    if (checkAndParseFirst(buffer, (*it), (*checkIt))) {
                         _clients.push_back(*it);
                         *checkIt = 1;
                         std::cout << "New client added" << std::endl;
-                    } else {
-                        send((*it).fd, "Please enter valid USER command.", strlen("Please enter valid USER command."), 0);
                     }
                     memset(buffer, 0, strlen(buffer));
                 }
@@ -142,7 +140,6 @@ int Server::listenNotActiveClients(std::vector<pollfd> &_clients, std::vector<po
 }
 
 int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
-    std::cout << "listen test" << std::endl;
     if (!_clients.empty()) {
         int pollReturn = poll(_clients.data(), _clients.size(), 1000);
 //            std::cout << pollReturn << std::endl;
@@ -226,12 +223,29 @@ void Server::removeUser(AUser *user) {
     _users.erase(user->getName());
 }
 
+bool Server::checkAndParseFirst(char *str, pollfd &poll, int& checkIt) {
+    std::string buffer(str);
+    std::vector<std::string> splitSpace = Server::split(buffer, " ");
+    if (checkIt >= 1 || Server::toUpper(splitSpace[0]) == "PASS") {
+        checkIt == 0 ? checkIt = 1 : checkIt = checkIt;
+        if (checkIt >= 3 || strcmp(splitSpace[1].c_str(), _pass.c_str()) != 0) {
+            send(poll.fd, "Please enter valid USER command.", strlen("Please enter valid USER command."), 0);
+            return true;
+        }
+        else
+            send(poll.fd, "Please enter correct password.", strlen("Please enter correct password."), 0);
+    } else {
+        send(poll.fd, "Please enter valid PASS command.", strlen("Please enter valid PASS command."), 0);
+    }
+    return false;
+}
+
 
 //Statics
 bool Server::checkAndParse(Server &server, pollfd &poll, char* str) {
     std::string buffer(str);
     std::vector<std::string> splitSpace = Server::split(buffer, " ");
-    if (splitSpace[0] == "USER")
+    if (Server::toUpper(splitSpace[0]) == "PASS")
         return true;
 
     return false;
@@ -255,4 +269,12 @@ std::vector<std::string> Server::split(const std::string& str, const std::string
         tokens.push_back(str.substr(start));
     }
     return tokens;
+}
+
+std::string& Server::toUpper(std::string &str) {
+    std::string::iterator it = str.begin();
+    while (it++ != str.end()) {
+        toupper((*it));
+    }
+    return str;
 }

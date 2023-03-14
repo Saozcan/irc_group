@@ -6,5 +6,8 @@
 #define IRC_GROUP_IRC_HPP
 
 #include "iostream"
+#include "src/server/Server.hpp"
+#include "src/command/commands/User.hpp"
+#include "src/command/commands/Nick.hpp"
 
 #endif //IRC_GROUP_IRC_HPP

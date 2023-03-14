@@ -1,4 +1,4 @@
-#include "CommandExecuter.hpp"
+#include "../server/Server.hpp"
 
 CommandExecuter::CommandExecuter() {
 
@@ -17,7 +17,7 @@ CommandExecuter::~CommandExecuter() {
 }
 
 void CommandExecuter::executeCommand(std::string command) {
-    std::map<std::string, ACommand*>::iterator it = _commands.find(command);
+    std::map<std::string, ACommand*>::iterator it = _commands.find(Server::toUpper(command));
 
     if (it != _commands.end())
         (*it).second->execute();
@@ -26,7 +26,7 @@ void CommandExecuter::executeCommand(std::string command) {
 }
 
 void CommandExecuter::addCommand(ACommand *Command) {
-    _commands.insert({Command->getName(), Command});
+    _commands.insert(std::pair<std::string, ACommand*>(Command->getName(), Command));
 }
 
 void CommandExecuter::forgetCommand(ACommand *Command) {

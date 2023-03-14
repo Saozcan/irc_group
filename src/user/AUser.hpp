@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include "poll.h"
 
@@ -6,21 +8,22 @@ class AUser
     protected:
         std::string _name;
         std::string _role;
+        std::string _nick;
         pollfd      *_poll;
 
     public:
         AUser();
-        AUser(const std::string& name);
-        AUser(const std::string& name, const std::string& role);
-        AUser(const std::string& name, const std::string& role, const pollfd *poll);
         ~AUser();
 
         //Setters
         void setName(std::string name);
         void setRole(std::string role);
+        void setNick(std::string nick);
+        void setPoll(pollfd &poll);
 
         //Getters
         std::string getName();
         std::string getRole();
-        pollfd& getPoll();
+        std::string getNick();
+        pollfd* getPoll();
 };
