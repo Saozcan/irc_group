@@ -182,38 +182,11 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll) {
         // TODO: Command kısmı burada çalışacak
     } else {
         if (splitSpace.size() > 1) {
-            if (_commands.executeCommand(splitSpace, (*it), _users, _channels, _pass)) {
-                if (it->second->getNick().size() > 1 && it->second->getName().size() > 1 && it->second->getPass())
-                    it->second->setAllCheck(true);
-            }
+            if (_commands.executeCommand(splitSpace, (*it), _users, _channels, _pass)) {}
             else {
                 send(poll.fd, "Please finish your profile.", strlen("Please finish your profile."), 0);
             }
         }
-//        if (!splitSpace.empty() && Server::toUpper(splitSpace[0]) == "PASS") {
-//            if (splitSpace.size() > 1 && strcmp(splitSpace[1].c_str(), _pass.c_str()) != 0) {
-//                if (it->second->getPass() && Server::toUpper(splitSpace[0]) == "NICK") {
-//                    if (!it->second->getNick().empty() && Server::toUpper(splitSpace[0]) == "USER") {
-//                        // TODO: user var mı diye kontrol edilecek.
-//                        it->second->setName(splitSpace[1]);
-//                        it->second->setAllCheck(true);
-//                        send(poll.fd, "User profile created.", strlen("User profile created."), 0);
-//                        return true;
-//                    }
-//                    it->second->setNick(splitSpace[1]);
-//                    send(poll.fd, "Please enter valid USER command.", strlen("Please enter valid USER command."), 0);
-//                    return true;
-//                }
-//                it->second->setPass(true);
-//                send(poll.fd, "Please enter valid NICK command.", strlen("Please enter valid USER command."), 0);
-//                return true;
-//            } else
-//                send(poll.fd, "Please enter correct password.", strlen("Please enter correct password."), 0);
-//            return true;
-//        } else {
-//            send(poll.fd, "Please enter valid PASS command.", strlen("Please enter valid PASS command."), 0);
-//            return true;
-//        }
     }
     return false;
 }
