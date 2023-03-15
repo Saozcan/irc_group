@@ -3,9 +3,8 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "../user/AUser.hpp"
+#include "../user/NormalUser.hpp"
 
-class AUser;
 /**
  * Mesajlar tutulabilir.
  */
@@ -13,7 +12,7 @@ class AUser;
 class Channel
 {
     private:
-        std::map<std::string, AUser*> _users;
+        std::map<std::string, NormalUser*> _users;
         std::string _name;
 
     public:
@@ -24,6 +23,6 @@ class Channel
         void setChannelName(const std::string &name);
         std::string getChannelName();
 
-        void AddUser(AUser *user);
-        void LeaveUser(AUser *user);
+        void AddUser(NormalUser *user);
+        void LeaveUser(NormalUser *user);
 };

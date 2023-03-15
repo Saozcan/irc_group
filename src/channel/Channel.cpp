@@ -6,7 +6,7 @@ Channel::Channel(const std::string &name) : _name(name){}
 
 Channel::~Channel() {
 //#pragma region FreeChannels
-//    std::map<std::string, AUser*>::iterator it = _users.begin();
+//    std::map<std::string, NormalUser*>::iterator it = _users.begin();
 //    while (it != _users.end())
 //    {
 //        delete (*it).second;
@@ -27,10 +27,10 @@ std::string Channel::getChannelName() {
     return _name;
 }
 
-void Channel::AddUser(AUser *user) {
-    _users.insert(std::pair<std::string, AUser* >(user->getName(), user));
+void Channel::AddUser(NormalUser *user) {
+    _users.insert(std::pair<std::string, NormalUser* >(user->getName(), user));
 }
 
-void Channel::LeaveUser(AUser *user) {
+void Channel::LeaveUser(NormalUser *user) {
     _users.erase(user->getName());
 }

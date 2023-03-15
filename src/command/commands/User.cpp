@@ -4,6 +4,12 @@ User::User() : ACommand("USER"){}
 
 User::~User() {}
 
-void User::execute() {
-    std::cout << "User command execute" << std::endl;
+void User::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, std::map<int, NormalUser*> &_users, std::map<std::string, Channel*> &_channels, const std::string &pass) {
+    //TODO: userName unique olacaksa kontrol edilecek.
+    std::string argString;
+    splitArgs[1].find('\n') != std::string::npos ? argString = splitArgs[1].substr(0, splitArgs[1].size() - 1) : argString = splitArgs[1];
+    user.second->setName(argString);
+    send(user.first, "User changed\n", strlen("User changed\n"), 0);
+    if (!user.second->getAllCheck() && user.second->getNick().size() > 1)
+        user.second->setAllCheck(true);
 }

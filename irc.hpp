@@ -9,5 +9,6 @@
 #include "src/server/Server.hpp"
 #include "src/command/commands/User.hpp"
 #include "src/command/commands/Nick.hpp"
+#include "src/command/commands/Pass.hpp"
 
 #endif //IRC_GROUP_IRC_HPP
