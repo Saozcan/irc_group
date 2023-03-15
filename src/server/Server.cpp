@@ -169,7 +169,8 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
 //    _users.erase(fd);
 //}
 
-bool Server::checkAndParseFirst(char *str, pollfd &poll) {
+bool Server::checkAndParseFirst(char *str, pollfd &poll)
+{
     std::cout << _users.size() << std::endl;
     if (_users.find(poll.fd) == _users.end()) {
         NormalUser* newUser = new NormalUser;

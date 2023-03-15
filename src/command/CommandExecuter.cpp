@@ -16,6 +16,20 @@ CommandExecuter::~CommandExecuter() {
 #pragma endregion
 }
 
+bool CommandExecuter::executeCommand(const std::vector<std::string>& splitArgs, std::pair<const int, NormalUser*>& user, Server&server)
+{
+    std::map<std::string, ACommand*>::iterator it = _commands.find(Utility::toUpper(splitArgs[0]));
+    std::cout << Utility::toUpper(splitArgs[0]);
+    if (it != _commands.end()) {
+        (*it).second->execute(splitArgs, user, server._users, server._channels, server._pass);
+        return true;
+    }
+    else {
+        std::cout << "Cannot find " << splitArgs[0] << " command!" << std::endl;
+        return false;
+    }
+}
+
 bool CommandExecuter::executeCommand(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, std::map<int, NormalUser*> &_users, std::map<std::string, Channel*> &_channels, const std::string &pass) {
     std::map<std::string, ACommand*>::iterator it = _commands.find(Utility::toUpper(splitArgs[0]));
     std::cout << Utility::toUpper(splitArgs[0]);

@@ -10,6 +10,7 @@
 #include "../channel/Channel.hpp"
 
 class Utility;
+class Server;
 
 class ACommand
 {
@@ -20,6 +21,7 @@ class ACommand
         ACommand();
         ACommand(const std::string& name);
         virtual ~ACommand();
+        virtual void execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server) = 0;
         virtual void execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, std::map<int, NormalUser*> &_users, std::map<std::string, Channel*> &_channels, const std::string &pass) = 0;
         void setName(const std::string& name);
         std::string getName();

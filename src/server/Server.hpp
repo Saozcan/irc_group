@@ -27,7 +27,6 @@ class Server
 {
     private:
         std::string _serverName;
-        std::string _pass;
         unsigned short _port;
 
         int _server_fd;
@@ -35,8 +34,7 @@ class Server
         struct sockaddr_in _address;
         int _addrlen;
 
-        std::map<std::string, Channel*> _channels;
-        std::map<int, NormalUser*> _users;
+
 
         void createSocketFd();
         void acceptClient();
@@ -45,6 +43,10 @@ class Server
         bool checkAndParseFirst(char *str, pollfd &poll);
 
     public:
+        std::map<std::string, Channel*> _channels;
+        std::map<int, NormalUser*> _users;
+        std::string _pass;
+
         CommandExecuter _commands;
 
         Server();
