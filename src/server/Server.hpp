@@ -65,8 +65,8 @@ class Server
 //        const std::string &getServerName() const;
 //        unsigned short getPort() const;
 //
-//        void addChannel(Channel* channel);
-//        void removeChannel(Channel* channel);
+//        void createChannel(std::string channelName);
+//        void removeChannel(std::string channelName);
 //
 //        void addUser(AUser* user, int fd);
 //        void removeUser(AUser* user, int fd);

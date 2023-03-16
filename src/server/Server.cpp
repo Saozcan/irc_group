@@ -97,7 +97,6 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
         if (pollReturn == 0) {
             return CONTINUE;
         } // -1 hiç bekleme süresi koymaz
-
         for (std::vector<pollfd>::iterator it = _clients.begin(); it < _clients.end(); it++) {
             int requestCount = 0;
             if ((*it).revents & POLLIN) {
@@ -182,8 +181,8 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
     if (it->second->getAllCheck()) {
         // TODO: Command kısmı burada çalışacak
     } else {
-        if (splitSpace.size() > 1) {
-            if (_commands.executeCommand(splitSpace, (*it), _users, _channels, _pass)) {}
+        if (splitSpace.size() > 1) { // TODO: Sadece pass varsa user ve nick komutları için geçerli
+            if (_commands.executeCommand(splitSpace, (*it), *this)) {}
             else {
                 send(poll.fd, "Please finish your profile.", strlen("Please finish your profile."), 0);
             }
