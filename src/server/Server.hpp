@@ -38,6 +38,7 @@ class Server{
 
         std::map<std::string, Channel*> _channels;
         std::map<std::string, AUser*> _users;
+        std::map<std::string, AParse *> _parsers;
 
         void createSocketFd();
         void acceptClient();

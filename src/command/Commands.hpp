@@ -29,6 +29,19 @@ needs to support querying channels on the local server. It should do an exact ma
 the channel name and return the users on that channel.
 */
 
+#include "Join.hpp"
+#include "Kick.hpp"
+#include "List.hpp"
+#include "Mode.hpp"
+#include "Part.hpp"
+#include "Nick.hpp"
+#include "Part.hpp"
+#include "PrivMsg.hpp"
+#include "Quit.hpp"
+#include "Topic.hpp"
+#include "User.hpp"
+#include "Who.hpp"
+
 
 
 

@@ -80,6 +80,10 @@ void Server::acceptClient() {
                     int valread;
                     while ((valread = recv(_pollfd[i].fd, buffer, 1024, MSG_DONTWAIT)) > 0) {
                         buffer[valread] = '\0';
+                        parse_irc_message(buffer);
+//                        std::vector<std::string> spliteArgs = splite(buffer, " ");
+//                        it = _parsers.find(spliteArgs[0]);
+//                        (*it).second::parse_for_command(spliteArgs, *this);
                         std::cout << "Client: " << buffer << std::endl;
                         send(_pollfd[i].fd, "I'll take it\n", strlen("I'll take it\n"),0 );
                         memset(buffer, 0, sizeof(buffer));
