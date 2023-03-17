@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <poll.h>
 
-#include "../../irc.hpp"
+#include "../irc.hpp"
 #include "../channel/Channel.hpp"
 #include "../command/CommandExecuter.hpp"
 #include "../user/NormalUser.hpp"
@@ -65,7 +65,7 @@ class Server
 //        const std::string &getServerName() const;
 //        unsigned short getPort() const;
 //
-//        void createChannel(std::string channelName);
+    Channel*  createChannel(std::string channelName);
 //        void removeChannel(std::string channelName);
 //
 //        void addUser(AUser* user, int fd);

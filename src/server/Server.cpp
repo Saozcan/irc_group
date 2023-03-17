@@ -152,9 +152,17 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
 //    return _port;
 //}
 //
-//void Server::addChannel(Channel *channel) {
-//    _channels.insert(std::pair<std::string, Channel*>(channel->getChannelName(), channel));
-//}
+Channel *Server::createChannel(std::string channelName){
+    std::map<std::string, Channel*>::iterator it = _channels.find(channelName);
+    Channel * my_channel;
+    if(it == _channels.end()){
+        _channels.insert(std::pair<std::string, Channel *>(channelName,new Channel(channelName) ));
+        std::cout << std::endl << "A new channel created" << std::endl;
+        my_channel = (_channels.find(channelName)->second);
+    }
+    return my_channel;
+}
+
 //
 //void Server::removeChannel(Channel *channel) {
 //    _channels.erase(channel->getChannelName());

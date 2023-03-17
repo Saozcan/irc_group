@@ -1,4 +1,4 @@
-#include "../irc.hpp"
+#include "irc.hpp"
 
 int main(int argc, char const *argv[])
 {
@@ -7,10 +7,12 @@ int main(int argc, char const *argv[])
     User *usr = new User;
     Nick *nick = new Nick;
     Pass *pass = new Pass;
-
+    Join *join = new Join;
     server._commands.addCommand(usr);
     server._commands.addCommand(nick);
     server._commands.addCommand(pass);
+
+    server._commands.addCommand(join);
 
     server.listenServer();
 
