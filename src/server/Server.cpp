@@ -159,8 +159,9 @@ Channel *Server::createChannel(std::string channelName){
         _channels.insert(std::pair<std::string, Channel *>(channelName,new Channel(channelName) ));
         std::cout << std::endl << "A new channel created" << std::endl;
         my_channel = (_channels.find(channelName)->second);
+        return my_channel;
     }
-    return my_channel;
+    return (*it).second;
 }
 
 //

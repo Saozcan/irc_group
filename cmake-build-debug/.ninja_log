@@ -1,0 +1,13 @@
+# ninja log v5
+0	826	1679065303217586694	CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o	ed5421e0dc8fc811
+1	727	1679065303117585358	CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o	595cb125e68f8b6c
+2	998	1679065303389588992	CMakeFiles/irc_group.dir/src/server/Server.cpp.o	fb5d1c92876ea796
+2	832	1679065303221586748	CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o	764fe34d3540d5b4
+1	715	1679065303105585198	CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o	385c9cc153883c85
+2	352	1679065302741580335	CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o	c2eb433f3a5757dd
+1	733	1679065303125585465	CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o	c7d940884f468143
+0	780	1679065303169586053	CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o	f64bb15301e19532
+651	1074	1679065303465590007	CMakeFiles/irc_group.dir/src/main.cpp.o	26b269a6f89071e9
+1074	1159	1679065303549591129	irc_group	1ae90324d2ac8424
+0	651	1679065303041584343	CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o	3fd45eb308733870
+353	864	1679065303253587175	CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o	46e8294240d36c83

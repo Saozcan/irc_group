@@ -13,6 +13,9 @@ class Channel
 {
     private:
         std::map<std::string, NormalUser*> _users;
+        std::map<std::string, NormalUser*> _operators;
+        std::pair<std::string, NormalUser*> _admin;
+
         std::string _name;
 
     public:
@@ -25,4 +28,6 @@ class Channel
 
         void AddUser(NormalUser *user);
         void LeaveUser(NormalUser *user);
+        void addMode(std::string user);
+        void setAdmin();
 };

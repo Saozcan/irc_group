@@ -1,4 +1,4 @@
-# Install script for directory: /home/saozcan/Desktop/irc_group
+# Install script for directory: /home/ebudak/CLionProjects/irc_group
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/saozcan/Desktop/irc_group/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ebudak/CLionProjects/irc_group/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

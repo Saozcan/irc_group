@@ -33,4 +33,4 @@ add_executable(irc_group
         src/utility/Utility.cpp
         src/utility/Utility.hpp
         src/irc.hpp
-        src/main.cpp)
+        src/main.cpp src/command/commands/Mode.cpp)

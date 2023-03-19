@@ -44,7 +44,7 @@ class Server
 
     public:
         std::map<std::string, Channel*> _channels;
-        std::map<int, NormalUser*> _users;
+        std::map< int, NormalUser*> _users;
         std::string _pass;
 
         CommandExecuter _commands;

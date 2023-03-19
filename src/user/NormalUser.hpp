@@ -12,7 +12,7 @@ class NormalUser
         pollfd      *_poll;
         bool        _pass;
         bool        _allCheck;
-
+        bool        _opCheck;
     public:
         NormalUser();
         ~NormalUser();
@@ -24,6 +24,7 @@ class NormalUser
         void setPoll(pollfd &poll);
         void setPass(bool boolean);
         void setAllCheck(bool boolean);
+        void setOpCheck(bool boolean);
 
         //Getters
         std::string getName();
@@ -32,4 +33,5 @@ class NormalUser
         pollfd* getPoll();
         bool getPass();
         bool getAllCheck();
+        bool getOpCheck();
 };

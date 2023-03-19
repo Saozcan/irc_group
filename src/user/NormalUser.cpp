@@ -1,6 +1,6 @@
 #include "NormalUser.hpp"
 
-NormalUser::NormalUser() : _name(""), _role("NormalUser"), _nick(""), _pass(false), _allCheck(false) {}
+NormalUser::NormalUser() : _name(""), _role("NormalUser"), _nick(""), _pass(true), _allCheck(false) {}
 
 NormalUser::~NormalUser() {}
 
@@ -28,6 +28,10 @@ void NormalUser::setAllCheck(bool boolean) {
     _allCheck = boolean;
 }
 
+void NormalUser::setOpCheck(bool boolean) {
+    _opCheck = boolean;
+}
+
 std::string NormalUser::getName() {
     return _name;
 }
@@ -50,4 +54,7 @@ bool NormalUser::getPass() {
 
 bool NormalUser::getAllCheck() {
     return _allCheck;
+}
+bool NormalUser::getOpCheck() {
+    return _opCheck;
 }

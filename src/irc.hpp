@@ -11,5 +11,6 @@
 #include "command/commands/Nick.hpp"
 #include "command/commands/Pass.hpp"
 #include "command/commands/Join.hpp"
+#include "command/commands/Mode.hpp"
 
 #endif //IRC_GROUP_IRC_HPP
