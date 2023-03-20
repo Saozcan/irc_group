@@ -29,5 +29,7 @@ class Channel
         void AddUser(NormalUser *user);
         void LeaveUser(NormalUser *user);
         void addMode(std::string user);
+        void removeMode(std::string user);
         void setAdmin();
+        bool checkOperators(std::string user);
 };

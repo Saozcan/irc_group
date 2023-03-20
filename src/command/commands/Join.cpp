@@ -44,12 +44,14 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     std::vector<std::string>::const_iterator it2 = tmp.begin();
     found = 0;
     Channel *my_channel;
+    std::string foundtrim;
     for(;it2<tmp.end(); it2++)
     {
         found = (*it2).find('#') != std::string::npos ? (*it2).find('#') : (*it2).find('&')   ;
-        if ( found != std::string::npos) {
-            my_channel =  server.createChannel((*it2).substr(found + 1,(*it2).size()));
-            my_channel->AddUser(new NormalUser(*user.second));
+        if (found != std::string::npos) {
+            foundtrim = Utility::strTrim((*it2));
+                my_channel =  server.createChannel(foundtrim);
+                my_channel->AddUser(new NormalUser(*user.second));
             found++;
         }
     }

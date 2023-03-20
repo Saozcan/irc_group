@@ -17,46 +17,52 @@ Mode::~Mode() {
 
 void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server){
     size_t found;
-    size_t flag;
+    std::string channel_name;
+    std::string new_user;
     std::vector<std::string>::const_iterator it = splitArgs.begin() + 1;
-    std::map<std::string , Channel*>::iterator it_channel = server._channels.begin();
+    std::map<std::string , Channel*>::iterator it_channel;
     std::map<int , NormalUser*>::iterator it_user = server._users.begin();
-    std::string user_name = *(it + 2);
-    for(;it != splitArgs.end(); it++)
+
+    std::string user_name = Utility::strTrim(*(it + 2));
+    found = (*it).find('#') != std::string::npos ? (*it).find('#') : (*it).find('&');
+    channel_name = Utility::strTrim(*it);
+    bool checkUser = false;
+    if(found != std::string::npos)
     {
-        if(it != splitArgs.end())
-        {   found = (*it).find('#') != std::string::npos ? (*it).find('#') : (*it).find('&');
-//            it = it + 1;
-//            flag = (*(it)).find('+') != std::string::npos ? (*(it)).find('+') : (*(it)).find('-');
-        }
-        if (found != std::string::npos) {
-            for (; it_channel != server._channels.end(); it_channel++) {
-                it_channel = server._channels.find((*(it - 1)).substr(found + 1, (*(it - 1)).size()));
-                if (!it_channel->first.empty())
-                    break;
+        it_channel = server._channels.find(channel_name);
+        if (!it_channel->first.empty()){
+            for (; it_user != server._users.end() ; it_user++) {
+                if(user_name == (*it_user).second->getName()) {
+                    checkUser = true;
+                }
             }
-                    if(!it_channel->first.empty())
-                    {
-                        for (; it_user != server._users.end() ; it_user++) {
-                               int foundN =  user_name.find('\n');
-                               if(foundN != std::string::npos)
-                                    user_name = user_name.substr(0, foundN);
-                            if(user_name.compare((*it_user).second->getName()) == 0){
-                                it_channel->second->addMode(user_name);
-                                std::cout << "User added as operator"<< std::endl;
-                            }
+            if(checkUser){
+                std::string mode_flag = *(it + 1);
+                if(!mode_flag.empty()){
+                    if(it_channel->second->checkOperators(user.second->getName())){
+                        if(mode_flag == "+o"){
+                            it_channel->second->addMode(user_name);
+                            std::cout << user_name <<": User added as an operator"<< std::endl;
                         }
+                        else if(mode_flag == "-o"){
+                            it_channel->second->removeMode(user_name);
+                            std::cout << user_name << ": User removed as an operator" << std::endl;
+                        }
+                        else
+                            std::cout << "Invalid mode flag" << std::endl;
                     }
-                    else{
-                    std::cout << "channel yok" << std::endl;
-                        break;
-                    }
+                    else
+                        std::cout << "Sorry you are not an operator" << std::endl;
+                }
+                else
+                    std::cout << "Enter mode flag for operation" << std::endl;
+            }
+            else
+                std::cout << "User cannot be found! " << std::endl;
         }
-        else {
+        else
             std::cout << "We don't have such a channel!\nHint: JOIN command create new channel" << std::endl;
-            break;
-        }
     }
+    else
+            std::cout << "Please enter the channel name" << std::endl;
 }
-
-

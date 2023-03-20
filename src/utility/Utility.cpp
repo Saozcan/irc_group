@@ -40,3 +40,17 @@ const std::string Utility::toUpper(const std::string &str) {
     }
     return returnStr;
 }
+
+std::string Utility::strTrim(std::string str){
+
+    size_t found1 = str.find('\r');
+    size_t found2 = str.find('\n');
+    size_t found3 = str.find('#') !=  std::string::npos ?  str.find('#'): str.find('&');
+    if(found3 != std::string::npos)
+        str = str.substr(found3 + 1, str.length() -1);
+    if(found1 != std::string::npos)
+        str = str.substr(0, found1);
+    if(found2 != std::string::npos)
+        str = str.substr(0,found2);
+    return str;
+}

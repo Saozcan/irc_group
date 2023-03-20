@@ -6,6 +6,7 @@
 
 class Channel;
 class NormalUser;
+
 class Join : public ACommand {
 public:
     Join();

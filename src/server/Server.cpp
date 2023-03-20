@@ -153,12 +153,13 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
 //}
 //
 Channel *Server::createChannel(std::string channelName){
-    std::map<std::string, Channel*>::iterator it = _channels.find(channelName);
+    std::string channel = Utility::strTrim(channelName);
+    std::map<std::string, Channel*>::iterator it = _channels.find(channel);
     Channel * my_channel;
     if(it == _channels.end()){
-        _channels.insert(std::pair<std::string, Channel *>(channelName,new Channel(channelName) ));
-        std::cout << std::endl << "A new channel created" << std::endl;
-        my_channel = (_channels.find(channelName)->second);
+        my_channel = new Channel(channel);
+        _channels.insert(std::pair<std::string, Channel *>(channel,my_channel));
+        std::cout << "A new channel created : " << my_channel->getChannelName() <<std::endl;
         return my_channel;
     }
     return (*it).second;
@@ -191,7 +192,13 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
         // TODO: Command kısmı burada çalışacak
     } else {
         if (splitSpace.size() > 1) { // TODO: Sadece pass varsa user ve nick komutları için geçerli
-            if (_commands.executeCommand(splitSpace, (*it), *this)) {}
+            std::map<std::string , Channel *>::iterator it2 = _channels.begin();
+//            for (; it2 != _channels.end(); it2++) {
+//                std::cout<< (*it2).second.
+//            }
+            if (_commands.executeCommand(splitSpace, (*it), *this)) {
+
+            }
             else {
                 send(poll.fd, "Please finish your profile.", strlen("Please finish your profile."), 0);
             }
