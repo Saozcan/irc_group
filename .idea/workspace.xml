@@ -20,8 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="mode is wrong">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="mode ok and i'll rewrite Mode::execute function">
       <change beforePath="$PROJECT_DIR$/ircserv" beforeDir="false" afterPath="$PROJECT_DIR$/ircserv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/channel/Channel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/channel/Channel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.hpp" afterDir="false" />
@@ -116,7 +115,7 @@
       <workItem from="1679065054080" duration="214000" />
       <workItem from="1679065275836" duration="119000" />
       <workItem from="1679065405227" duration="1000" />
-      <workItem from="1679221906403" duration="53499000" />
+      <workItem from="1679221906403" duration="53814000" />
     </task>
     <task id="LOCAL-00001" summary="already up to date">
       <created>1678999627110</created>
@@ -139,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679249082650</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="mode ok">
+      <created>1679327440059</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679327440059</updated>
+    </task>
+    <task id="LOCAL-00005" summary="mode ok and i'll rewrite Mode::execute function">
+      <created>1679327470831</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679327470831</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +173,9 @@
     <MESSAGE value="already up to date" />
     <MESSAGE value="a nice makefile added" />
     <MESSAGE value="mode is wrong" />
-    <option name="LAST_COMMIT_MESSAGE" value="mode is wrong" />
+    <MESSAGE value="mode ok" />
+    <MESSAGE value="mode ok and i'll rewrite Mode::execute function" />
+    <option name="LAST_COMMIT_MESSAGE" value="mode ok and i'll rewrite Mode::execute function" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
