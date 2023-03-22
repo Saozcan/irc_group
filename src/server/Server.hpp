@@ -55,7 +55,4 @@ class Server
 
         std::string getPass();
 
-//        void addUser(AUser* user, int fd);
-//        void removeUser(AUser* user, int fd);
-
 };

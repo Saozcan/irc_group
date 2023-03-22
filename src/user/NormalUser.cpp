@@ -54,3 +54,27 @@ bool NormalUser::getPass() {
 bool NormalUser::getAllCheck() {
     return _allCheck;
 }
+
+void NormalUser::setRealName(const std::string &realName) {
+    _realName = realName;
+}
+
+void NormalUser::setHostname(const std::string &hostName) {
+    _hostname = hostName;
+}
+
+void NormalUser::setServerName(const std::string &serverName) {
+    _serverName = serverName;
+}
+
+std::string NormalUser::getRealName() {
+    return _realName;
+}
+
+std::string NormalUser::getHostname() {
+    return _hostname;
+}
+
+std::string NormalUser::getServerName() {
+    return _serverName;
+}

@@ -27,7 +27,7 @@ class Channel
         std::string getChannelName();
 
         void AddUser(NormalUser *user);
-        void LeaveUser(NormalUser *user);
+        void leaveUser(const std::string& name);
         void addMode(std::string user);
         void removeMode(std::string user);
         void setAdmin();

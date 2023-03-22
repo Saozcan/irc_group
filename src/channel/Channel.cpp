@@ -40,8 +40,8 @@ void Channel::AddUser(NormalUser *user) {
         std::cout << "Duplicate user" << std::endl;
 }
 
-void Channel::LeaveUser(NormalUser *user) {
-    _users.erase(user->getName());
+void Channel::leaveUser(const std::string& name) {
+    _users.erase(name);
 }
 
 void Channel::addMode(std::string user) {
@@ -70,13 +70,9 @@ void Channel::removeMode(std::string user) {
 bool Channel::checkOperators(std::string user) {
 
     std::map<std::string, NormalUser*>::iterator it = _operators.find(user);
-//    for (; it < _operators.end() ; ++i) {
-//
-//    }
-    bool check = false;
     if(it != _operators.end())
-        check = true;
-    return check;
+        return true;
+    return false;
 }
 
 void Channel::sendMessage(const std::string &from, std::string &message) {
@@ -84,7 +80,6 @@ void Channel::sendMessage(const std::string &from, std::string &message) {
     std::map<std::string, NormalUser*>::iterator it = _users.begin();
     size_t messageLen = strlen(message.c_str());
     for (; it != _users.end(); it++) {
-        std::cout << "poll: " << (*it).second->getPoll().fd << std::endl;
         if (it->second->getName() != from)
             send((*it).second->getPoll().fd, message.c_str(), messageLen, 0);
     }

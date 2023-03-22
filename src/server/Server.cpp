@@ -128,19 +128,20 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
 
 bool Server::checkAndParseFirst(char *str, pollfd &poll)
 {
-    std::cout << std::endl;
-    std::cout << _users.size() << std::endl;
     if (_users.find(poll.fd) == _users.end()) {
         NormalUser* newUser = new NormalUser(poll);
         _users.insert(std::pair<int, NormalUser *>(poll.fd, newUser));
     }
     std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
+    if (strlen(str) < 4)
+        return false;
     std::string buffer(str);
-    std::cout << "before trim: "<< buffer << std::endl;
     buffer = Utility::trimExceptAlphabet(buffer);
-    std::cout << "after trim: " <<  buffer << std::endl;
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
-    std::cout << "splitSize: " << splitSpace.size() << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "User size: " << _users.size() << std::endl;
+
     if (splitSpace.empty())
         std::cout << "error\n";
     if (it->second->getAllCheck()) {
