@@ -32,4 +32,5 @@ class Channel
         void removeMode(std::string user);
         void setAdmin();
         bool checkOperators(std::string user);
+        void sendMessage(const std::string& from, std::string& message);
 };

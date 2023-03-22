@@ -131,7 +131,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
     std::cout << std::endl;
     std::cout << _users.size() << std::endl;
     if (_users.find(poll.fd) == _users.end()) {
-        NormalUser* newUser = new NormalUser;
+        NormalUser* newUser = new NormalUser(poll);
         _users.insert(std::pair<int, NormalUser *>(poll.fd, newUser));
     }
     std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);

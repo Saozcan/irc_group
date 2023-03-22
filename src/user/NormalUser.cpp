@@ -2,7 +2,7 @@
 
 NormalUser::NormalUser() : _name(""), _role("NormalUser"), _nick(""), _pass(true), _allCheck(false) {}
 
-NormalUser::NormalUser(pollfd &pollfd) : _name(""), _role("NormalUser"), _nick(""), _pass(true), _allCheck(false), _poll(pollfd)  {}
+NormalUser::NormalUser(pollfd &pollfd) : _role("NormalUser"), _nick(""), _pass(true), _allCheck(false), _poll(pollfd)  {}
 
 
 NormalUser::~NormalUser() {}

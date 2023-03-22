@@ -29,7 +29,7 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
 
     std::vector<std::string>tmp ;
     size_t found;
-    std::vector<std::string>::const_iterator it= splitArgs.begin();
+    std::vector<std::string>::const_iterator it= splitArgs.begin() + 1;
     for (; it < splitArgs.end() ; it++) {
         found = (*it).find(',');
         if ( found != std::string::npos) {
@@ -42,19 +42,17 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         }
     }
     std::vector<std::string>::const_iterator it2 = tmp.begin();
-    found = 0;
     Channel *my_channel;
     std::string foundtrim;
     for(;it2<tmp.end(); it2++)
     {
-        found = (*it2).find('#') != std::string::npos ? (*it2).find('#') : (*it2).find('&')   ;
+        found = (*it2).find('#') != std::string::npos ? (*it2).find('#') : (*it2).find('&');
         if (found != std::string::npos) {
             foundtrim = Utility::strTrim((*it2));
                 my_channel =  server._channels.createChannel(foundtrim);
-                my_channel->AddUser(new NormalUser(*user.second));
-            found++;
+                my_channel->AddUser(user.second);
         }
+        else
+            std::cout << "Syntax Error" << std::endl;
     }
 }
-
-

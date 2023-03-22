@@ -11,7 +11,7 @@ public:
     ChannelBook();
     ~ChannelBook();
     Channel* createChannel(std::string& channelName);
-    Channel* getChannel(std::string& channelName);
+    Channel* getChannel(const std::string& channelName);
     bool removeChannel(std::string& channelName);
 
 private:

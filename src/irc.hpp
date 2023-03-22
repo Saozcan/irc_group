@@ -13,5 +13,6 @@
 #include "command/commands/Join.hpp"
 #include "command/commands/Mode.hpp"
 #include "command/commands/Help.hpp"
+#include "command/commands/Privmsg.hpp"
 
 #endif //IRC_GROUP_IRC_HPP

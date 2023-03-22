@@ -78,3 +78,14 @@ bool Channel::checkOperators(std::string user) {
         check = true;
     return check;
 }
+
+void Channel::sendMessage(const std::string &from, std::string &message) {
+
+    std::map<std::string, NormalUser*>::iterator it = _users.begin();
+    size_t messageLen = strlen(message.c_str());
+    for (; it != _users.end(); it++) {
+        std::cout << "poll: " << (*it).second->getPoll().fd << std::endl;
+        if (it->second->getName() != from)
+            send((*it).second->getPoll().fd, message.c_str(), messageLen, 0);
+    }
+}

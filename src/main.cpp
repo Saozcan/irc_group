@@ -11,12 +11,14 @@ int main(int argc, char const *argv[])
     Join *join = new Join;
     Mode *mode  = new Mode;
     Help *help = new Help;
+    Privmsg *privmsg = new Privmsg;
     server._commands.addCommand(usr);
     server._commands.addCommand(nick);
     server._commands.addCommand(pass);
     server._commands.addCommand(join);
     server._commands.addCommand(mode);
     server._commands.addCommand(help);
+    server._commands.addCommand(privmsg);
 
     server.listenServer();
 
