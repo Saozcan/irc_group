@@ -13,10 +13,10 @@ Server::Server() {
 }
 
 //TODO: PDF e göre args ayarlanacak.
-Server::Server(std::string const &serverName, unsigned short port)
+Server::Server(unsigned short port, std::string &password)
 {
-    _serverName = serverName;
     _port = port;
+    _pass = password;
     _addrlen = sizeof(_address);
 };
 

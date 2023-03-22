@@ -48,7 +48,7 @@ class Server
         ChannelBook     _channels;
 
         Server();
-        Server(std::string const &serverName, unsigned short port);
+        Server(unsigned short port, std::string &password);
         ~Server();
 
         void listenServer();

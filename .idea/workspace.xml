@@ -20,26 +20,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="privmsg added">
-      <change afterPath="$PROJECT_DIR$/src/command/commands/Kick.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/commands/Kick.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/commands/Notice.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/commands/Notice.hpp" afterDir="false" />
+    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="kick notice added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ircserv" beforeDir="false" afterPath="$PROJECT_DIR$/ircserv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/channel/Channel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/channel/Channel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/commands/Help.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Help.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/commands/User.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/User.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/irc.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/irc.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/Server.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/NormalUser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/NormalUser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +117,7 @@
       <workItem from="1679065275836" duration="119000" />
       <workItem from="1679065405227" duration="1000" />
       <workItem from="1679221906403" duration="56696000" />
-      <workItem from="1679486404410" duration="13903000" />
+      <workItem from="1679486404410" duration="14993000" />
     </task>
     <task id="LOCAL-00001" summary="already up to date">
       <created>1678999627110</created>
@@ -190,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679499682066</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="kick notice added">
+      <created>1679505806300</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679505806300</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +207,8 @@
     <MESSAGE value="mode ok and i'll rewrite Mode::execute function" />
     <MESSAGE value="help addded, a new class who classes for create and get channels" />
     <MESSAGE value="privmsg added" />
-    <option name="LAST_COMMIT_MESSAGE" value="privmsg added" />
+    <MESSAGE value="kick notice added" />
+    <option name="LAST_COMMIT_MESSAGE" value="kick notice added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
