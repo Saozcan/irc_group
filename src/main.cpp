@@ -10,16 +10,15 @@ int main(int argc, char const *argv[])
     Pass *pass = new Pass;
     Join *join = new Join;
     Mode *mode  = new Mode;
+    Help *help = new Help;
     server._commands.addCommand(usr);
     server._commands.addCommand(nick);
     server._commands.addCommand(pass);
     server._commands.addCommand(join);
     server._commands.addCommand(mode);
-
+    server._commands.addCommand(help);
 
     server.listenServer();
 
-//    std::cout << server.getServerName() << std::endl;
-    /* code */
     return 0;
 }

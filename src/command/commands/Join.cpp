@@ -50,7 +50,7 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         found = (*it2).find('#') != std::string::npos ? (*it2).find('#') : (*it2).find('&')   ;
         if (found != std::string::npos) {
             foundtrim = Utility::strTrim((*it2));
-                my_channel =  server.createChannel(foundtrim);
+                my_channel =  server._channels.createChannel(foundtrim);
                 my_channel->AddUser(new NormalUser(*user.second));
             found++;
         }

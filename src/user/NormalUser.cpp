@@ -2,6 +2,9 @@
 
 NormalUser::NormalUser() : _name(""), _role("NormalUser"), _nick(""), _pass(true), _allCheck(false) {}
 
+NormalUser::NormalUser(pollfd &pollfd) : _name(""), _role("NormalUser"), _nick(""), _pass(true), _allCheck(false), _poll(pollfd)  {}
+
+
 NormalUser::~NormalUser() {}
 
 void NormalUser::setName(std::string name) {
@@ -17,7 +20,7 @@ void NormalUser::setRole(std::string role) {
 }
 
 void NormalUser::setPoll(pollfd &poll) {
-    _poll = &poll;
+    _poll = poll;
 }
 
 void NormalUser::setPass(bool boolean) {
@@ -26,10 +29,6 @@ void NormalUser::setPass(bool boolean) {
 
 void NormalUser::setAllCheck(bool boolean) {
     _allCheck = boolean;
-}
-
-void NormalUser::setOpCheck(bool boolean) {
-    _opCheck = boolean;
 }
 
 std::string NormalUser::getName() {
@@ -44,7 +43,7 @@ std::string NormalUser::getNick() {
     return _nick;
 }
 
-pollfd* NormalUser::getPoll() {
+pollfd& NormalUser::getPoll() {
     return _poll;
 }
 
@@ -54,7 +53,4 @@ bool NormalUser::getPass() {
 
 bool NormalUser::getAllCheck() {
     return _allCheck;
-}
-bool NormalUser::getOpCheck() {
-    return _opCheck;
 }

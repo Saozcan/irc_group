@@ -17,7 +17,7 @@
 rule CXX_COMPILER__irc_group_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = /bin/g++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = /usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -25,7 +25,7 @@ rule CXX_COMPILER__irc_group_Debug
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__irc_group_Debug
-  command = $PRE_LINK && /bin/g++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  command = $PRE_LINK && /usr/bin/c++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 
@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/ebudak/CLionProjects/irc_group -B/home/ebudak/CLionProjects/irc_group/cmake-build-debug
+  command = /home/saozcan/Apps/clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/saozcan/Desktop/irc_group -B/home/saozcan/Desktop/irc_group/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
@@ -51,7 +51,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/ninja/linux/x64/ninja $FILE_ARG -t clean $TARGETS
+  command = /home/saozcan/Apps/clion/bin/ninja/linux/ninja $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -59,6 +59,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/ninja/linux/x64/ninja -t targets
+  command = /home/saozcan/Apps/clion/bin/ninja/linux/ninja -t targets
   description = All primary targets available:
 

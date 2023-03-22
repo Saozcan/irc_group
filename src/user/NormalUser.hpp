@@ -10,12 +10,13 @@ class NormalUser
         std::string _name;
         std::string _role;
         std::string _nick;
-        pollfd      *_poll;
+        pollfd      _poll;
         bool        _pass;
         bool        _allCheck;
         bool        _opCheck;
     public:
         NormalUser();
+        NormalUser(pollfd &pollfd);
         ~NormalUser();
 
         //Setters
@@ -25,14 +26,12 @@ class NormalUser
         void setPoll(pollfd &poll);
         void setPass(bool boolean);
         void setAllCheck(bool boolean);
-        void setOpCheck(bool boolean);
 
         //Getters
         std::string getName();
         std::string getRole();
         std::string getNick();
-        pollfd* getPoll();
+        pollfd& getPoll();
         bool getPass();
         bool getAllCheck();
-        bool getOpCheck();
 };

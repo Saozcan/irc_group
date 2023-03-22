@@ -21,15 +21,9 @@ Server::Server(std::string const &serverName, unsigned short port)
 };
 
 Server::~Server() {
+    // TODO: Ahmet'e sorulacak pragma...
     #pragma region FreeChannels
-    std::map<std::string, Channel*>::iterator it = _channels.begin();
     std::map<int, NormalUser*>::iterator uIt = _users.begin();
-    while (it != _channels.end())
-    {
-        delete (*it).second;
-        it++;
-    }
-    _channels.clear();
     while (uIt != _users.end())
     {
         delete (*uIt).second;
@@ -38,6 +32,10 @@ Server::~Server() {
     _users.clear();
     #pragma endregion
 };
+
+std::string Server::getPass() {
+    return _pass;
+}
 
 void Server::listenServer() {
     this->createSocketFd();
@@ -89,7 +87,6 @@ void Server::acceptClient() {
 int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
     if (!_clients.empty()) {
         int pollReturn = poll(_clients.data(), _clients.size(), 1000);
-//            std::cout << pollReturn << std::endl;
         if (pollReturn == -1) {
             perror("poll() error");
             return BREAK;
@@ -128,58 +125,10 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
     return CONTINUE;
 }
 
-//void Server::setHostName(const std::string &hostName) {
-//    _hostName = hostName;
-//};
-//
-//void Server::setServerName(const std::string &serverName) {
-//    _serverName = serverName;
-//}
-//
-//void Server::setPort(unsigned short port) {
-//    _port = port;
-//};
-//
-//const std::string &Server::getHostName() const {
-//    return _hostName;
-//}
-//
-//const std::string &Server::getServerName() const {
-//    return _serverName;
-//}
-//
-//unsigned short Server::getPort() const {
-//    return _port;
-//}
-//
-Channel *Server::createChannel(std::string channelName){
-    std::string channel = Utility::strTrim(channelName);
-    std::map<std::string, Channel*>::iterator it = _channels.find(channel);
-    Channel * my_channel;
-    if(it == _channels.end()){
-        my_channel = new Channel(channel);
-        _channels.insert(std::pair<std::string, Channel *>(channel,my_channel));
-        std::cout << "A new channel created : " << my_channel->getChannelName() <<std::endl;
-        return my_channel;
-    }
-    return (*it).second;
-}
-
-//
-//void Server::removeChannel(Channel *channel) {
-//    _channels.erase(channel->getChannelName());
-//}
-//
-//void Server::addUser(AUser *user, int fd) {
-//    _users.insert(std::pair<int, AUser*>(fd, user));
-//}
-//
-//void Server::removeUser(AUser *user, int fd) {
-//    _users.erase(fd);
-//}
 
 bool Server::checkAndParseFirst(char *str, pollfd &poll)
 {
+    std::cout << std::endl;
     std::cout << _users.size() << std::endl;
     if (_users.find(poll.fd) == _users.end()) {
         NormalUser* newUser = new NormalUser;
@@ -187,24 +136,33 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
     }
     std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
     std::string buffer(str);
+    std::cout << "before trim: "<< buffer << std::endl;
+    buffer = Utility::trimExceptAlphabet(buffer);
+    std::cout << "after trim: " <<  buffer << std::endl;
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
+    std::cout << "splitSize: " << splitSpace.size() << std::endl;
+    if (splitSpace.empty())
+        std::cout << "error\n";
     if (it->second->getAllCheck()) {
-        // TODO: Command kısmı burada çalışacak
-    } else {
-        if (splitSpace.size() > 1) { // TODO: Sadece pass varsa user ve nick komutları için geçerli
-            std::map<std::string , Channel *>::iterator it2 = _channels.begin();
-//            for (; it2 != _channels.end(); it2++) {
-//                std::cout<< (*it2).second.
-//            }
-            if (_commands.executeCommand(splitSpace, (*it), *this)) {
-
+        _commands.executeCommand(splitSpace, (*it), *this);
+    }
+    else {
+        if (splitSpace.size() > 1) {
+            std::string toUpper = Utility::toUpper(splitSpace[0]);
+            if (toUpper == "PASS" || toUpper == "NICK" || toUpper == "USER") {
+                _commands.executeCommand(splitSpace, (*it), *this);
             }
             else {
-                send(poll.fd, "Please finish your profile.", strlen("Please finish your profile."), 0);
+                send(poll.fd, "Wrong command\n", strlen("Wrong command\n"), 0);
             }
+        }
+        else {
+            if (!splitSpace.empty() && Utility::toUpper(splitSpace[0]) == "HELP") {
+                _commands.executeCommand(splitSpace, (*it), *this);
+            }
+            else
+                send(poll.fd, "Wrong command you can use HELP command\n", strlen("Wrong command you can use HELP command\n"), 0);
         }
     }
     return false;
 }
-
-

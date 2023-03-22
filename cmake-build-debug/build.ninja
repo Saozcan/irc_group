@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/ebudak/CLionProjects/irc_group/cmake-build-debug/
+cmake_ninja_workdir = /home/saozcan/Desktop/irc_group/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target irc_group
 
@@ -49,87 +49,101 @@ cmake_ninja_workdir = /home/ebudak/CLionProjects/irc_group/cmake-build-debug/
 
 build cmake_object_order_depends_target_irc_group: phony || CMakeFiles/irc_group.dir
 
-build CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/channel/Channel.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/channel/Channel.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/channel
 
-build CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/command/commands/Join.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/commands/Join.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
 
-build CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/command/commands/Nick.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/commands/Nick.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
 
-build CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/command/commands/Pass.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/commands/Pass.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
 
-build CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/command/commands/User.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/commands/User.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
 
-build CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/command/ACommand.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/ACommand.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command
 
-build CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/command/CommandExecuter.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/CommandExecuter.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command
 
-build CMakeFiles/irc_group.dir/src/server/Server.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/server/Server.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/server/Server.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/server/Server.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/server/Server.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/server
 
-build CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/user/NormalUser.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/user/NormalUser.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/user
 
-build CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/utility/Utility.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/utility/Utility.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/utility
 
-build CMakeFiles/irc_group.dir/src/main.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/main.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/main.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/main.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src
 
-build CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o: CXX_COMPILER__irc_group_Debug /home/ebudak/CLionProjects/irc_group/src/command/commands/Mode.cpp || cmake_object_order_depends_target_irc_group
+build CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/commands/Mode.cpp || cmake_object_order_depends_target_irc_group
   DEP_FILE = CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/ebudak/CLionProjects/irc_group/src -I/home/ebudak/CLionProjects/irc_group/src/channel -I/home/ebudak/CLionProjects/irc_group/src/command -I/home/ebudak/CLionProjects/irc_group/src/command/commands -I/home/ebudak/CLionProjects/irc_group/src/server -I/home/ebudak/CLionProjects/irc_group/src/user -I/home/ebudak/CLionProjects/irc_group/src/utility
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
+  OBJECT_DIR = CMakeFiles/irc_group.dir
+  OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
+
+build CMakeFiles/irc_group.dir/src/channel/ChannelBook.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/channel/ChannelBook.cpp || cmake_object_order_depends_target_irc_group
+  DEP_FILE = CMakeFiles/irc_group.dir/src/channel/ChannelBook.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
+  OBJECT_DIR = CMakeFiles/irc_group.dir
+  OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/channel
+
+build CMakeFiles/irc_group.dir/src/command/commands/Help.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/commands/Help.cpp || cmake_object_order_depends_target_irc_group
+  DEP_FILE = CMakeFiles/irc_group.dir/src/command/commands/Help.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
 
@@ -141,7 +155,7 @@ build CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o: CXX_COMPILER__ir
 #############################################
 # Link the executable irc_group
 
-build irc_group: CXX_EXECUTABLE_LINKER__irc_group_Debug CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o CMakeFiles/irc_group.dir/src/server/Server.cpp.o CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o CMakeFiles/irc_group.dir/src/main.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o
+build irc_group: CXX_EXECUTABLE_LINKER__irc_group_Debug CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o CMakeFiles/irc_group.dir/src/server/Server.cpp.o CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o CMakeFiles/irc_group.dir/src/main.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o CMakeFiles/irc_group.dir/src/channel/ChannelBook.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Help.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/irc_group.dir
   POST_BUILD = :
@@ -154,7 +168,7 @@ build irc_group: CXX_EXECUTABLE_LINKER__irc_group_Debug CMakeFiles/irc_group.dir
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/ebudak/CLionProjects/irc_group/cmake-build-debug && /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/saozcan/Desktop/irc_group/cmake-build-debug && /home/saozcan/Apps/clion/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -165,7 +179,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/ebudak/CLionProjects/irc_group/cmake-build-debug && /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/ebudak/CLionProjects/irc_group -B/home/ebudak/CLionProjects/irc_group/cmake-build-debug
+  COMMAND = cd /home/saozcan/Desktop/irc_group/cmake-build-debug && /home/saozcan/Apps/clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/saozcan/Desktop/irc_group -B/home/saozcan/Desktop/irc_group/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -181,7 +195,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/ebudak/CLionProjects/irc_group/cmake-build-debug
+# Folder: /home/saozcan/Desktop/irc_group/cmake-build-debug
 
 build all: phony irc_group
 
@@ -192,14 +206,14 @@ build all: phony irc_group
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /home/ebudak/CLionProjects/irc_group/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /home/saozcan/Desktop/irc_group/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux.cmake /home/ebudak/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /home/ebudak/CLionProjects/irc_group/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+build /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux.cmake /home/saozcan/Apps/clion/bin/cmake/linux/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /home/saozcan/Desktop/irc_group/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
 
 
 #############################################

@@ -16,12 +16,14 @@ Mode::~Mode() {
  * */
 
 void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server){
+    if (splitArgs.size() < 4)
+        std::cout << "Syntax error\n";
     std::string channel_name = Utility::strTrim(splitArgs[1]);
-    std::string targetUser = Utility::strTrim(splitArgs[3]);
+    std::string targetUser = splitArgs[3];
     std::map<int , NormalUser*>::iterator it_user = server._users.begin();
-    std::map<std::string , Channel*>::iterator it_channel = server._channels.find(channel_name);
+    Channel* it_channel = server._channels.getChannel(channel_name);
     bool checkUser = false;
-    if(it_channel == server._channels.end())
+    if(it_channel == nullptr)
     {
         std::cout << "There is no such channel" << std::endl;
         return;
@@ -41,17 +43,17 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         std::cout << "Enter mode flag for operation" << std::endl;
         return;
     }
-    if(!it_channel->second->checkOperators(user.second->getName())){
+    if(!it_channel->checkOperators(user.second->getName())){
         std::cout << "You are not an operator" << std::endl;
         return;
     }
     std::string mode_flag = splitArgs[2];
     if(mode_flag == "+o"){
-        it_channel->second->addMode(targetUser);
+        it_channel->addMode(targetUser);
         std::cout << targetUser <<": User added as an operator"<< std::endl;
     }
     else if(mode_flag == "-o"){
-        it_channel->second->removeMode(targetUser);
+        it_channel->removeMode(targetUser);
         std::cout << targetUser << ": User removed as an operator" << std::endl;
     }
     else

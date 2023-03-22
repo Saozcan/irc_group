@@ -11,21 +11,34 @@ bool Utility::checkAndParse(Server &server, pollfd &poll, char* str) {
     return false;
 }
 
+unsigned int passDelimiter(const std::string &str, const std::string& delimiter) {
+    unsigned int i = 0;
+    while (str[i] != std::string::npos) {
+        if (str[i] == delimiter[0])
+            i++;
+        else
+            break;
+    }
+    return i;
+}
+
 std::vector<std::string> Utility::split(const std::string& str, const std::string& delimiter) {
     std::vector<std::string> tokens;
     size_t start = 0;
     size_t end = str.find(delimiter);
 
-    if (end > str.length()) {
-        tokens.push_back(str.substr(start, str.length()));
-        return tokens;
-    }
     while (end != std::string::npos) {
-        tokens.push_back(str.substr(start, end - start));
+        if (end > start) {
+            tokens.push_back(str.substr(start, end - start));
+        }
         start = end + delimiter.length();
         end = str.find(delimiter, start);
+        while (end == start) {
+            start += delimiter.length();
+            end = str.find(delimiter, start);
+        }
     }
-    if (start != str.length()) {
+    if (start < str.length()) {
         tokens.push_back(str.substr(start));
     }
     return tokens;
@@ -54,3 +67,16 @@ std::string Utility::strTrim(std::string str){
         str = str.substr(0,found2);
     return str;
 }
+
+std::string Utility::trimExceptAlphabet(std::string str) {
+    std::string::reverse_iterator it = str.rbegin();
+    for (; it != str.rend(); it++) {
+        if ((*it) == '\r' || (*it) == '\n')
+            str.pop_back();
+        else
+            break;
+    }
+    return str;
+}
+
+
