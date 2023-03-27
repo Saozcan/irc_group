@@ -8,32 +8,37 @@ int main(int argc, char const *argv[])
         std::cout << "Argument Error\n";
         return 0;
     }
-    unsigned short number = (unsigned short) strtoul(argv[1], NULL, 0);
-    std::string password(argv[2]);
-    Server server(number, password);
+    try {
+        unsigned short number = (unsigned short) strtoul(argv[1], NULL, 0);
+        std::string password(argv[2]);
+        Server server(number, password);
 
-    User *usr = new User;
-    Nick *nick = new Nick;
-    Pass *pass = new Pass;
-    Join *join = new Join;
-    Mode *mode  = new Mode;
-    Help *help = new Help;
-    Privmsg *privmsg = new Privmsg;
-    Kick* kick = new Kick;
-    Notice *notice = new Notice;
-    Ping *ping = new Ping;
-    server._commands.addCommand(usr);
-    server._commands.addCommand(nick);
-    server._commands.addCommand(pass);
-    server._commands.addCommand(join);
-    server._commands.addCommand(mode);
-    server._commands.addCommand(help);
-    server._commands.addCommand(privmsg);
-    server._commands.addCommand(kick);
-    server._commands.addCommand(notice);
-    server._commands.addCommand(ping);
+        User *usr = new User;
+        Nick *nick = new Nick;
+        Pass *pass = new Pass;
+        Join *join = new Join;
+        Mode *mode = new Mode;
+        Help *help = new Help;
+        Privmsg *privmsg = new Privmsg;
+        Kick *kick = new Kick;
+        Notice *notice = new Notice;
+        Ping *ping = new Ping;
+        server._commands.addCommand(usr);
+        server._commands.addCommand(nick);
+        server._commands.addCommand(pass);
+        server._commands.addCommand(join);
+        server._commands.addCommand(mode);
+        server._commands.addCommand(help);
+        server._commands.addCommand(privmsg);
+        server._commands.addCommand(kick);
+        server._commands.addCommand(notice);
+        server._commands.addCommand(ping);
 
-    server.listenServer();
+        server.listenServer();
+    }
+    catch(std::exception &e){
+        std::cout << e.what();
+    }
 
     return 0;
 }

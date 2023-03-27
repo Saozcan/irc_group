@@ -15,6 +15,9 @@ Server::Server() {
 //TODO: PDF e göre args ayarlanacak.
 Server::Server(unsigned short port, std::string &password)
 {
+    if (port < 1024 || port > 65535) {
+        throw Server::WrongPort();
+    }
     _port = port;
     _pass = password;
     _addrlen = sizeof(_address);
