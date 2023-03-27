@@ -48,14 +48,16 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         if (found != std::string::npos) {
             foundtrim = Utility::strTrim((*it2));
             my_channel = server._channels.createChannel(foundtrim);
+            std::string sendString = user.second->getReplay() +" JOIN #" + foundtrim + "\r\n";
             my_channel->AddUser(user.second);
-            std::string sendString =
-                    ":ircserv 331 " + user.second->getName() + " #" + foundtrim + " :No topic is set\r\n";
-            if (my_channel->isEmpty())
-                sendString +=
-                        ":ircserv 353 " + user.second->getName() + " = #" + foundtrim + " :@" + user.second->getName() +
-                        "\r\n";
-            sendString += ":ircserv 366 " + user.second->getName() + " #" + foundtrim + " :End of /NAMES list \r\n";
+            send(user.first, sendString.c_str(), sendString.size(), 0);
+            sendString =":ircserv 331 " + user.second->getName() + " #" + foundtrim + " :No topic is set\r\n";
+            send(user.first, sendString.c_str(), sendString.size(), 0);
+            if (!my_channel->isEmpty()) {
+                sendString =":ircserv 353 " + user.second->getName() + " = #" + foundtrim + " :@" + user.second->getName() +"\r\n";
+                send(user.first, sendString.c_str(), sendString.size(), 0);
+            }
+            sendString = ":ircserv 366 " + user.second->getName() + " #" + foundtrim + " :End of /NAMES list \r\n";
             send(user.first, sendString.c_str(), sendString.size(), 0);
         }
     }

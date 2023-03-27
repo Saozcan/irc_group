@@ -21,6 +21,7 @@ int main(int argc, char const *argv[])
     Privmsg *privmsg = new Privmsg;
     Kick* kick = new Kick;
     Notice *notice = new Notice;
+    Ping *ping = new Ping;
     server._commands.addCommand(usr);
     server._commands.addCommand(nick);
     server._commands.addCommand(pass);
@@ -30,6 +31,7 @@ int main(int argc, char const *argv[])
     server._commands.addCommand(privmsg);
     server._commands.addCommand(kick);
     server._commands.addCommand(notice);
+    server._commands.addCommand(ping);
 
     server.listenServer();
 

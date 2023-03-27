@@ -168,6 +168,13 @@ build CMakeFiles/irc_group.dir/src/command/commands/Notice.cpp.o: CXX_COMPILER__
   OBJECT_DIR = CMakeFiles/irc_group.dir
   OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
 
+build CMakeFiles/irc_group.dir/src/command/commands/Ping.cpp.o: CXX_COMPILER__irc_group_Debug /home/saozcan/Desktop/irc_group/src/command/commands/Ping.cpp || cmake_object_order_depends_target_irc_group
+  DEP_FILE = CMakeFiles/irc_group.dir/src/command/commands/Ping.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/saozcan/Desktop/irc_group/src -I/home/saozcan/Desktop/irc_group/src/channel -I/home/saozcan/Desktop/irc_group/src/command -I/home/saozcan/Desktop/irc_group/src/command/commands -I/home/saozcan/Desktop/irc_group/src/server -I/home/saozcan/Desktop/irc_group/src/user -I/home/saozcan/Desktop/irc_group/src/utility
+  OBJECT_DIR = CMakeFiles/irc_group.dir
+  OBJECT_FILE_DIR = CMakeFiles/irc_group.dir/src/command/commands
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target irc_group
@@ -176,7 +183,7 @@ build CMakeFiles/irc_group.dir/src/command/commands/Notice.cpp.o: CXX_COMPILER__
 #############################################
 # Link the executable irc_group
 
-build irc_group: CXX_EXECUTABLE_LINKER__irc_group_Debug CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o CMakeFiles/irc_group.dir/src/server/Server.cpp.o CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o CMakeFiles/irc_group.dir/src/main.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o CMakeFiles/irc_group.dir/src/channel/ChannelBook.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Help.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Privmsg.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Kick.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Notice.cpp.o
+build irc_group: CXX_EXECUTABLE_LINKER__irc_group_Debug CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Join.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Nick.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Pass.cpp.o CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o CMakeFiles/irc_group.dir/src/command/ACommand.cpp.o CMakeFiles/irc_group.dir/src/command/CommandExecuter.cpp.o CMakeFiles/irc_group.dir/src/server/Server.cpp.o CMakeFiles/irc_group.dir/src/user/NormalUser.cpp.o CMakeFiles/irc_group.dir/src/utility/Utility.cpp.o CMakeFiles/irc_group.dir/src/main.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o CMakeFiles/irc_group.dir/src/channel/ChannelBook.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Help.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Privmsg.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Kick.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Notice.cpp.o CMakeFiles/irc_group.dir/src/command/commands/Ping.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/irc_group.dir
   POST_BUILD = :

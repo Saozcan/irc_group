@@ -13,6 +13,7 @@ class NormalUser
         std::string _realName;
         std::string _hostname;
         std::string _serverName;
+        std::string _replay;
         pollfd      _poll;
         bool        _pass;
         bool        _allCheck;
@@ -32,6 +33,7 @@ class NormalUser
         void setRealName(const std::string &realName);
         void setHostname(const std::string &hostName);
         void setServerName(const std::string &serverName);
+        void setReplay(const std::string &replay);
 
         //Getters
         std::string getName();
@@ -43,4 +45,5 @@ class NormalUser
         std::string getRealName();
         std::string getHostname();
         std::string getServerName();
+        const std::string& getReplay() const;
 };

@@ -78,3 +78,11 @@ std::string NormalUser::getHostname() {
 std::string NormalUser::getServerName() {
     return _serverName;
 }
+
+void NormalUser::setReplay(const std::string &replay) {
+    _replay = replay;
+}
+
+const std::string &NormalUser::getReplay() const {
+    return _replay;
+}

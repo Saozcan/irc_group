@@ -20,7 +20,7 @@ Notice::execute(const std::vector<std::string> &splitArgs, std::pair<const int, 
         if (i != splitArgs.size() - 1)
             message += " ";
     }
-    message += "\n";
+    message += "\r\n";
     size_t messageLen = message.size();
     std::map<int, NormalUser*>::iterator it = server._users.begin();
     for (; it != server._users.end(); it++) {

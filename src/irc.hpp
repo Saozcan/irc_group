@@ -16,5 +16,6 @@
 #include "command/commands/Privmsg.hpp"
 #include "command/commands/Kick.hpp"
 #include "command/commands/Notice.hpp"
+#include "command/commands/Ping.hpp"
 
 #endif //IRC_GROUP_IRC_HPP

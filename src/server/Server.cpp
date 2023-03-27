@@ -86,7 +86,7 @@ void Server::acceptClient() {
 
 int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
     if (!_clients.empty()) {
-        int pollReturn = poll(_clients.data(), _clients.size(), 1000);
+        int pollReturn = poll(_clients.data(), _clients.size(), 300);
         if (pollReturn == -1) {
             perror("poll() error");
             return BREAK;
@@ -137,6 +137,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
         return false;
     std::string buffer(str);
     std::cout << "kvirc:" << str << std::endl;
+    std::cout << "kvirc size:" << strlen(str) << std::endl;
     buffer = Utility::trimExceptAlphabet(buffer);
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
 
