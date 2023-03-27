@@ -90,3 +90,7 @@ bool Channel::isEmpty() {
         return true;
     return false;
 }
+
+unsigned int Channel::getUserSize() {
+    return _users.size();
+}

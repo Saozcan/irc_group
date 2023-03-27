@@ -34,4 +34,5 @@ class Channel
         bool checkOperators(std::string user);
         void sendMessage(const std::string& from, std::string& message);
         bool isEmpty();
+        unsigned int getUserSize();
 };
