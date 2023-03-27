@@ -136,6 +136,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
     if (strlen(str) < 4)
         return false;
     std::string buffer(str);
+    std::cout << "kvirc:" << str << std::endl;
     buffer = Utility::trimExceptAlphabet(buffer);
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
 

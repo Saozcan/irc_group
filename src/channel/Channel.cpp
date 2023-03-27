@@ -84,3 +84,9 @@ void Channel::sendMessage(const std::string &from, std::string &message) {
             send((*it).second->getPoll().fd, message.c_str(), messageLen, 0);
     }
 }
+
+bool Channel::isEmpty() {
+    if (this->_users.empty())
+        return true;
+    return false;
+}
