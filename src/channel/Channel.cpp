@@ -18,7 +18,7 @@ std::string Channel::getChannelName() {
 void Channel::addUser(NormalUser *user) {
     if(_users.empty())
         _operators.insert(std::pair<std::string, NormalUser* >(user->getNick(), user));
-    std::map<std::string, NormalUser*>::iterator it = _users.find(user->getName());
+    std::map<std::string, NormalUser*>::iterator it = _users.find(user->getNick());
     if(it == _users.end())
         _users.insert(std::pair<std::string, NormalUser* >(user->getNick(), user));
     else
@@ -64,13 +64,14 @@ void Channel::sendMessage(const std::string &from, std::string &message) {
 }
 
 void Channel::irc366(int fd) {
-    std::string message = "ircserv 366 " + _name + " :";
+    std::string message = ":ircserv 366 " + _name + " :";
     std::map<std::string, NormalUser*>::iterator it = _users.begin();
     for (; it != _users.end(); it++) {
         message += it->first + " ";
     }
     message += ":End of /NAMES list\r\n";
-    Utility::sendToClient(fd, message);
+    for (it = _users.begin(); it != _users.end(); it++)
+        Utility::sendToClient(it->second->getPoll().fd, message);
 }
 
 bool Channel::isEmpty() {

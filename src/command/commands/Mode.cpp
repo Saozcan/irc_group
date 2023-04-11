@@ -31,7 +31,7 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         return;
     }
     for (; it_user != server._users.end() ; it_user++) {
-        if(targetUser == (*it_user).second->getName()) {
+        if(targetUser == (*it_user).second->getNick()) {
             checkUser = true;
         }
     }
@@ -45,7 +45,7 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         std::cout << "Enter mode flag for operation" << std::endl;
         return;
     }
-    if(!it_channel->checkOperators(user.second->getName())){
+    if(!it_channel->checkOperators(user.second->getNick())){
         std::cout << "You are not an operator" << std::endl;
         return;
     }

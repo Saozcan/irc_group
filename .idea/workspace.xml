@@ -20,12 +20,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="created channel finally">
+    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="fix: errors about create channel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/irc_group" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/irc_group" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/channel/Channel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/channel/Channel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/channel/ChannelBook.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/ChannelBook.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/commands/Join.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Join.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Kick.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Kick.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Mode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Mode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Privmsg.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Privmsg.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/User.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/User.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +140,7 @@
       <workItem from="1680903734048" duration="60000" />
       <workItem from="1680965473695" duration="1086000" />
       <workItem from="1680993077791" duration="1456000" />
-      <workItem from="1681176798807" duration="2529000" />
+      <workItem from="1681176798807" duration="4743000" />
     </task>
     <task id="LOCAL-00001" summary="already up to date">
       <created>1678999627110</created>
@@ -221,7 +226,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681177052985</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix: errors about create channel">
+      <created>1681179620939</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681179620939</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: errors about create channel">
+      <created>1681179654015</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681179654015</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +275,8 @@
     <MESSAGE value="main args added, some problem fixed" />
     <MESSAGE value="trying to include irc return codes" />
     <MESSAGE value="created channel finally" />
-    <option name="LAST_COMMIT_MESSAGE" value="created channel finally" />
+    <MESSAGE value="fix: errors about create channel" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: errors about create channel" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

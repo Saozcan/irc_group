@@ -16,7 +16,7 @@ Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int,
         return ;
     }
     std::string sendMessage;
-    sendMessage.append(user.second->getName() + ": ");
+    sendMessage.append(user.second->getNick() + ": ");
     for (int i = 2; i < splitArgs.size(); i++) {
         sendMessage += splitArgs[i];
         if (i == splitArgs.size() - 1)
@@ -31,12 +31,12 @@ Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int,
             return;
         }
         else
-         channel->sendMessage(user.second->getName(), sendMessage);
+         channel->sendMessage(user.second->getNick(), sendMessage);
     }
     else {
         std::map<int, NormalUser*>::iterator it = server._users.begin();
         for (; it != server._users.end(); it++) {
-            if ((*it).second->getName() == splitArgs[1]) {
+            if ((*it).second->getNick() == splitArgs[1]) {
                 send((*it).second->getPoll().fd, sendMessage.c_str(), strlen(sendMessage.c_str()), 0);
                 break;
             }

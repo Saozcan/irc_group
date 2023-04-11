@@ -39,3 +39,14 @@
 793	992	1681179355725705620	irc_group	66804eb4f7f63c1d
 2	798	1681179477712238502	CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o	21d7fbbd2985ea39
 799	1032	1681179477944243390	irc_group	66804eb4f7f63c1d
+2	820	1681180115778313748	CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o	2e8b5341775236e
+1	1029	1681180115990318564	CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o	847e6301bac3c618
+1029	1240	1681180116198323290	irc_group	66804eb4f7f63c1d
+2	1061	1681181077979277492	CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o	847e6301bac3c618
+1061	1283	1681181078199279378	irc_group	66804eb4f7f63c1d
+4	815	1681181552348688049	CMakeFiles/irc_group.dir/src/command/commands/Kick.cpp.o	afbfdfc6a6d6b545
+3	830	1681181552364688264	CMakeFiles/irc_group.dir/src/command/commands/User.cpp.o	2e8b5341775236e
+4	838	1681181552372688373	CMakeFiles/irc_group.dir/src/command/commands/Privmsg.cpp.o	124bcc293e47ee29
+3	862	1681181552396688697	CMakeFiles/irc_group.dir/src/command/commands/Mode.cpp.o	21d7fbbd2985ea39
+2	1048	1681181552580691179	CMakeFiles/irc_group.dir/src/channel/Channel.cpp.o	847e6301bac3c618
+1048	1258	1681181552788693987	irc_group	66804eb4f7f63c1d

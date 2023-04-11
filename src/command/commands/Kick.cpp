@@ -21,7 +21,7 @@ Kick::execute(const std::vector<std::string> &splitArgs, std::pair<const int, No
             return;
         }
         else {
-            if (channel->checkOperators(user.second->getName())) {
+            if (channel->checkOperators(user.second->getNick())) {
                 for (int i = 2; i < splitArgs.size(); i++)
                     channel->leaveUser(splitArgs[i]);
             }
