@@ -1,4 +1,5 @@
 #include "Ping.hpp"
+#include "../../utility/Utility.hpp"
 
 class NormalUser;
 
@@ -8,6 +9,10 @@ Ping::~Ping() {}
 
 void
 Ping::execute(const std::vector<std::string> &splitArgs, std::pair<const int, NormalUser *> &user, Server &server) {
-    std::string message = ":ircserv PONG request received by [FT_IRC] \r\n";
-    send(user.first, message.c_str(),message.size(), 0);
+    if (splitArgs.size() < 2) {
+        std::string message = ERR_NEEDMOREPARAMS(user.second->getPrefix(), "PING");
+        Utility::sendToClient(user.first, message);
+    }
+    std::string message = ":ircserv PONG request received by [FT_IRC]\r\n";
+    Utility::sendToClient(user.first, message);
 }

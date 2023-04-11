@@ -15,6 +15,7 @@ public:
     static const std::string toUpper(const std::string &str);
     static std::string strTrim(std::string str);
     static std::string trimExceptAlphabet(std::string str);
+    static ssize_t sendToClient(int fd, const std::string &str);
 };
 
 

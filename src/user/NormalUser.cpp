@@ -55,7 +55,13 @@ bool NormalUser::getAllCheck() {
     return _allCheck;
 }
 
-void NormalUser::setRealName(const std::string &realName) {
+void NormalUser::setRealName(const std::vector<std::string>& splitArgs) {
+    std::string realName = "";
+    for (size_t i = 3; i < splitArgs.size(); i++) {
+        realName += splitArgs[i];
+        if (i != splitArgs.size() - 1)
+            realName += " ";
+    }
     _realName = realName;
 }
 
@@ -79,10 +85,18 @@ std::string NormalUser::getServerName() {
     return _serverName;
 }
 
-void NormalUser::setReplay(const std::string &replay) {
-    _replay = replay;
+void NormalUser::setPrefix() {
+    _prefix = _nick + "!" + _name + "@" + _hostname;
 }
 
-const std::string &NormalUser::getReplay() const {
-    return _replay;
+void NormalUser::setCap(bool boolean){
+    _cap = boolean;
+}
+
+const std::string &NormalUser::getPrefix() const {
+    return _prefix;
+}
+
+bool NormalUser::getCap() const{
+	return _cap;
 }

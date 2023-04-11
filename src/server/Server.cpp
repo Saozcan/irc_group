@@ -7,8 +7,8 @@ enum loop {
 
 Server::Server() {
     _serverName = "ircserv";
-    _port = 8050;
-    _pass = "123abc";
+    _port = 1234;
+    _pass = "123";
     _addrlen = sizeof(_address);
 }
 
@@ -38,6 +38,18 @@ Server::~Server() {
 
 std::string Server::getPass() {
     return _pass;
+}
+
+NormalUser *Server::getUser(const std::string &nick)
+{
+    std::map<int, NormalUser*>::iterator uIt = _users.begin();
+    while (uIt != _users.end())
+    {
+        if ((*uIt).second->getNick() == nick)
+            return (*uIt).second;
+        uIt++;
+    }
+	return nullptr;
 }
 
 void Server::listenServer() {
@@ -73,6 +85,7 @@ void Server::acceptClient() {
             if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, (socklen_t*)&_addrlen)) < 0) {
                 break;
             }
+            std::cout << "test " << _new_socket << std::endl;
             struct pollfd tmp;
             tmp.fd = _new_socket;
             tmp.events = POLLIN; // ekstra için | kullanılabilir.
@@ -96,7 +109,7 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
         }
         if (pollReturn == 0) {
             return CONTINUE;
-        } // -1 hiç bekleme süresi koymaz
+        }
         for (std::vector<pollfd>::iterator it = _clients.begin(); it < _clients.end(); it++) {
             int requestCount = 0;
             if ((*it).revents & POLLIN) {
@@ -136,11 +149,12 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
         _users.insert(std::pair<int, NormalUser *>(poll.fd, newUser));
     }
     std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
-    if (strlen(str) < 4)
+    if (strlen(str) < 4) {
+        Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getPrefix(), str));
         return false;
+    }
     std::string buffer(str);
     std::cout << "kvirc:" << str << std::endl;
-    std::cout << "kvirc size:" << strlen(str) << std::endl;
     buffer = Utility::trimExceptAlphabet(buffer);
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
 
@@ -159,7 +173,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
                 _commands.executeCommand(splitSpace, (*it), *this);
             }
             else {
-                send(poll.fd, "Wrong command\n", strlen("Wrong command\n"), 0);
+                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getPrefix(), str));
             }
         }
         else {
@@ -167,7 +181,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
                 _commands.executeCommand(splitSpace, (*it), *this);
             }
             else
-                send(poll.fd, "Wrong command you can use HELP command\n", strlen("Wrong command you can use HELP command\n"), 0);
+                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getPrefix(), str));
         }
     }
     return false;

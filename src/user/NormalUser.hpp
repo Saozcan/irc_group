@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "poll.h"
+#include "vector"
 
 
 class NormalUser
@@ -13,11 +14,12 @@ class NormalUser
         std::string _realName;
         std::string _hostname;
         std::string _serverName;
-        std::string _replay;
+        std::string _prefix;
         pollfd      _poll;
         bool        _pass;
         bool        _allCheck;
-        bool        _opCheck;
+        bool        _cap;
+
     public:
         NormalUser();
         NormalUser(pollfd &pollfd);
@@ -30,10 +32,11 @@ class NormalUser
         void setPoll(pollfd &poll);
         void setPass(bool boolean);
         void setAllCheck(bool boolean);
-        void setRealName(const std::string &realName);
+        void setRealName(const std::vector<std::string>& splitArgs);
         void setHostname(const std::string &hostName);
         void setServerName(const std::string &serverName);
-        void setReplay(const std::string &replay);
+        void setPrefix();
+        void setCap(bool boolean);
 
         //Getters
         std::string getName();
@@ -45,5 +48,6 @@ class NormalUser
         std::string getRealName();
         std::string getHostname();
         std::string getServerName();
-        const std::string& getReplay() const;
+        const std::string& getPrefix() const;
+        bool getCap() const;
 };

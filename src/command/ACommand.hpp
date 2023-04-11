@@ -8,6 +8,7 @@
 
 #include "../user/NormalUser.hpp"
 #include "../channel/Channel.hpp"
+#include "../IRC_COMMAND.hpp"
 
 class Utility;
 class Server;

@@ -85,6 +85,17 @@ void Channel::sendMessage(const std::string &from, std::string &message) {
     }
 }
 
+void Channel::irc366(int fd) {
+    std::string message = "ircserv 366 " + _name + " :";
+    std::map<std::string, NormalUser*>::iterator it = _users.begin();
+
+    while (it != _users.end()) {
+        message += it->first + " ";
+    }
+    message += ":End of /NAMES list\r\n";
+    send(fd, message.c_str(), strlen(message.c_str()), 0);
+}
+
 bool Channel::isEmpty() {
     if (this->_users.empty())
         return true;

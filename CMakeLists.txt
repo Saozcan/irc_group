@@ -33,4 +33,4 @@ add_executable(irc_group
         src/utility/Utility.cpp
         src/utility/Utility.hpp
         src/irc.hpp
-        src/main.cpp src/command/commands/Mode.cpp src/channel/ChannelBook.cpp src/command/commands/Help.cpp src/command/commands/Privmsg.hpp src/command/commands/Privmsg.cpp src/command/commands/Kick.hpp src/command/commands/Kick.cpp src/command/commands/Notice.hpp src/command/commands/Notice.cpp src/command/commands/Ping.cpp)
+        src/main.cpp src/command/commands/Mode.cpp src/channel/ChannelBook.cpp src/command/commands/Help.cpp src/command/commands/Privmsg.hpp src/command/commands/Privmsg.cpp src/command/commands/Kick.hpp src/command/commands/Kick.cpp src/command/commands/Notice.hpp src/command/commands/Notice.cpp src/command/commands/Ping.cpp src/IRC_COMMAND.hpp src/command/commands/Cap.hpp src/command/commands/Cap.cpp)

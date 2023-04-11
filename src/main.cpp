@@ -3,15 +3,16 @@
 int main(int argc, char const *argv[])
 {
     //TODO :main arg alarak server kuracak
-
-    if (argc != 3) {
-        std::cout << "Argument Error\n";
-        return 0;
-    }
+//
+//    if (argc != 3) {
+//        std::cout << "Argument Error\n";
+//        return 0;
+//    }
     try {
-        unsigned short number = (unsigned short) strtoul(argv[1], NULL, 0);
-        std::string password(argv[2]);
-        Server server(number, password);
+//        unsigned short number = (unsigned short) strtoul(argv[1], NULL, 0);
+//        std::string password(argv[2]);
+//        Server server(number, password);
+        Server seterver;
 
         User *usr = new User;
         Nick *nick = new Nick;

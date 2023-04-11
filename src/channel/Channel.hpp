@@ -35,4 +35,6 @@ class Channel
         void sendMessage(const std::string& from, std::string& message);
         bool isEmpty();
         unsigned int getUserSize();
+        void irc366(int fd);
+
 };
