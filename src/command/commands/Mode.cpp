@@ -16,8 +16,10 @@ Mode::~Mode() {
  * */
 
 void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server){
-    if (splitArgs.size() < 4)
+    if (splitArgs.size() < 4) {
         std::cout << "Syntax error\n";
+        return ;
+    }
     std::string channel_name = Utility::strTrim(splitArgs[1]);
     std::string targetUser = splitArgs[3];
     std::map<int , NormalUser*>::iterator it_user = server._users.begin();

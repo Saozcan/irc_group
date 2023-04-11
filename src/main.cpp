@@ -12,7 +12,7 @@ int main(int argc, char const *argv[])
 //        unsigned short number = (unsigned short) strtoul(argv[1], NULL, 0);
 //        std::string password(argv[2]);
 //        Server server(number, password);
-        Server seterver;
+        Server server;
 
         User *usr = new User;
         Nick *nick = new Nick;

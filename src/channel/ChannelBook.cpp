@@ -20,7 +20,6 @@ Channel* ChannelBook::createChannel(std::string& channelName){
     if(it == _channels.end()){
         my_channel = new Channel(channel);
         _channels.insert(std::pair<std::string, Channel *>(channel,my_channel));
-        std::cout << "A new channel created : " << my_channel->getChannelName() <<std::endl;
         return my_channel;
     }
     return (*it).second;

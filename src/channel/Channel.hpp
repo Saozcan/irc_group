@@ -5,10 +5,6 @@
 #include <map>
 #include "../user/NormalUser.hpp"
 
-/**
- * Mesajlar tutulabilir.
- */
-
 class Channel
 {
     private:
@@ -26,12 +22,12 @@ class Channel
         void setChannelName(const std::string &name);
         std::string getChannelName();
 
-        void AddUser(NormalUser *user);
+        void addUser(NormalUser *user);
         void leaveUser(const std::string& name);
-        void addMode(std::string user);
-        void removeMode(std::string user);
+        void addMode(const std::string& user);
+        void removeMode(const std::string& user);
         void setAdmin();
-        bool checkOperators(std::string user);
+        bool checkOperators(const std::string& user);
         void sendMessage(const std::string& from, std::string& message);
         bool isEmpty();
         unsigned int getUserSize();
