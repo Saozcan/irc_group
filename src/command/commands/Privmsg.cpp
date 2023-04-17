@@ -17,7 +17,7 @@ Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int,
         return ;
     }
     std::string sendMessage;
-    sendMessage.append(":" + user.second->getPrefix() + " PRIVMSG " + splitArgs[1] + " :");
+    sendMessage.append(user.second->getPrefix() + " PRIVMSG " + splitArgs[1] + " :");
     for (int i = 2; i < splitArgs.size(); i++) {
         sendMessage += splitArgs[i];
         if (i == splitArgs.size() - 1)

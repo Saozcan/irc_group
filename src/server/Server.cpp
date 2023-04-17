@@ -150,7 +150,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
     }
     std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
     if (strlen(str) < 4) {
-        Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getPrefix(), str));
+        Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
         return false;
     }
     std::string buffer(str);
@@ -173,7 +173,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
                 _commands.executeCommand(splitSpace, (*it), *this);
             }
             else {
-                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getPrefix(), str));
+                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
             }
         }
         else {
@@ -181,7 +181,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
                 _commands.executeCommand(splitSpace, (*it), *this);
             }
             else
-                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getPrefix(), str));
+                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
         }
     }
     return false;

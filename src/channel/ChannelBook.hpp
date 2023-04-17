@@ -13,6 +13,7 @@ public:
     Channel* createChannel(std::string& channelName);
     Channel* getChannel(const std::string& channelName);
     bool removeChannel(std::string& channelName);
+    void quitUser(const std::string& nick);
 
 private:
     std::map<std::string, Channel*> _channels;

@@ -44,3 +44,12 @@ bool ChannelBook::removeChannel(std::string& channelName) {
     else
         return false;
 }
+
+void ChannelBook::quitUser(const std::string &nick) {
+    std::map<std::string, Channel*>::iterator it = _channels.begin();
+    while (it != _channels.end())
+    {
+        (*it).second->leaveUser(nick);
+        it++;
+    }
+}

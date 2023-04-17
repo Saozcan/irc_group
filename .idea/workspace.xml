@@ -20,22 +20,29 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="fix: errors about create channel">
+    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="fix: Privmsg and more">
+      <change afterPath="$PROJECT_DIR$/src/command/commands/Part.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/commands/Part.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/commands/Quit.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/commands/Quit.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/irc_group" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/irc_group" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ircserv" beforeDir="false" afterPath="$PROJECT_DIR$/ircserv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRC_COMMAND.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRC_COMMAND.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/channel/Channel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/channel/Channel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/channel/ChannelBook.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/ChannelBook.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/channel/ChannelBook.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/ChannelBook.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/command/commands/Kick.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Kick.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/commands/Mode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Mode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Pass.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Pass.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Ping.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Ping.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/command/commands/Privmsg.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Privmsg.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/commands/User.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/User.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/irc.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/irc.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/user/NormalUser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/NormalUser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,13 +84,13 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main-devv&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/saozcan/Desktop/irc_group/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/saozcan/Desktop/irc_group/src/command/commands&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
     &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
     &quot;two.files.diff.last.used.file&quot;: &quot;/home/ebudak/CLionProjects/irc_group/src/server1/Server.cpp&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -91,17 +98,17 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/command/commands" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="irc_group" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="irc_group" TARGET_NAME="irc_group" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="irc_group" RUN_TARGET_NAME="irc_group">
@@ -146,7 +153,8 @@
       <workItem from="1680965473695" duration="1086000" />
       <workItem from="1680993077791" duration="1456000" />
       <workItem from="1681176798807" duration="5206000" />
-      <workItem from="1681729190884" duration="12283000" />
+      <workItem from="1681729190884" duration="15814000" />
+      <workItem from="1681765756399" duration="2797000" />
     </task>
     <task id="LOCAL-00001" summary="already up to date">
       <created>1678999627110</created>
@@ -253,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681181797080</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix: Privmsg and more">
+      <created>1681761146379</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681761146379</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +304,8 @@
     <MESSAGE value="trying to include irc return codes" />
     <MESSAGE value="created channel finally" />
     <MESSAGE value="fix: errors about create channel" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: errors about create channel" />
+    <MESSAGE value="fix: Privmsg and more" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Privmsg and more" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

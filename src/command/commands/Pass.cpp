@@ -7,7 +7,7 @@ Pass::~Pass() {}
 void Pass::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server)
 {
     if (user.second->getPass()) {
-        Utility::sendToClient(user.first, ERR_ALREADYREGISTERED(user.second->getPrefix()));
+        Utility::sendToClient(user.first, ERR_ALREADYREGISTERED(user.second->getNick()));
         return ;
     }
     if (splitArgs.size() == 2) {
@@ -16,9 +16,9 @@ void Pass::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
 			std::string noticeMsg("[FT_IRC]-/Enter <NICK> your_nick Than <USER> your nick, port, server name, fullname\n");
             Utility::sendToClient(user.first, noticeMsg);
         } else {
-            Utility::sendToClient(user.first, ERR_PASSWDMISMATCH(user.second->getPrefix()));
+            Utility::sendToClient(user.first, ERR_PASSWDMISMATCH(user.second->getNick()));
         }
     } else {
-        Utility::sendToClient(user.first, ERR_NEEDMOREPARAMS(user.second->getPrefix(), "PASS"));
+        Utility::sendToClient(user.first, ERR_NEEDMOREPARAMS(user.second->getNick(), "PASS"));
     }
 }

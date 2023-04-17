@@ -14,26 +14,17 @@ int main(int argc, char const *argv[])
 //        Server server(number, password);
         Server server;
 
-        User *usr = new User;
-        Nick *nick = new Nick;
-        Pass *pass = new Pass;
-        Join *join = new Join;
-        Mode *mode = new Mode;
-        Help *help = new Help;
-        Privmsg *privmsg = new Privmsg;
-        Kick *kick = new Kick;
-        Notice *notice = new Notice;
-        Ping *ping = new Ping;
-        server._commands.addCommand(usr);
-        server._commands.addCommand(nick);
-        server._commands.addCommand(pass);
-        server._commands.addCommand(join);
-        server._commands.addCommand(mode);
-        server._commands.addCommand(help);
-        server._commands.addCommand(privmsg);
-        server._commands.addCommand(kick);
-        server._commands.addCommand(notice);
-        server._commands.addCommand(ping);
+        server._commands.addCommand(new User);
+        server._commands.addCommand(new Nick);
+        server._commands.addCommand(new Pass);
+        server._commands.addCommand(new Join);
+        server._commands.addCommand(new Mode);
+        server._commands.addCommand(new Help);
+        server._commands.addCommand(new Privmsg);
+        server._commands.addCommand(new Kick);
+        server._commands.addCommand(new Notice);
+        server._commands.addCommand(new Ping);
+        server._commands.addCommand(new Part);
 
         server.listenServer();
     }

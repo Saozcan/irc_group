@@ -26,7 +26,8 @@ Kick::execute(const std::vector<std::string> &splitArgs, std::pair<const int, No
             if (channel->checkOperators(user.second->getNick())) {
                 for (int i = 2; i < splitArgs.size(); i++)
                     channel->leaveUser(splitArgs[i]);
-
+                std::string message = user.second->getPrefix() + " " + splitArgs[0] + " " + splitArgs[1] + " " + splitArgs[2] + "\r\n";
+                Utility::sendToClient(user.first, message);
             }
             else {
                 std::string errMessage = ERR_CHANOPRIVSNEEDED(user.second->getNick(), splitArgs[1]);

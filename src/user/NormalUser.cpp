@@ -86,7 +86,7 @@ std::string NormalUser::getServerName() {
 }
 
 void NormalUser::setPrefix() {
-    _prefix = _nick + "!" + _name + "@" + _hostname;
+    _prefix = ":" + _nick + "!" + _name + "@" + _hostname;
 }
 
 void NormalUser::setCap(bool boolean){

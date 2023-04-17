@@ -67,7 +67,7 @@ void Channel::sendMessage(const std::string &from, std::string &message) {
     }
 }
 
-void Channel::irc366(int fd) {
+void Channel::irc366() {
     std::string message = ":ircserv 366 #" + _name + " :";
     std::map<std::string, NormalUser*>::iterator it = _users.begin();
     for (; it != _users.end(); it++) {
@@ -88,3 +88,12 @@ bool Channel::isEmpty() {
 unsigned int Channel::getUserSize() {
     return _users.size();
 }
+
+NormalUser *Channel::getUser(const std::string &nick) const {
+    std::map<std::string, NormalUser*>::const_iterator it = _users.find(nick);
+    if (it != _users.end())
+        return it->second;
+    return nullptr;
+}
+
+

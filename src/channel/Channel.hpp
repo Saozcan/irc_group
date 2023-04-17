@@ -26,11 +26,11 @@ class Channel
         void leaveUser(const std::string& name);
         void addMode(const std::string& user);
         void removeMode(const std::string& user);
-        void setAdmin();
         bool checkOperators(const std::string& user);
         void sendMessage(const std::string& from, std::string& message);
         bool isEmpty();
         unsigned int getUserSize();
-        void irc366(int fd);
+        void irc366();
+        NormalUser* getUser(const std::string &nick) const;
 
 };
