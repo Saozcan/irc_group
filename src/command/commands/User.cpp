@@ -23,7 +23,7 @@ void User::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         Utility::sendToClient(user.first, ERR_NEEDMOREPARAMS(user.second->getNick(), splitArgs[0]));
         return ;
     }
-    user.second->setNick(splitArgs[1]);
+    user.second->setUser(splitArgs[1]);
     user.second->setHostname(splitArgs[2]);
     user.second->setServerName(splitArgs[3]);
     user.second->setRealName(splitArgs);

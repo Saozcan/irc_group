@@ -26,11 +26,16 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/irc_group" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/irc_group" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ircserv" beforeDir="false" afterPath="$PROJECT_DIR$/ircserv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IRC_COMMAND.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRC_COMMAND.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/channel/Channel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/channel/ChannelBook.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/ChannelBook.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/command/commands/Kick.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Kick.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/command/commands/Mode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Mode.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/command/commands/Privmsg.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Privmsg.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/command/commands/User.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/User.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/NormalUser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/NormalUser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,9 +99,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="irc_group" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="irc_group" TARGET_NAME="irc_group" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="irc_group" RUN_TARGET_NAME="irc_group">
@@ -140,7 +145,8 @@
       <workItem from="1680903734048" duration="60000" />
       <workItem from="1680965473695" duration="1086000" />
       <workItem from="1680993077791" duration="1456000" />
-      <workItem from="1681176798807" duration="4743000" />
+      <workItem from="1681176798807" duration="5206000" />
+      <workItem from="1681729190884" duration="12283000" />
     </task>
     <task id="LOCAL-00001" summary="already up to date">
       <created>1678999627110</created>
@@ -240,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681179654015</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix: errors about create channel">
+      <created>1681181797080</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681181797080</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

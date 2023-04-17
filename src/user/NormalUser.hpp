@@ -26,7 +26,7 @@ class NormalUser
         ~NormalUser();
 
         //Setters
-        void setName(std::string name);
+        void setUser(std::string name);
         void setRole(std::string role);
         void setNick(std::string nick);
         void setPoll(pollfd &poll);

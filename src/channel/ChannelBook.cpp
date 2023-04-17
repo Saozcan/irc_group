@@ -26,7 +26,8 @@ Channel* ChannelBook::createChannel(std::string& channelName){
 }
 
 Channel* ChannelBook::getChannel(const std::string& channelName) {
-    std::map<std::string, Channel*>::iterator it = _channels.find(channelName);
+    std::map<std::string, Channel*>::iterator it = _channels.find(Utility
+            ::strTrim(channelName));
     if (it != _channels.end())
         return (*it).second;
     else

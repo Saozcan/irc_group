@@ -11,23 +11,25 @@ Privmsg::~Privmsg() {}
 
 void
 Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int, NormalUser *> &user, Server &server) {
+
     if (splitArgs.size() < 3) {
-        std::cout << "Syntax Error" << std::endl;
+        Utility::sendToClient(user.first, ERR_NEEDMOREPARAMS(user.second->getNick(), splitArgs[0]));
         return ;
     }
     std::string sendMessage;
-    sendMessage.append(user.second->getNick() + ": ");
+    sendMessage.append(":" + user.second->getPrefix() + " PRIVMSG " + splitArgs[1] + " :");
     for (int i = 2; i < splitArgs.size(); i++) {
         sendMessage += splitArgs[i];
         if (i == splitArgs.size() - 1)
             break;
         sendMessage += " ";
     }
-    sendMessage.append("\n");
+    sendMessage.append("\r\n");
     if (splitArgs[1].find('#') != std::string::npos || splitArgs[1].find('&') != std::string::npos) {
         Channel *channel = server._channels.getChannel(Utility::strTrim(splitArgs[1]));
         if(channel == nullptr){
-            send(user.first, "Wrong channel name\n", strlen("Wrong channel name\n"), 0);
+            std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), splitArgs[1]);
+            Utility::sendToClient(user.first, errMessage);
             return;
         }
         else
@@ -37,12 +39,13 @@ Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int,
         std::map<int, NormalUser*>::iterator it = server._users.begin();
         for (; it != server._users.end(); it++) {
             if ((*it).second->getNick() == splitArgs[1]) {
-                send((*it).second->getPoll().fd, sendMessage.c_str(), strlen(sendMessage.c_str()), 0);
+                Utility::sendToClient(it->second->getPoll().fd, sendMessage);
                 break;
             }
         }
-        if(it == server._users.end())
-            send(user.first, "Wrong user name\n", strlen("Wrong user name\n"), 0);
-
+        if(it == server._users.end()) {
+            std::string errMessage = ERR_NOSUCHNICK(user.second->getNick(), splitArgs[2]);
+            Utility::sendToClient(user.first, errMessage);
+        }
     }
 }

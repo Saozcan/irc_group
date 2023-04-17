@@ -11,22 +11,26 @@ Kick::~Kick() {}
 void
 Kick::execute(const std::vector<std::string> &splitArgs, std::pair<const int, NormalUser *> &user, Server &server) {
     if (splitArgs.size() < 3) {
-        send(user.first, "Syntax Error\n", strlen("Syntax Error\n"), 0);
+        std::string errMessage = ERR_NEEDMOREPARAMS(user.second->getNick(), splitArgs[0]);
+        Utility::sendToClient(user.first, errMessage);
         return ;
     }
     if (splitArgs[1].find('#') != std::string::npos || splitArgs[1].find('&') != std::string::npos) {
         Channel *channel = server._channels.getChannel(Utility::strTrim(splitArgs[1]));
         if(channel == nullptr){
-            send(user.first, "Wrong channel name\n", strlen("Wrong channel name\n"), 0);
+            std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), splitArgs[1]);
+            Utility::sendToClient(user.first, errMessage);
             return;
         }
         else {
             if (channel->checkOperators(user.second->getNick())) {
                 for (int i = 2; i < splitArgs.size(); i++)
                     channel->leaveUser(splitArgs[i]);
+
             }
             else {
-                send(user.first, "You are not an operator\n", strlen("You are not an operator\n"), 0);
+                std::string errMessage = ERR_CHANOPRIVSNEEDED(user.second->getNick(), splitArgs[1]);
+                Utility::sendToClient(user.first, errMessage);
                 return ;
             }
         }

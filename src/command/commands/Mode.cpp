@@ -27,7 +27,8 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     bool checkUser = false;
     if(it_channel == nullptr)
     {
-        std::cout << "There is no such channel" << std::endl;
+        std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), channel_name);
+        Utility::sendToClient(user.first, errMessage);
         return;
     }
     for (; it_user != server._users.end() ; it_user++) {
@@ -37,27 +38,30 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     }
     if(!checkUser)
     {
-        std::cout << "There is no such user" << std::endl;
+        std::string errMessage = ERR_NOSUCHNICK(user.second->getNick(), targetUser);
+        Utility::sendToClient(user.first, errMessage);
         return;
     }
     size_t flag = splitArgs[2].find('+') != std::string::npos ? splitArgs[2].find('+') : splitArgs[2].find('-');
     if(flag == std::string::npos ){
-        std::cout << "Enter mode flag for operation" << std::endl;
+        std::string errMessage = ERR_UNKNOWNMODE(user.second->getNick(), splitArgs[2]);
+        Utility::sendToClient(user.first, errMessage);
         return;
     }
     if(!it_channel->checkOperators(user.second->getNick())){
-        std::cout << "You are not an operator" << std::endl;
+        std::string errMessage = ERR_CHANOPRIVSNEEDED(user.second->getNick(), channel_name);
+        Utility::sendToClient(user.first, errMessage);
         return;
     }
     std::string mode_flag = splitArgs[2];
     if(mode_flag == "+o"){
         it_channel->addMode(targetUser);
-        std::cout << targetUser <<": User added as an operator"<< std::endl;
     }
     else if(mode_flag == "-o"){
         it_channel->removeMode(targetUser);
-        std::cout << targetUser << ": User removed as an operator" << std::endl;
     }
-    else
-        std::cout << "Invalid mode flag" << std::endl;
+    else {
+        std::string errMessage = ERR_UNKNOWNMODE(user.second->getNick(), splitArgs[2]);
+        Utility::sendToClient(user.first, errMessage);
+    }
 }

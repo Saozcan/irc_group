@@ -16,6 +16,7 @@
 #define ERR_CHANOPRIVSNEEDED(source, channel)			"482 " + source + " " + channel + " :You're not channel operator\n"
 #define ERR_CHANNELISFULL(source, channel)				"471 " + source + " " + channel + " :Cannot join channel (+l)\n"
 #define ERR_CANNOTSENDTOCHAN(source, channel)			"404 " + source + " " + channel + " :Cannot send to channel\n"
+#define ERR_UNKNOWNMODE(source, character)              "472 " + source + " " + character + " :is unknown mode char to me\n"
 
 // NUMERIC REPLIES
 #define RPL_WELCOME2(source)						"001 " + source + " :Welcome " + source + " to the ft_irc network\n"

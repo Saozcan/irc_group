@@ -7,7 +7,7 @@ NormalUser::NormalUser(pollfd &pollfd) : _role("NormalUser"), _nick(""), _pass(f
 
 NormalUser::~NormalUser() {}
 
-void NormalUser::setName(std::string name) {
+void NormalUser::setUser(std::string name) {
     _name = name;
 }
 
