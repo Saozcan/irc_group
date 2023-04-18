@@ -17,7 +17,8 @@ Mode::~Mode() {
 
 void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server){
     if (splitArgs.size() < 4) {
-        std::cout << "Syntax error\n";
+        std::string errMessage = ERR_NEEDMOREPARAMS(user.second->getNick(), "MODE");
+        Utility::sendToClient(user.first, errMessage);
         return ;
     }
     std::string channel_name = Utility::strTrim(splitArgs[1]);

@@ -23,7 +23,8 @@ bool CommandExecuter::executeCommand(const std::vector<std::string>& splitArgs, 
         return true;
     }
     else {
-        std::cout << "Cannot find " << splitArgs[0] << " command!" << " Command size: " << splitArgs[0].size() << std::endl;
+        std::string errMessage = ERR_UNKNOWNCOMMAND(user.second->getNick(), splitArgs[0]);
+        Utility::sendToClient(user.first, errMessage);
         return false;
     }
 }

@@ -11,7 +11,8 @@ Notice::~Notice() {}
 void
 Notice::execute(const std::vector<std::string> &splitArgs, std::pair<const int, NormalUser *> &user, Server &server) {
     if (splitArgs.size() < 2) {
-        send(user.first, "Syntax Error\n", strlen("Syntax Error\n"), 0);
+        std::string errMessage = ERR_NEEDMOREPARAMS(user.second->getNick(), "NOTICE");
+        Utility::sendToClient(user.first, errMessage);
         return ;
     }
     std::string message = "NOTICE: ";
