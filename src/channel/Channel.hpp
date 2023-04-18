@@ -20,7 +20,6 @@ class Channel
         ~Channel();
 
         void setChannelName(const std::string &name);
-        std::string getChannelName();
 
         void addUser(NormalUser *user);
         void leaveUser(const std::string& name);
@@ -29,8 +28,8 @@ class Channel
         bool checkOperators(const std::string& user);
         void sendMessage(const std::string& from, std::string& message);
         bool isEmpty();
-        unsigned int getUserSize();
         void irc366();
         NormalUser* getUser(const std::string &nick) const;
+        void writeUsers() const;
 
 };

@@ -11,10 +11,6 @@ void Channel::setChannelName(const std::string &name) {
     _name = name;
 }
 
-std::string Channel::getChannelName() {
-    return _name;
-}
-
 void Channel::addUser(NormalUser *user) {
     if(_users.empty()) {
         _operators.insert(std::pair<std::string, NormalUser *>(user->getNick(), user));
@@ -24,8 +20,6 @@ void Channel::addUser(NormalUser *user) {
     std::map<std::string, NormalUser*>::iterator it = _users.find(user->getNick());
     if(it == _users.end())
         _users.insert(std::pair<std::string, NormalUser* >(user->getNick(), user));
-    else
-        std::cout << "Duplicate user" << std::endl;
 }
 
 void Channel::leaveUser(const std::string& name) {
@@ -85,10 +79,6 @@ bool Channel::isEmpty() {
     return false;
 }
 
-unsigned int Channel::getUserSize() {
-    return _users.size();
-}
-
 NormalUser *Channel::getUser(const std::string &nick) const {
     std::map<std::string, NormalUser*>::const_iterator it = _users.find(nick);
     if (it != _users.end())
@@ -96,4 +86,9 @@ NormalUser *Channel::getUser(const std::string &nick) const {
     return nullptr;
 }
 
-
+void Channel::writeUsers() const {
+    std::map<std::string, NormalUser*>::const_iterator it = _users.begin();
+    for (; it != _users.end(); it++) {
+        std::cout << "User: " << it->first << std::endl;
+    }
+}

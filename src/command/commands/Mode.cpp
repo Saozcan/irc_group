@@ -24,19 +24,14 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     std::string targetUser = splitArgs[3];
     std::map<int , NormalUser*>::iterator it_user = server._users.begin();
     Channel* it_channel = server._channels.getChannel(channel_name);
-    bool checkUser = false;
     if(it_channel == nullptr)
     {
         std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), channel_name);
         Utility::sendToClient(user.first, errMessage);
         return;
     }
-    for (; it_user != server._users.end() ; it_user++) {
-        if(targetUser == (*it_user).second->getNick()) {
-            checkUser = true;
-        }
-    }
-    if(!checkUser)
+    NormalUser* tmpUser = it_channel->getUser(targetUser);
+    if(tmpUser == nullptr)
     {
         std::string errMessage = ERR_NOSUCHNICK(user.second->getNick(), targetUser);
         Utility::sendToClient(user.first, errMessage);

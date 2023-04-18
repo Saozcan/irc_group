@@ -14,6 +14,7 @@ public:
     Channel* getChannel(const std::string& channelName);
     bool removeChannel(std::string& channelName);
     void quitUser(const std::string& nick);
+    void writeChannels() const;
 
 private:
     std::map<std::string, Channel*> _channels;

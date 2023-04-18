@@ -123,6 +123,7 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
                 if (valread == 0) {
                     delete _users.find((*it).fd)->second;
                     _users.erase((*it).fd);
+                    close((*it).fd);
                     (*it).fd = -1;
                     (*it).events = 0;
                 }
@@ -149,7 +150,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
         _users.insert(std::pair<int, NormalUser *>(poll.fd, newUser));
     }
     std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
-    if (strlen(str) < 4) {
+    if (strlen(str) < 2) {
         Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
         return false;
     }
@@ -157,9 +158,7 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
     std::cout << "kvirc:" << str << std::endl;
     buffer = Utility::trimExceptAlphabet(buffer);
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
-
-    std::cout << std::endl;
-    std::cout << "User size: " << _users.size() << std::endl;
+    std::cout << "fd: " << poll.fd << " " << splitSpace[0] << std::endl;
 
     if (splitSpace.empty())
         std::cout << "error\n";

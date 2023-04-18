@@ -53,3 +53,13 @@ void ChannelBook::quitUser(const std::string &nick) {
         it++;
     }
 }
+
+void ChannelBook::writeChannels() const {
+    std::map<std::string, Channel*>::const_iterator it = _channels.begin();
+    while (it != _channels.end())
+    {
+        std::cout << (*it).first << std::endl;
+        (*it).second->writeUsers();
+        it++;
+    }
+}

@@ -17,12 +17,7 @@ CommandExecuter::~CommandExecuter() {
 }
 
 bool CommandExecuter::executeCommand(const std::vector<std::string>& splitArgs, std::pair<const int, NormalUser*>& user, Server&server){
-
     std::map<std::string, ACommand*>::iterator it = _commands.find(Utility::toUpper(splitArgs[0]));
-//    std::map<std::string, ACommand*>::iterator itR = _commands.begin();
-//    for (; itR != _commands.end(); itR++) {
-//        std::cout << "command: " << (*itR).first << std::endl;
-//    }
     if (it != _commands.end()) {
         (*it).second->execute(splitArgs, user, server);
         return true;

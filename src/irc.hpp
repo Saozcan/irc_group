@@ -18,5 +18,6 @@
 #include "command/commands/Notice.hpp"
 #include "command/commands/Ping.hpp"
 #include "command/commands/Part.hpp"
+#include "command/commands/Quit.hpp"
 
 #endif //IRC_GROUP_IRC_HPP
