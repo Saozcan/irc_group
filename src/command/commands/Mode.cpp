@@ -52,9 +52,11 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     std::string mode_flag = splitArgs[2];
     if(mode_flag == "+o"){
         it_channel->addMode(targetUser);
+        it_channel->sendMode(user.first, splitArgs[2]);
     }
     else if(mode_flag == "-o"){
         it_channel->removeMode(targetUser);
+        it_channel->sendMode(user.first, splitArgs[2]);
     }
     else {
         std::string errMessage = ERR_UNKNOWNMODE(user.second->getNick(), splitArgs[2]);

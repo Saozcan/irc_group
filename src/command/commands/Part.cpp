@@ -29,5 +29,6 @@ Part::execute(const std::vector<std::string> &splitArgs, std::pair<const int, No
     channelTmp->leaveUser(user.second->getNick());
     std::string message = user.second->getPrefix() + " " + splitArgs[0] + " " + splitArgs[1] + "\r\n";
     Utility::sendToClient(user.first, message);
-    channelTmp->irc366();
+    channelTmp->irc353(user.first);
+    channelTmp->irc366(user.first);
 }

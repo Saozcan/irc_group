@@ -20,8 +20,10 @@
 
 // NUMERIC REPLIES
 #define RPL_WELCOME2(source)						"001 " + source + " :Welcome " + source + " to the ft_irc network\n"
+#define RPL_WHOREPLY(source, channel, user, host, server, nick, status, hopcount, realname)	"352 " + source + " " + channel + " " + user + " " + host + " " + server + " " + nick + " " + status + " " + hopcount + " :" + realname + "\n"
 #define RPL_NAMREPLY(source, channel, users)	"353 " + source + " = " + channel + " :" + users ++ "\n"
 #define RPL_ENDOFNAMES(source, channel)			"366 " + source + " " + channel + " :End of /NAMES list.\n"
+
 
 #define RPL_WELCOME(nick, user, host)          ":" + host + " " + "001 " + nick + " :Welcome to the Internet Relay Network " + nick + "!" + user + "@" + host + "\n\r"
 #define RPL_YOURHOST(nick, host)               ":" + host + " " + "002", ":Your host is " + host + ", running version " + "V2.42" + "\n\r"

@@ -32,8 +32,15 @@ Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int,
             Utility::sendToClient(user.first, errMessage);
             return;
         }
-        else
-         channel->sendMessage(user.second->getNick(), sendMessage);
+        else {
+            if (channel->getUser(user.second->getNick()) == nullptr) {
+                std::string errMessage = ERR_NOTONCHANNEL(user.second->getNick(), splitArgs[1]);
+                Utility::sendToClient(user.first, errMessage);
+                return ;
+            }
+            else
+                channel->sendMessage(user.second->getNick(), sendMessage, true);
+        }
     }
     else {
         std::map<int, NormalUser*>::iterator it = server._users.begin();

@@ -52,25 +52,21 @@ bool Channel::checkOperators(const std::string& user) {
     return false;
 }
 
-void Channel::sendMessage(const std::string &from, std::string &message) {
+void Channel::sendMessage(const std::string &from, std::string &message, bool isMessage) {
     std::map<std::string, NormalUser*>::iterator it = _users.begin();
     for (; it != _users.end(); it++) {
-        if (it->first == from)
+        if (it->first == from && isMessage)
             continue;
         Utility::sendToClient((*it).second->getPoll().fd, message);
     }
 }
 
-void Channel::irc366() {
+void Channel::irc366(int fd) {
     std::string message = ":ircserv 366 #" + _name + " :";
-    std::map<std::string, NormalUser*>::iterator it = _users.begin();
-    for (; it != _users.end(); it++) {
-        message += it->first + " ";
-    }
+    message += this->getUsers();
     std::cout << message << std::endl;
     message += ":End of /NAMES list\r\n";
-    for (it = _users.begin(); it != _users.end(); it++)
-        Utility::sendToClient(it->second->getPoll().fd, message);
+    Utility::sendToClient(fd, message);
 }
 
 bool Channel::isEmpty() {
@@ -90,5 +86,40 @@ void Channel::writeUsers() const {
     std::map<std::string, NormalUser*>::const_iterator it = _users.begin();
     for (; it != _users.end(); it++) {
         std::cout << "User: " << it->first << std::endl;
+    }
+}
+
+void Channel::whoReply(const std::string &nick) const {
+    std::map<std::string, NormalUser*>::const_iterator it = _users.find(nick);
+    if (it != _users.end()) {
+        std::string message = ":ircserv 352 " + nick + " #" + _name + " " + it->second->getNick() + " " + it->second->getHostname() + " ircServ" + " " + it->second->getName() + " H :0 " + it->second->getRealName() + "\r\n";
+        Utility::sendToClient(it->second->getPoll().fd, message);
+    }
+}
+
+std::string Channel::getUsers() const {
+    std::map<std::string, NormalUser*>::const_iterator it = _users.begin();
+    std::string returnString;
+    for (; it != _users.end(); it++) {
+        returnString += it->first + " ";
+    }
+    return returnString;
+}
+
+void Channel::irc353(int fd) {
+    std::string message = ":ircserv 353 " + _name + " = #" + _name + " :";
+    std::map<std::string, NormalUser*>::iterator it = _users.begin();
+    message += this->getUsers();
+    std::cout << message << std::endl;
+    message += "\r\n";
+    Utility::sendToClient(fd, message);
+}
+
+void Channel::sendMode(int fd, const std::string& mode) const {
+    std::string message = ":ircserv MODE #" + _name + " " + mode + " ";
+    message += this->getUsers();
+    message += "\r\n";
+    for (std::map<std::string, NormalUser*>::const_iterator it = _users.begin(); it != _users.end(); it++) {
+        Utility::sendToClient(it->second->getPoll().fd, message);
     }
 }
