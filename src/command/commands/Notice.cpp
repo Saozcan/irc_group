@@ -25,7 +25,16 @@ Notice::execute(const std::vector<std::string> &splitArgs, std::pair<const int, 
     size_t messageLen = message.size();
     std::map<int, NormalUser*>::iterator it = server._users.begin();
     for (; it != server._users.end(); it++) {
-        if (user.first != it->first)
-        send(it->first, message.c_str(), messageLen, 0);
+        if (user.first != it->first) {
+            std::string sendMessage = (user.second->getPrefix() + " PRIVMSG " + splitArgs[1] + " ");
+            for (int i = 2; i < splitArgs.size(); i++) {
+                sendMessage += splitArgs[i];
+                if (i == splitArgs.size() - 1)
+                    break;
+                sendMessage += " ";
+            }
+            sendMessage.append("\r\n");
+            Utility::sendToClient(it->first, sendMessage);
+        }
     }
 }

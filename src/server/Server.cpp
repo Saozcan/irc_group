@@ -102,7 +102,7 @@ void Server::acceptClient() {
 
 int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
     if (!_clients.empty()) {
-        int pollReturn = poll(_clients.data(), _clients.size(), 300);
+        int pollReturn = poll(_clients.data(), _clients.size(), 50);
         if (pollReturn == -1) {
             perror("poll() error");
             return BREAK;

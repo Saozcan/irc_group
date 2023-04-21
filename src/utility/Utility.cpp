@@ -81,6 +81,9 @@ std::string Utility::trimExceptAlphabet(std::string str) {
 
 ssize_t Utility::sendToClient(int fd, const std::string &str)
 {
+
+    std::cout << "SENDING: " << str << std::endl;
+
 	ssize_t check = send(fd, str.c_str(), str.length(), 0);
     if (check == -1)
         throw std::runtime_error("Error: send");

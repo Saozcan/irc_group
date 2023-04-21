@@ -52,12 +52,10 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
             sendMsg.append("\r\n");
             Utility::sendToClient(user.first, sendMsg);
         }
-        channelPtr->irc353(user.first);
-        channelPtr->irc366(user.first);
+        channelPtr->irc353(user.first, false);
+        channelPtr->irc366(user.first, false);
     }
 }
-
-
 
 
 

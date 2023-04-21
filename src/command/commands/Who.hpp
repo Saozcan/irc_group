@@ -2,10 +2,10 @@
 
 #include "../ACommand.hpp"
 
-class Help : public ACommand {
+class Who : public ACommand {
 public:
-    Help();
-    ~Help();
+    Who();
+    ~Who();
     void execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server);
 private:
 };

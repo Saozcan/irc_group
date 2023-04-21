@@ -19,5 +19,6 @@
 #include "command/commands/Ping.hpp"
 #include "command/commands/Part.hpp"
 #include "command/commands/Quit.hpp"
+#include "command/commands/Who.hpp"
 
 #endif //IRC_GROUP_IRC_HPP

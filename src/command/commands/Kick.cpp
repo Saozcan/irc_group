@@ -26,8 +26,6 @@ Kick::execute(const std::vector<std::string> &splitArgs, std::pair<const int, No
             if (channel->checkOperators(user.second->getNick())) {
                 std::string message = user.second->getPrefix() + " " + splitArgs[0] + " " + splitArgs[1] + " " + splitArgs[2] + "\r\n";
                 channel->sendMessage(user.second->getNick(), message, false);
-                channel->irc353(user.first);
-                channel->irc366(user.first);
                 for (int i = 2; i < splitArgs.size(); i++)
                     channel->leaveUser(splitArgs[i]);
             }

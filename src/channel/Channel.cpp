@@ -23,6 +23,7 @@ void Channel::addUser(NormalUser *user) {
 }
 
 void Channel::leaveUser(const std::string& name) {
+    _operators.erase(name);
     _users.erase(name);
 }
 
@@ -61,12 +62,17 @@ void Channel::sendMessage(const std::string &from, std::string &message, bool is
     }
 }
 
-void Channel::irc366(int fd) {
+void Channel::irc366(int fd, bool isAll) {
     std::string message = ":ircserv 366 #" + _name + " :";
     message += this->getUsers();
     std::cout << message << std::endl;
     message += ":End of /NAMES list\r\n";
-    Utility::sendToClient(fd, message);
+    if (isAll) {
+        for (std::map<std::string, NormalUser*>::iterator it = _users.begin(); it != _users.end(); it++)
+            Utility::sendToClient((*it).second->getPoll().fd, message);
+    }
+    else
+        Utility::sendToClient(fd, message);
 }
 
 bool Channel::isEmpty() {
@@ -89,13 +95,6 @@ void Channel::writeUsers() const {
     }
 }
 
-void Channel::whoReply(const std::string &nick) const {
-    std::map<std::string, NormalUser*>::const_iterator it = _users.find(nick);
-    if (it != _users.end()) {
-        std::string message = ":ircserv 352 " + nick + " #" + _name + " " + it->second->getNick() + " " + it->second->getHostname() + " ircServ" + " " + it->second->getName() + " H :0 " + it->second->getRealName() + "\r\n";
-        Utility::sendToClient(it->second->getPoll().fd, message);
-    }
-}
 
 std::string Channel::getUsers() const {
     std::map<std::string, NormalUser*>::const_iterator it = _users.begin();
@@ -106,20 +105,67 @@ std::string Channel::getUsers() const {
     return returnString;
 }
 
-void Channel::irc353(int fd) {
+void Channel::irc353(int fd, bool isAll) {
     std::string message = ":ircserv 353 " + _name + " = #" + _name + " :";
     std::map<std::string, NormalUser*>::iterator it = _users.begin();
     message += this->getUsers();
-    std::cout << message << std::endl;
     message += "\r\n";
-    Utility::sendToClient(fd, message);
+    if (isAll) {
+        for (; it != _users.end(); it++)
+            Utility::sendToClient((*it).second->getPoll().fd, message);
+    }
+    else
+        Utility::sendToClient(fd, message);
 }
 
 void Channel::sendMode(int fd, const std::string& mode) const {
-    std::string message = ":ircserv MODE #" + _name + " " + mode + " ";
-    message += this->getUsers();
-    message += "\r\n";
+    std::string message = ":ircserv MODE #" + _name + " " + mode + " \r\n";
     for (std::map<std::string, NormalUser*>::const_iterator it = _users.begin(); it != _users.end(); it++) {
         Utility::sendToClient(it->second->getPoll().fd, message);
+    }
+}
+
+std::string Channel::getOperators() const {
+    std::map<std::string, NormalUser*>::const_iterator it = _operators.begin();
+    std::string returnString;
+    for (; it != _operators.end(); it++) {
+        returnString += it->first + " ";
+    }
+    return returnString;
+}
+
+void Channel::irc315(int fd) {
+    std::string message = ":ircserv 315 #" + _name + " :";
+    message += ":End of /WHO list\r\n";
+    Utility::sendToClient(fd, message);
+}
+
+void Channel::irc352(int fd) {
+    std::string message = ":ircserv 352 " + _name + " #" + _name + " ";
+    std::map<std::string, NormalUser*>::iterator it = _users.begin();
+    for (; it != _users.end(); it++) {
+        message += it->second->getNick() + " ";
+        message += it->second->getName() + " ";
+        message += it->second->getHostname() + " ";
+        message += it->second->getNick() + " ";
+        message += "H :0 ";
+        message += it->second->getRealName() + "\r\n";
+        Utility::sendToClient(fd, message);
+    }
+}
+
+size_t Channel::getNbUsers() const {
+    return _users.size();
+}
+
+size_t Channel::getNbOperators() const {
+    return _operators.size();
+}
+
+void Channel::addModeAll() {
+    std::map<std::string, NormalUser*>::iterator it = _users.begin();
+    for (; it != _users.end(); it++) {
+        _operators.insert(std::pair<std::string, NormalUser*>((*it).second->getNick(), (*it).second));
+        this->sendMode((*it).second->getPoll().fd, "+o " + (*it).second->getNick());
     }
 }

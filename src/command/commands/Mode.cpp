@@ -16,9 +16,24 @@ Mode::~Mode() {
  * */
 
 void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server){
-    if (splitArgs.size() < 4) {
+    if (splitArgs.size() < 2) {
         std::string errMessage = ERR_NEEDMOREPARAMS(user.second->getNick(), "MODE");
         Utility::sendToClient(user.first, errMessage);
+        return ;
+    }
+    if (splitArgs.size() == 2 || splitArgs.size() == 3) {
+        Channel* tmpChannel = server._channels.getChannel(Utility::strTrim(splitArgs[1]));
+        if(tmpChannel == nullptr){
+            std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), splitArgs[1]);
+            Utility::sendToClient(user.first, errMessage);
+            return;
+        }
+        std::string modes = tmpChannel->getOperators();
+        std::vector<std::string> modeList = Utility::split(modes, " ");
+        for (size_t i = 0; i < modeList.size(); i++) {
+            std::string modeMessage = "MODE " + splitArgs[1] + " +o " + modeList[i] + "\r\n";
+            Utility::sendToClient(user.first, modeMessage);
+        }
         return ;
     }
     std::string channel_name = Utility::strTrim(splitArgs[1]);
@@ -52,11 +67,13 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     std::string mode_flag = splitArgs[2];
     if(mode_flag == "+o"){
         it_channel->addMode(targetUser);
-        it_channel->sendMode(user.first, splitArgs[2]);
+        std::string modeMessage = "+o " + splitArgs[3];
+        it_channel->sendMode(user.first, modeMessage);
     }
     else if(mode_flag == "-o"){
         it_channel->removeMode(targetUser);
-        it_channel->sendMode(user.first, splitArgs[2]);
+        std::string modeMessage = "+o " + splitArgs[3];
+        it_channel->sendMode(user.first, modeMessage);
     }
     else {
         std::string errMessage = ERR_UNKNOWNMODE(user.second->getNick(), splitArgs[2]);

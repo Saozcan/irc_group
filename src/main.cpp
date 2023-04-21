@@ -26,6 +26,7 @@ int main(int argc, char const *argv[])
         server._commands.addCommand(new Ping);
         server._commands.addCommand(new Part);
         server._commands.addCommand(new Quit);
+        server._commands.addCommand(new Who);
 
         server.listenServer();
     }
