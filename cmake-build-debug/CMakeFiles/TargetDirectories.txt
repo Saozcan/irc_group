@@ -1,3 +1,0 @@
-/home/saozcan/Desktop/irc_group/cmake-build-debug/CMakeFiles/irc_group.dir
-/home/saozcan/Desktop/irc_group/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/saozcan/Desktop/irc_group/cmake-build-debug/CMakeFiles/rebuild_cache.dir
