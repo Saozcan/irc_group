@@ -24,16 +24,28 @@ Server::Server(unsigned short port, std::string &password)
 };
 
 Server::~Server() {
+<<<<<<< HEAD
     // TODO: Ahmet'e sorulacak pragma...
     #pragma region FreeChannels
     std::map<int, NormalUser*>::iterator uIt = _users.begin();
+=======
+//    #pragma region FreeChannels
+    std::map<std::string, Channel*>::iterator it = _channels.begin();
+    std::map<std::string, AUser*>::iterator uIt = _users.begin();
+    while (it != _channels.end())
+    {
+        delete (*it).second;
+        it++;
+    }
+    _channels.clear();
+>>>>>>> main
     while (uIt != _users.end())
     {
         delete (*uIt).second;
         uIt++;
     }
     _users.clear();
-    #pragma endregion
+//    #pragma endregion
 };
 
 std::string Server::getPass() {
@@ -58,9 +70,16 @@ void Server::listenServer() {
 }
 
 void Server::createSocketFd() {
+<<<<<<< HEAD
     if ((_server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) { // Sock stream kullanılırsa TCP, sock dgram kullanılırsa UDP
         std::cout << "Socket creation error" << std::endl;
     }
+=======
+    //createFd
+    _server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (_server_fd == -1)
+        std::cout << "Error\n";
+>>>>>>> main
     _address.sin_family = AF_INET;
     _address.sin_addr.s_addr = INADDR_ANY;
     _address.sin_port = htons(_port);
@@ -79,10 +98,19 @@ void Server::acceptClient() {
     std::vector<pollfd> _clients;
 
     char buffer[1024] = {0};
+<<<<<<< HEAD
     fcntl(_server_fd, F_SETFL, O_NONBLOCK); // dinleme yaptığım server nonblock oldu
     while (true) {
         while (true) {
             if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, (socklen_t*)&_addrlen)) < 0) {
+=======
+    fcntl(_server_fd, F_SETFL, O_NONBLOCK);
+    socklen_t address_size = sizeof(_address);
+
+    while (true) {
+        while (true) {
+            if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, &address_size)) < 0){
+>>>>>>> main
                 break;
             }
             std::cout << "test " << _new_socket << std::endl;
@@ -128,11 +156,33 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
                     (*it).events = 0;
                 }
             }
+<<<<<<< HEAD
             for (std::vector<pollfd>::iterator it = _clients.begin(); it < _clients.end(); ) {
                 if ((*it).fd == -1) {
                     it = _clients.erase(it);
                 } else {
                     ++it;
+=======
+            for (int i = 0; i < index; i++) {
+                int requestCount = 0;
+                if (_pollfd[i].revents & POLLIN) {
+                    int valread;
+                    while ((valread = recv(_pollfd[i].fd, buffer, 1024, MSG_DONTWAIT)) > 0) {
+                        buffer[valread] = '\0';
+                        parse_irc_message(buffer);
+//                        std::vector<std::string> spliteArgs = splite(buffer, " ");
+//                        it = _parsers.find(spliteArgs[0]);
+//                        (*it).second::parse_for_command(spliteArgs, *this);
+                        std::cout << "Client: " << buffer << std::endl;
+                        send(_pollfd[i].fd, "I'll take it\n", strlen("I'll take it\n"),0 );
+                        memset(buffer, 0, sizeof(buffer));
+                    }
+                    requestCount++;
+                    if (valread == 0) {
+                        _pollfd[i].fd = -1;
+                        _pollfd[i].events = 0;
+                    }
+>>>>>>> main
                 }
             }
             if (requestCount == pollReturn)
@@ -142,6 +192,7 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
     return CONTINUE;
 }
 
+<<<<<<< HEAD
 
 bool Server::checkAndParseFirst(char *str, pollfd &poll)
 {
@@ -184,4 +235,44 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
         }
     }
     return false;
+=======
+void Server::setHostName(const std::string &hostName) {
+    _hostName = hostName;
+};
+
+void Server::setServerName(const std::string &serverName) {
+    _serverName = serverName;
+}
+
+void Server::setPort(unsigned short port) {
+    _port = port;
+};
+
+const std::string &Server::getHostName() const {
+    return _hostName;
+}
+
+const std::string &Server::getServerName() const {
+    return _serverName;
+}
+
+unsigned short Server::getPort() const {
+    return _port;
+}
+
+void Server::addChannel(Channel *channel) {
+    _channels.insert(std::make_pair(channel->getChannelName(), channel));
+}
+
+void Server::removeChannel(Channel *channel) {
+    _channels.erase(channel->getChannelName());
+}
+
+void Server::addUser(AUser *user) {
+    _users.insert(std::make_pair(user->getName(), user));
+}
+
+void Server::removeUser(AUser *user) {
+    _users.erase(user->getName());
+>>>>>>> main
 }

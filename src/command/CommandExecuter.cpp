@@ -5,7 +5,7 @@
 CommandExecuter::CommandExecuter() {}
 
 CommandExecuter::~CommandExecuter() {
-#pragma region FreeChannels
+//#pragma region FreeChannels
     std::map<std::string, ACommand*>::iterator it = _commands.begin();
     while (it != _commands.end())
     {
@@ -13,7 +13,7 @@ CommandExecuter::~CommandExecuter() {
         it++;
     }
     _commands.clear();
-#pragma endregion
+//#pragma endregion
 }
 
 bool CommandExecuter::executeCommand(const std::vector<std::string>& splitArgs, std::pair<const int, NormalUser*>& user, Server&server){
