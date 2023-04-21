@@ -1,0 +1,4 @@
+*.o
+Object
+ircserv
+cmake-build-debug

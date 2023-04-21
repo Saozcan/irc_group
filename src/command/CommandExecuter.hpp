@@ -1,6 +1,12 @@
-#include "ACommand.hpp"
-#include "Commands.hpp"
+#pragma once
+
 #include <map>
+#include "iostream"
+#include "../user/NormalUser.hpp"
+#include "../channel/Channel.hpp"
+#include "../utility/Utility.hpp"
+
+class ACommand;
 
 class CommandExecuter
 {
@@ -12,7 +18,7 @@ class CommandExecuter
 
         ~CommandExecuter();
 
-        void executeCommand(std::string command);
+        bool executeCommand(const std::vector<std::string>& splitArgs, std::pair<const int, NormalUser*>& user, Server&server);
 
         void addCommand(ACommand* Command);
 

@@ -1,20 +1,19 @@
+#pragma once
+
 #include <iostream>
-#include <map>
-#include <netinet/in.h>
-#include <poll.h>
-#include <sys/socket.h>
+#include <string.h>
 #include "fcntl.h"
+#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <cstring>
-#include <cerrno>
+#include <poll.h>
 
-
-//#include "../user/AUser.hpp"
+#include "../irc.hpp"
 #include "../channel/Channel.hpp"
-class Channel;
-class AUser;
-
+#include "../command/CommandExecuter.hpp"
+#include "../user/NormalUser.hpp"
+#include "../utility/Utility.hpp"
+#include "../channel/ChannelBook.hpp"
 
 /**
  * userlarıda tutması gerek.
@@ -23,45 +22,43 @@ class AUser;
  *
  */
 
-class Server{
-    private:
-        std::string _hostName;
-        std::string _serverName;
-        unsigned short _port;
+class Server
+{
+private:
+    std::string _serverName;
+    unsigned short _port;
 
-        int _server_fd;
-        int _new_socket;
-        struct sockaddr_in _address;
-        int _enable;
+    int _server_fd;
+    int _new_socket;
+    struct sockaddr_in _address;
+    int _addrlen;
 
-        struct pollfd _pollfd[1024];
+    std::string _pass;
 
-        std::map<std::string, Channel*> _channels;
-        std::map<std::string, AUser*> _users;
-        std::map<std::string, AParse *> _parsers;
+    void createSocketFd();
+    void acceptClient();
+    int listenClients(std::vector<pollfd> &_clients, char *buffer);
+    bool checkAndParseFirst(char *str, pollfd &poll);
 
-        void createSocketFd();
-        void acceptClient();
-    public:
-        Server();
-        Server(std::string const &hostName, std::string const &serverName, unsigned short port);
-        ~Server();
+public:
+    std::map<int, NormalUser *> _users;
+    CommandExecuter _commands;
+    ChannelBook _channels;
 
-        //setters
-        void setHostName(const std::string &hostName);
-        void setServerName(const std::string &serverName);
-        void setPort(unsigned short port);
+    Server();
+    Server(unsigned short port, std::string &password);
+    ~Server();
 
-        //getters
-        const std::string &getHostName() const;
-        const std::string &getServerName() const;
-        unsigned short getPort() const;
+    void listenServer();
 
-        void addChannel(Channel* channel);
-        void removeChannel(Channel* channel);
+    std::string getPass();
+    NormalUser *getUser(const std::string &nick);
 
-        void addUser(AUser* user);
-        void removeUser(AUser* user);
+    class WrongPort : public std::exception
+    {
+        const char *what() throw()
+        {
+            return "port have to be 1024 <port> 65535\n";
+        }
+    };
 };
-
-
