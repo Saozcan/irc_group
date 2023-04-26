@@ -10,10 +10,12 @@ Quit::~Quit() {}
 void
 Quit::execute(const std::vector<std::string> &splitArgs, std::pair<const int, NormalUser *> &user, Server &server) {
     if (splitArgs.size() < 2) {
+        user.second->leaveChannels();
         std::string message = RPL_QUIT(user.second->getHostname(), "Time to launch the nukes");
         Utility::sendToClient(user.first, message);
     }
     else {
+        user.second->leaveChannels();
         std::string message = RPL_QUIT(user.second->getHostname(), splitArgs[1]);
         Utility::sendToClient(user.first, message);
     }

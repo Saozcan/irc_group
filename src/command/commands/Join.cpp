@@ -39,6 +39,7 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         if (channelPtr != nullptr)
         {
             channelPtr->addUser(user.second);
+            user.second->addChannel(channelPtr);
             std::string sendMsg = RPL_JOIN1(user.second->getNick(), user.second->getHostname(), channel_name);
             sendMsg.append("\r\n");
             channelPtr->sendMessage(user.second->getNick(), sendMsg, false);
@@ -46,6 +47,7 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         else if (channel_name.size() > 1 && (channel_name[0] == '&' || channel_name[0] == '#'))
         {
             channelPtr = server._channels.createChannel(channel_name);
+            user.second->addChannel(channelPtr);
             channelPtr->addUser(user.second);
             channelPtr->addMode(user.second->getNick());
             std::string sendMsg = RPL_JOIN1(user.second->getNick(), user.second->getHostname(), channel_name);

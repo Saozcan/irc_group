@@ -5,6 +5,7 @@
 #include <map>
 #include "../user/NormalUser.hpp"
 
+class NormalUser;
 class Channel
 {
     private:
@@ -34,6 +35,7 @@ class Channel
         void writeUsers() const;
         std::string getUsers () const;
         std::string getOperators () const;
+        std::string getName() const;
 
         //sizes
         size_t getNbUsers() const;

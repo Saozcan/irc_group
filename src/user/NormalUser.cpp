@@ -100,3 +100,19 @@ const std::string &NormalUser::getPrefix() const {
 bool NormalUser::getCap() const{
 	return _cap;
 }
+
+void NormalUser::addChannel(Channel *channel) {
+    _channels.insert(std::pair<std::string, Channel*>(channel->getName(), channel));
+}
+
+void NormalUser::leaveChannels() {
+    std::map<std::string, Channel*>::iterator it;
+    for (it = _channels.begin(); it != _channels.end(); it++) {
+        std::string messageToChannel = _prefix + " " + "PART" + " #" + it->first + "\r\n";
+        it->second->sendMessage(_nick, messageToChannel, false);
+        it->second->leaveUser(_nick);
+        if ((*it).second->getNbOperators() == 0 && (*it).second->getNbUsers())
+            it->second->addModeAll();
+    }
+    _channels.clear();
+}

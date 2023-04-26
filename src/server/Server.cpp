@@ -149,38 +149,28 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
         NormalUser* newUser = new NormalUser(poll);
         _users.insert(std::pair<int, NormalUser *>(poll.fd, newUser));
     }
-    std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
-    if (strlen(str) < 2) {
-        Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
+    if (str[0] == '\n' || str[0] == '\r')
         return false;
-    }
+    std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
     std::string buffer(str);
+    if (buffer[buffer.size() - 1] != '\n')
+        return false;
     std::cout << "kvirc:" << str << std::endl;
     buffer = Utility::trimExceptAlphabet(buffer);
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
     std::cout << "fd: " << poll.fd << " " << splitSpace[0] << std::endl;
-
     if (splitSpace.empty())
-        std::cout << "error\n";
+        return false;
     if (it->second->getAllCheck()) {
         _commands.executeCommand(splitSpace, (*it), *this);
     }
     else {
-        if (splitSpace.size() > 1) {
-            std::string toUpper = Utility::toUpper(splitSpace[0]);
-            if (toUpper == "PASS" || toUpper == "NICK" || toUpper == "USER") {
-                _commands.executeCommand(splitSpace, (*it), *this);
-            }
-            else {
-                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
-            }
+        std::string toUpper = Utility::toUpper(splitSpace[0]);
+        if (toUpper == "PASS" || toUpper == "NICK" || toUpper == "USER" || toUpper == "HELP") {
+            _commands.executeCommand(splitSpace, (*it), *this);
         }
         else {
-            if (!splitSpace.empty() && Utility::toUpper(splitSpace[0]) == "HELP") {
-                _commands.executeCommand(splitSpace, (*it), *this);
-            }
-            else
-                Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
+            Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
         }
     }
     return false;

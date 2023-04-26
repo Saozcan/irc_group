@@ -21,6 +21,4 @@ class CommandExecuter
         bool executeCommand(const std::vector<std::string>& splitArgs, std::pair<const int, NormalUser*>& user, Server&server);
 
         void addCommand(ACommand* Command);
-
-        void forgetCommand(ACommand* Command);
 };

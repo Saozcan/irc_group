@@ -169,3 +169,7 @@ void Channel::addModeAll() {
         this->sendMode((*it).second->getPoll().fd, "+o " + (*it).second->getNick());
     }
 }
+
+std::string Channel::getName() const {
+    return _name;
+}

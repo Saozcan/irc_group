@@ -19,7 +19,7 @@ void User::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
         Utility::sendToClient(user.first, ERR_NOTREGISTERED(user.second->getNick()));
         return ;
     }
-    else if (splitArgs.size() < 4) {
+    else if (splitArgs.size() < 5) {
         Utility::sendToClient(user.first, ERR_NEEDMOREPARAMS(user.second->getNick(), splitArgs[0]));
         return ;
     }

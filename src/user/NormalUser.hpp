@@ -3,8 +3,10 @@
 #include <iostream>
 #include "poll.h"
 #include "vector"
+#include "map"
+#include "../channel/Channel.hpp"
 
-
+class Channel;
 class NormalUser
 {
     protected:
@@ -15,6 +17,7 @@ class NormalUser
         std::string _hostname;
         std::string _serverName;
         std::string _prefix;
+        std::map<std::string, Channel*> _channels;
         pollfd      _poll;
         bool        _pass;
         bool        _allCheck;
@@ -37,6 +40,7 @@ class NormalUser
         void setServerName(const std::string &serverName);
         void setPrefix();
         void setCap(bool boolean);
+        void addChannel(Channel * channel);
 
         //Getters
         std::string getName();
@@ -50,4 +54,7 @@ class NormalUser
         std::string getServerName();
         const std::string& getPrefix() const;
         bool getCap() const;
+
+        //Special
+        void leaveChannels();
 };

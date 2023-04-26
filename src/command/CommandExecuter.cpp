@@ -32,8 +32,3 @@ bool CommandExecuter::executeCommand(const std::vector<std::string>& splitArgs, 
 void CommandExecuter::addCommand(ACommand *Command) {
     _commands.insert(std::pair<std::string, ACommand*>(Command->getName(), Command));
 }
-
-void CommandExecuter::forgetCommand(ACommand *Command) {
-    _commands.erase(Command->getName());
-}
-

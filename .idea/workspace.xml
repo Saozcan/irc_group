@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="irc_group" targetName="irc_group" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="fix: part">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/channel/Channel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/channel/Channel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/channel/Channel.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/CommandExecuter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/CommandExecuter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/CommandExecuter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/CommandExecuter.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Join.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Join.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Pass.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Pass.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Quit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Quit.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/User.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/User.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/NormalUser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/NormalUser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/NormalUser.hpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="esra-code" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="3.2" />
+  </component>
+  <component name="ProjectId" id="2N8O64tXPFJ4LlYmuFq1OYpY7BG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/saozcan/Desktop/irc_group/src/command/commands",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "structure.view.defaults.are.configured": "true",
+    "two.files.diff.last.used.file": "/home/ebudak/CLionProjects/irc_group/src/server1/Server.cpp",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/command/commands" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Debug.irc_group">
+    <configuration name="irc_group" type="CMakeListConfigurationType" factoryName="CMakeListConfigurationFactory" temporary="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="irc_group" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="irc_group" TARGET_NAME="irc_group" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="irc_group" RUN_TARGET_NAME="irc_group">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.irc_group" />
+      <item itemvalue="CMake Debug.irc_group" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="CMake Debug.irc_group" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="" />
+      <created>1678466676925</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678466676925</updated>
+      <workItem from="1678466677997" duration="6835000" />
+      <workItem from="1678541658998" duration="1046000" />
+      <workItem from="1678555335940" duration="8230000" />
+      <workItem from="1678722159509" duration="8257000" />
+      <workItem from="1678999365039" duration="9449000" />
+      <workItem from="1679042066869" duration="1192000" />
+      <workItem from="1679043268292" duration="102000" />
+      <workItem from="1679043371326" duration="480000" />
+      <workItem from="1679043860204" duration="1846000" />
+      <workItem from="1679065054080" duration="214000" />
+      <workItem from="1679065275836" duration="119000" />
+      <workItem from="1679065405227" duration="1000" />
+      <workItem from="1679221906403" duration="56696000" />
+      <workItem from="1679486404410" duration="15949000" />
+      <workItem from="1679725992447" duration="35000" />
+      <workItem from="1679726057397" duration="93000" />
+      <workItem from="1679862510928" duration="971000" />
+      <workItem from="1679914027468" duration="2251000" />
+      <workItem from="1679942468440" duration="523000" />
+      <workItem from="1679960036373" duration="5000" />
+      <workItem from="1680002389067" duration="70000" />
+      <workItem from="1680048004164" duration="334000" />
+      <workItem from="1680263052629" duration="127000" />
+      <workItem from="1680297517812" duration="359000" />
+      <workItem from="1680903734048" duration="60000" />
+      <workItem from="1680965473695" duration="1086000" />
+      <workItem from="1680993077791" duration="1456000" />
+      <workItem from="1681176798807" duration="5206000" />
+      <workItem from="1681729190884" duration="15814000" />
+      <workItem from="1681765756399" duration="2824000" />
+      <workItem from="1681856706317" duration="3813000" />
+      <workItem from="1681944772334" duration="3008000" />
+      <workItem from="1681948453973" duration="1842000" />
+      <workItem from="1682076763405" duration="486000" />
+      <workItem from="1682085320178" duration="1825000" />
+      <workItem from="1682094543632" duration="6892000" />
+      <workItem from="1682527160460" duration="6471000" />
+    </task>
+    <task id="LOCAL-00001" summary="already up to date">
+      <created>1678999627110</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678999627110</updated>
+    </task>
+    <task id="LOCAL-00002" summary="a nice makefile added">
+      <created>1679001325376</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679001325376</updated>
+    </task>
+    <task id="LOCAL-00003" summary="mode is wrong">
+      <created>1679249082650</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679249082650</updated>
+    </task>
+    <task id="LOCAL-00004" summary="mode ok">
+      <created>1679327440059</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679327440059</updated>
+    </task>
+    <task id="LOCAL-00005" summary="mode ok and i'll rewrite Mode::execute function">
+      <created>1679327470831</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679327470831</updated>
+    </task>
+    <task id="LOCAL-00006" summary="mode ok and i'll rewrite Mode::execute function">
+      <created>1679327483464</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679327483464</updated>
+    </task>
+    <task id="LOCAL-00007" summary="help addded, a new class who classes for create and get channels">
+      <created>1679491293847</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679491293847</updated>
+    </task>
+    <task id="LOCAL-00008" summary="privmsg added">
+      <created>1679499682066</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679499682066</updated>
+    </task>
+    <task id="LOCAL-00009" summary="kick notice added">
+      <created>1679505806300</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679505806300</updated>
+    </task>
+    <task id="LOCAL-00010" summary="main args added, some problem fixed">
+      <created>1679508202552</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679508202552</updated>
+    </task>
+    <task id="LOCAL-00011" summary="trying to include irc return codes">
+      <created>1679942321192</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1679942321192</updated>
+    </task>
+    <task id="LOCAL-00012" summary="created channel finally">
+      <created>1681177052985</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681177052985</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: errors about create channel">
+      <created>1681179620939</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681179620939</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: errors about create channel">
+      <created>1681179654015</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681179654015</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix: errors about create channel">
+      <created>1681181797080</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681181797080</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix: Privmsg and more">
+      <created>1681761146379</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681761146379</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Finished">
+      <created>1681770066120</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1681770066120</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fix: some problems">
+      <created>1681860394005</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1681860394005</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix: some problems">
+      <created>1681860664243</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1681860664243</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix: part">
+      <created>1682105308102</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1682105308102</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="already up to date" />
+    <MESSAGE value="a nice makefile added" />
+    <MESSAGE value="mode is wrong" />
+    <MESSAGE value="mode ok" />
+    <MESSAGE value="mode ok and i'll rewrite Mode::execute function" />
+    <MESSAGE value="help addded, a new class who classes for create and get channels" />
+    <MESSAGE value="privmsg added" />
+    <MESSAGE value="kick notice added" />
+    <MESSAGE value="main args added, some problem fixed" />
+    <MESSAGE value="trying to include irc return codes" />
+    <MESSAGE value="created channel finally" />
+    <MESSAGE value="fix: errors about create channel" />
+    <MESSAGE value="fix: Privmsg and more" />
+    <MESSAGE value="Finished" />
+    <MESSAGE value="fix: some problems" />
+    <MESSAGE value="fix: part" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: part" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
