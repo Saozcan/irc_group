@@ -9,7 +9,7 @@ bool portCheck(std::string port)
     return true;
 }
 
-bool portRange(std::string port)
+bool portRange(const std::string& port)
 {
     int portNum = std::stoi(port);
     if (portNum < 1024 || portNum > 65535)
@@ -19,7 +19,11 @@ bool portRange(std::string port)
 
 int main(int argc, char const *argv[])
 {
-    if (argc != 3 && portCheck(argv[1]) && portRange(argv[1]) && strlen(argv[2]) < 3) {
+    if (argc != 3) {
+        std::cout << "Argument Error\n";
+        return 0;
+    }
+    if (!portCheck(argv[1]) || !portRange(argv[1]) || strlen(argv[2]) < 3) {
         std::cout << "Argument Error\n";
         return 0;
     }

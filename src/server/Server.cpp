@@ -15,9 +15,6 @@ Server::Server() {
 //TODO: PDF e göre args ayarlanacak.
 Server::Server(unsigned short port, std::string &password)
 {
-    if (port < 1024 || port > 65535) {
-        throw Server::WrongPort();
-    }
     _port = port;
     _pass = password;
     _addrlen = sizeof(_address);
@@ -170,7 +167,9 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
             _commands.executeCommand(splitSpace, (*it), *this);
         }
         else {
-            Utility::sendToClient(poll.fd, ERR_UNKNOWNCOMMAND((*it).second->getNick(), str));
+            Utility::sendToClient(poll.fd, ERR_NOTREGISTERED((*it).second->getNick()));
+            std::string message = "First finish your profile\nPASS <pass>\nNICK <nick name>\nUSER <username> <hostname> <servername> <realname> \n";
+            Utility::sendToClient(poll.fd, message);
         }
     }
     return false;

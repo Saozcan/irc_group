@@ -2,7 +2,7 @@
 
 #define ERR_UNKNOWNCOMMAND(source, command)				"421 " + source + " " + command + " :Unknown command\n"
 #define ERR_NEEDMOREPARAMS(source, command)				"461 " + source + " " + command + " :Not enough parameters\n"
-#define ERR_NOTREGISTERED(source)						"451 " + source + " :You have not registered\n"
+#define ERR_NOTREGISTERED(source)						"451 " + source + " :Finish your profile\n"
 #define ERR_ALREADYREGISTERED(source)					"462 " + source + " :You may not reregister\n"
 #define ERR_PASSWDMISMATCH(source)						"464 " + source + " :Password incorrect\n"
 #define ERR_NONICKNAMEGIVEN(source)						"431 " + source + " :Nickname not given\n"
