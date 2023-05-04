@@ -9,6 +9,8 @@ Cap::~Cap() {}
 
 void
 Cap::execute(const std::vector<std::string> &splitArgs, std::pair<const int, NormalUser *> &user, Server &server) {
+    (void)splitArgs;
+    (void)server;
 	std::cout << "Cap command activated \n" ;
     if (user.second->getCap() == false) {
 		Utility::sendToClient(user.first, "CAP * LS :multi-prefix sasl\r\n");

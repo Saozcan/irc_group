@@ -18,7 +18,7 @@ Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int,
     }
     std::string sendMessage;
     sendMessage.append(user.second->getPrefix() + " PRIVMSG " + splitArgs[1] + " ");
-    for (int i = 2; i < splitArgs.size(); i++) {
+    for (size_t i = 2; i < splitArgs.size(); i++) {
         sendMessage += splitArgs[i];
         if (i == splitArgs.size() - 1)
             break;
@@ -27,13 +27,13 @@ Privmsg::execute(const std::vector<std::string> &splitArgs, std::pair<const int,
     sendMessage.append("\r\n");
     if (splitArgs[1].find('#') != std::string::npos || splitArgs[1].find('&') != std::string::npos) {
         Channel *channel = server._channels.getChannel(Utility::strTrim(splitArgs[1]));
-        if(channel == nullptr){
+        if(channel == NULL){
             std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), splitArgs[1]);
             Utility::sendToClient(user.first, errMessage);
             return;
         }
         else {
-            if (channel->getUser(user.second->getNick()) == nullptr) {
+            if (channel->getUser(user.second->getNick()) == NULL) {
                 std::string errMessage = ERR_NOTONCHANNEL(user.second->getNick(), splitArgs[1]);
                 Utility::sendToClient(user.first, errMessage);
                 return ;

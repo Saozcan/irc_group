@@ -23,7 +23,7 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     }
     if (splitArgs.size() == 2 || splitArgs.size() == 3) {
         Channel* tmpChannel = server._channels.getChannel(Utility::strTrim(splitArgs[1]));
-        if(tmpChannel == nullptr){
+        if(tmpChannel == NULL){
             std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), splitArgs[1]);
             Utility::sendToClient(user.first, errMessage);
             return;
@@ -38,16 +38,15 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     }
     std::string channel_name = Utility::strTrim(splitArgs[1]);
     std::string targetUser = splitArgs[3];
-    std::map<int , NormalUser*>::iterator it_user = server._users.begin();
     Channel* it_channel = server._channels.getChannel(channel_name);
-    if(it_channel == nullptr)
+    if(it_channel == NULL)
     {
         std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), channel_name);
         Utility::sendToClient(user.first, errMessage);
         return;
     }
     NormalUser* tmpUser = it_channel->getUser(targetUser);
-    if(tmpUser == nullptr)
+    if(tmpUser == NULL)
     {
         std::string errMessage = ERR_NOSUCHNICK(user.second->getNick(), targetUser);
         Utility::sendToClient(user.first, errMessage);

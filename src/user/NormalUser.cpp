@@ -1,9 +1,10 @@
 #include "NormalUser.hpp"
 
-NormalUser::NormalUser() : _name(""), _role("NormalUser"), _nick(""), _pass(false), _allCheck(false) {}
+NormalUser::NormalUser() :
+_name(""), _role("NormalUser"), _nick(""), _notFinishedText(""), _pass(false), _allCheck(false) {}
 
-NormalUser::NormalUser(pollfd &pollfd) : _role("NormalUser"), _nick(""), _pass(false), _allCheck(false), _poll(pollfd)  {}
-
+NormalUser::NormalUser(pollfd &pollfd):
+_role("NormalUser"), _nick(""), _notFinishedText(""), _poll(pollfd) , _pass(false) , _allCheck(false) {}
 
 NormalUser::~NormalUser() {}
 
@@ -115,4 +116,18 @@ void NormalUser::leaveChannels() {
             it->second->addModeAll();
     }
     _channels.clear();
+}
+
+void NormalUser::notFinishedText(const std::string &text, bool cleanIt) {
+    if (cleanIt)
+        _notFinishedText = "";
+    _notFinishedText += text;
+}
+
+std::string NormalUser::getNotFinishedText() const {
+    return _notFinishedText;
+}
+
+size_t NormalUser::getNotFinishedTextSize() const {
+    return _notFinishedText.size();
 }

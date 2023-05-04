@@ -16,7 +16,7 @@ Who::execute(const std::vector<std::string> &splitArgs, std::pair<const int, Nor
     }
 if (splitArgs[1].find('#') != std::string::npos || splitArgs[1].find('&') != std::string::npos) {
         Channel *channel = server._channels.getChannel(Utility::strTrim(splitArgs[1]));
-        if(channel == nullptr){
+        if(channel == NULL){
             std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), splitArgs[1]);
             Utility::sendToClient(user.first, errMessage);
             return;

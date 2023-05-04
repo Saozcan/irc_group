@@ -17,7 +17,7 @@ Kick::execute(const std::vector<std::string> &splitArgs, std::pair<const int, No
     }
     if (splitArgs[1].find('#') != std::string::npos || splitArgs[1].find('&') != std::string::npos) {
         Channel *channel = server._channels.getChannel(Utility::strTrim(splitArgs[1]));
-        if(channel == nullptr){
+        if(channel == NULL){
             std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), splitArgs[1]);
             Utility::sendToClient(user.first, errMessage);
             return;
@@ -26,7 +26,7 @@ Kick::execute(const std::vector<std::string> &splitArgs, std::pair<const int, No
             if (channel->checkOperators(user.second->getNick())) {
                 std::string message = user.second->getPrefix() + " " + splitArgs[0] + " " + splitArgs[1] + " " + splitArgs[2] + "\r\n";
                 channel->sendMessage(user.second->getNick(), message, false);
-                for (int i = 2; i < splitArgs.size(); i++)
+                for (size_t i = 2; i < splitArgs.size(); i++)
                     channel->leaveUser(splitArgs[i]);
             }
             else {

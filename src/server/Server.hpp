@@ -38,7 +38,7 @@ private:
     void createSocketFd();
     void acceptClient();
     int listenClients(std::vector<pollfd> &_clients, char *buffer);
-    bool checkAndParseFirst(char *str, pollfd &poll);
+    bool checkAndParseFirst(const char *str, pollfd &poll);
 
 public:
     std::map<int, NormalUser *> _users;

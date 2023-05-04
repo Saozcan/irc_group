@@ -85,7 +85,7 @@ NormalUser *Channel::getUser(const std::string &nick) const {
     std::map<std::string, NormalUser*>::const_iterator it = _users.find(nick);
     if (it != _users.end())
         return it->second;
-    return nullptr;
+    return NULL;
 }
 
 void Channel::writeUsers() const {
@@ -119,6 +119,7 @@ void Channel::irc353(int fd, bool isAll) {
 }
 
 void Channel::sendMode(int fd, const std::string& mode) const {
+    (void)fd;
     std::string message = ":ircserv MODE #" + _name + " " + mode + " \r\n";
     for (std::map<std::string, NormalUser*>::const_iterator it = _users.begin(); it != _users.end(); it++) {
         Utility::sendToClient(it->second->getPoll().fd, message);

@@ -21,8 +21,6 @@ Server::Server(unsigned short port, std::string &password)
 };
 
 Server::~Server() {
-    // TODO: Ahmet'e sorulacak pragma...
-    #pragma region FreeChannels
     std::map<int, NormalUser*>::iterator uIt = _users.begin();
     while (uIt != _users.end())
     {
@@ -30,7 +28,6 @@ Server::~Server() {
         uIt++;
     }
     _users.clear();
-    #pragma endregion
 };
 
 std::string Server::getPass() {
@@ -46,7 +43,7 @@ NormalUser *Server::getUser(const std::string &nick)
             return (*uIt).second;
         uIt++;
     }
-	return nullptr;
+	return NULL;
 }
 
 void Server::listenServer() {
@@ -101,7 +98,7 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
     if (!_clients.empty()) {
         int pollReturn = poll(_clients.data(), _clients.size(), 50);
         if (pollReturn == -1) {
-            perror("poll() error");
+            std::cerr << "poll() error" << std::endl;
             return BREAK;
         }
         if (pollReturn == 0) {
@@ -140,7 +137,7 @@ int Server::listenClients(std::vector<pollfd> &_clients, char* buffer) {
 }
 
 
-bool Server::checkAndParseFirst(char *str, pollfd &poll)
+bool Server::checkAndParseFirst(const char *str, pollfd &poll)
 {
     if (_users.find(poll.fd) == _users.end()) {
         NormalUser* newUser = new NormalUser(poll);
@@ -150,8 +147,17 @@ bool Server::checkAndParseFirst(char *str, pollfd &poll)
         return false;
     std::map<int, NormalUser*>::iterator it = _users.find(poll.fd);
     std::string buffer(str);
-    if (buffer[buffer.size() - 1] != '\n')
+    if (buffer[buffer.size() - 1] != '\n') {
+        it->second->notFinishedText(str, false);
         return false;
+    }
+    else {
+        if (it->second->getNotFinishedTextSize() > 0) {
+            std::string notFinishedText = it->second->getNotFinishedText() + buffer;
+            it->second->notFinishedText("", true);
+            buffer = notFinishedText;
+        }
+    }
     std::cout << "kvirc:" << str << std::endl;
     buffer = Utility::trimExceptAlphabet(buffer);
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");

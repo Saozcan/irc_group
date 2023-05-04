@@ -2,7 +2,7 @@
 
 bool portCheck(std::string port)
 {
-    for (int i = 0; i < port.length(); i++) {
+    for (size_t i = 0; i < port.length(); i++) {
         if (!isdigit(port[i]))
             return false;
     }
@@ -11,7 +11,7 @@ bool portCheck(std::string port)
 
 bool portRange(const std::string& port)
 {
-    int portNum = std::stoi(port);
+    int portNum = std::atoi(port.c_str());
     if (portNum < 1024 || portNum > 65535)
         return false;
     return true;

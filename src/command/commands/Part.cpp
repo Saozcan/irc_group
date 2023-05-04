@@ -16,12 +16,12 @@ Part::execute(const std::vector<std::string> &splitArgs, std::pair<const int, No
     }
     std::string channelName = Utility::strTrim(splitArgs[1]);
     Channel *channelTmp = server._channels.getChannel(channelName);
-    if (channelTmp == nullptr) {
+    if (channelTmp == NULL) {
         std::string errMessage = ERR_NOSUCHCHANNEL(user.second->getNick(), channelName);
         return ;
     }
     NormalUser* userTmp = channelTmp->getUser(user.second->getNick());
-    if (userTmp == nullptr) {
+    if (userTmp == NULL) {
         std::string errMessage = ERR_NOTONCHANNEL(user.second->getNick(), channelName);
         Utility::sendToClient(user.first, errMessage);
         return ;

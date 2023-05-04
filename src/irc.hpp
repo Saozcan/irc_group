@@ -6,6 +6,8 @@
 #define IRC_GROUP_IRC_HPP
 
 #include "iostream"
+#include <cstdlib>
+#include <cstring>
 #include "server/Server.hpp"
 #include "command/commands/User.hpp"
 #include "command/commands/Nick.hpp"

@@ -5,7 +5,7 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp $(SRC_DIR)/*/*.cpp $(SRC_DIR)/*/*/*.cpp)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 CC = c++
-CPPFLAGS =
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 all : $(NAME)

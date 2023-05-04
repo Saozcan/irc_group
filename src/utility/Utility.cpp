@@ -3,6 +3,8 @@
 #include "Utility.hpp"
 //Statics
 bool Utility::checkAndParse(Server &server, pollfd &poll, char* str) {
+    (void)server;
+    (void)poll;
     std::string buffer(str);
     std::vector<std::string> splitSpace = Utility::split(buffer, " ");
     if (Utility::toUpper(splitSpace[0]) == "PASS")
@@ -13,7 +15,7 @@ bool Utility::checkAndParse(Server &server, pollfd &poll, char* str) {
 
 unsigned int passDelimiter(const std::string &str, const std::string& delimiter) {
     unsigned int i = 0;
-    while (str[i] != std::string::npos) {
+    while (str[i] != '\0') {
         if (str[i] == delimiter[0])
             i++;
         else
@@ -70,9 +72,10 @@ std::string Utility::strTrim(std::string str){
 
 std::string Utility::trimExceptAlphabet(std::string str) {
     std::string::reverse_iterator it = str.rbegin();
+
     for (; it != str.rend(); it++) {
         if ((*it) == '\r' || (*it) == '\n')
-            str.pop_back();
+            str.erase(str.length() - 1);
         else
             break;
     }

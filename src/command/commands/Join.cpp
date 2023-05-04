@@ -36,7 +36,7 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     {
         std::string channel_name = splitArgs[1];
         Channel *channelPtr = server._channels.getChannel(channel_name);
-        if (channelPtr != nullptr)
+        if (channelPtr != NULL)
         {
             channelPtr->addUser(user.second);
             user.second->addChannel(channelPtr);

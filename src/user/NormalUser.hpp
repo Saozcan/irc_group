@@ -17,6 +17,7 @@ class NormalUser
         std::string _hostname;
         std::string _serverName;
         std::string _prefix;
+        std::string _notFinishedText;
         std::map<std::string, Channel*> _channels;
         pollfd      _poll;
         bool        _pass;
@@ -41,6 +42,7 @@ class NormalUser
         void setPrefix();
         void setCap(bool boolean);
         void addChannel(Channel * channel);
+        void notFinishedText(const std::string &text, bool cleanIt);
 
         //Getters
         std::string getName();
@@ -54,6 +56,8 @@ class NormalUser
         std::string getServerName();
         const std::string& getPrefix() const;
         bool getCap() const;
+        std::string getNotFinishedText() const;
+        size_t getNotFinishedTextSize() const;
 
         //Special
         void leaveChannels();

@@ -7,6 +7,7 @@ User::~User() {}
 
 void User::execute(const std::vector<std::string>& splitArgs,  std::pair<const int, NormalUser*>& user, Server& server)
 {
+    (void)server;
     if (user.second->getAllCheck() && !user.second->getNick().empty()) {
         Utility::sendToClient(user.first, ERR_ALREADYREGISTERED(user.second->getNick()));
         return ;

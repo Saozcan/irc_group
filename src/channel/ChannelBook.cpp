@@ -31,7 +31,7 @@ Channel* ChannelBook::getChannel(const std::string& channelName) {
     if (it != _channels.end())
         return (*it).second;
     else
-        return nullptr;
+        return NULL;
 }
 
 

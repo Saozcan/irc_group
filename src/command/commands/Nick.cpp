@@ -8,7 +8,7 @@ void Nick::execute(const std::vector<std::string> &splitArgs, std::pair<const in
 {
     if (user.second->getNick() != "" && user.second->getPass() == true && user.second->getName() != "")
     {
-        if (server.getUser(splitArgs[1]) != nullptr)
+        if (server.getUser(splitArgs[1]) != NULL)
             Utility::sendToClient(user.first, ERR_NICKNAMEINUSE(splitArgs[1]));
         else
         {
@@ -28,7 +28,7 @@ void Nick::execute(const std::vector<std::string> &splitArgs, std::pair<const in
         return;
     }
     std::string argString = splitArgs[1];
-    if (server.getUser(argString) != nullptr)
+    if (server.getUser(argString) != NULL)
     {
         Utility::sendToClient(user.first, ERR_NICKNAMEINUSE(argString));
     }
