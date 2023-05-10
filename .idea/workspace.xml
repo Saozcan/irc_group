@@ -20,12 +20,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="fix: WWW and ctrl+D">
+    <list default="true" id="0986ec6d-506b-47ea-9e7d-52e1cd7918c7" name="Changes" comment="add: last commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/commands/Mode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Mode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/commands/Notice.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Notice.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/commands/Join.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/commands/Join.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Server.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,29 +56,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/saozcan/Desktop/irc_group/src/command/commands",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "structure.view.defaults.are.configured": "true",
-    "two.files.diff.last.used.file": "/home/ebudak/CLionProjects/irc_group/src/server1/Server.cpp",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/saozcan/Desktop/irc_group/src/command/commands&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;/home/ebudak/CLionProjects/irc_group/src/server1/Server.cpp&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/command/commands" />
@@ -159,7 +158,8 @@
       <workItem from="1683213588848" duration="5316000" />
       <workItem from="1683443642821" duration="686000" />
       <workItem from="1683481868322" duration="2248000" />
-      <workItem from="1683711159895" duration="5858000" />
+      <workItem from="1683711159895" duration="6208000" />
+      <workItem from="1683722513926" duration="381000" />
     </task>
     <task id="LOCAL-00001" summary="already up to date">
       <created>1678999627110</created>
@@ -322,7 +322,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683219746243</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fix: notice, throw errors">
+      <created>1683717160240</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1683717160240</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add: last commit">
+      <created>1683717360202</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683717360202</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +379,9 @@
     <MESSAGE value="Fix: Fix Kerim errors&#10;&#10;NC empty message, PASS command without argument, QUIT command, CTRL+d" />
     <MESSAGE value="Fix: Ahmet`s errors" />
     <MESSAGE value="fix: WWW and ctrl+D" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: WWW and ctrl+D" />
+    <MESSAGE value="fix: notice, throw errors" />
+    <MESSAGE value="add: last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: last commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

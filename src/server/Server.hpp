@@ -53,12 +53,4 @@ public:
 
     std::string getPass();
     NormalUser *getUser(const std::string &nick);
-
-    class WrongPort : public std::exception
-    {
-        const char *what() throw()
-        {
-            return "port have to be 1024 <port> 65535\n";
-        }
-    };
 };

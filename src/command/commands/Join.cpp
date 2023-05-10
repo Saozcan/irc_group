@@ -54,6 +54,11 @@ void Join::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
             sendMsg.append("\r\n");
             Utility::sendToClient(user.first, sendMsg);
         }
+        else {
+            std::string errorMsg = ERR_NEEDMOREPARAMS(user.second->getNick(), splitArgs[0]);
+            Utility::sendToClient(user.first, errorMsg);
+            return ;
+        }
         channelPtr->irc353(user.first, false);
         channelPtr->irc366(user.first, false);
     }

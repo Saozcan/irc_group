@@ -20,11 +20,11 @@ bool portRange(const std::string& port)
 int main(int argc, char const *argv[])
 {
     if (argc != 3) {
-        std::cout << "Argument Error\n";
+        std::cerr << "Argument Error\n";
         return 0;
     }
     if (!portCheck(argv[1]) || !portRange(argv[1]) || strlen(argv[2]) < 3) {
-        std::cout << "Argument Error\n";
+        std::cerr << "Argument Error\n";
         return 0;
     }
     try {
@@ -49,9 +49,8 @@ int main(int argc, char const *argv[])
         server.listenServer();
     }
     catch(std::exception &e){
-        std::cout << e.what();
+        std::cerr << e.what() << std::endl;
     }
-
 
     return 0;
 }
