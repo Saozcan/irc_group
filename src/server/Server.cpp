@@ -18,6 +18,7 @@ Server::Server(unsigned short port, std::string &password)
     _port = port;
     _pass = password;
     _addrlen = sizeof(_address);
+    _serverName = "ircserv";
 };
 
 Server::~Server() {
