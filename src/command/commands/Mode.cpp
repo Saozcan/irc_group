@@ -71,7 +71,7 @@ void Mode::execute(const std::vector<std::string>& splitArgs,  std::pair<const i
     }
     else if(mode_flag == "-o"){
         it_channel->removeMode(targetUser);
-        std::string modeMessage = "+o " + splitArgs[3];
+        std::string modeMessage = "-o " + splitArgs[3];
         it_channel->sendMode(user.first, modeMessage);
     }
     else {

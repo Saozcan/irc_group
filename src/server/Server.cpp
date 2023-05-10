@@ -52,20 +52,20 @@ void Server::listenServer() {
 }
 
 void Server::createSocketFd() {
-    if ((_server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) { // Sock stream kullanılırsa TCP, sock dgram kullanılırsa UDP
-        std::cout << "Socket creation error" << std::endl;
+    if ((_server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        throw std::runtime_error("Error: Socket failed");
     }
     _address.sin_family = AF_INET;
     _address.sin_addr.s_addr = INADDR_ANY;
     _address.sin_port = htons(_port);
     const int enable = 1;
-    if (setsockopt(_server_fd, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0) //Sol_socket server olarak belirtir.
-        std::cout << ("setsockopt(SO_REUSEADDR) failed") << std::endl;
+    if (setsockopt(_server_fd, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
+        throw std::runtime_error("Error: Socket failed");
     if (bind(_server_fd, (sockaddr*)&_address, sizeof(_address)) < 0) {
-        std::cout << "Bind failed" << std::endl;
+        throw std::runtime_error("Error: Bind failed");
     }
-    if (listen(_server_fd, 3) < 0) { // en fazla 3 kuyruk isteği alınabilir. Total client sayısı değildir.
-        std::cout << "Listen failed" << std::endl;
+    if (listen(_server_fd, 3) < 0) {
+        throw std::runtime_error("Error: Listen failed");
     }
 }
 
@@ -73,16 +73,15 @@ void Server::acceptClient() {
     std::vector<pollfd> _clients;
 
     char buffer[1024] = {0};
-    fcntl(_server_fd, F_SETFL, O_NONBLOCK); // dinleme yaptığım server nonblock oldu
+    fcntl(_server_fd, F_SETFL, O_NONBLOCK);
     while (true) {
         while (true) {
             if ((_new_socket = accept(_server_fd, (sockaddr*)&_address, (socklen_t*)&_addrlen)) < 0) {
                 break;
             }
-            std::cout << "test " << _new_socket << std::endl;
             struct pollfd tmp;
             tmp.fd = _new_socket;
-            tmp.events = POLLIN; // ekstra için | kullanılabilir.
+            tmp.events = POLLIN;
             send(tmp.fd, "Welcome to channel.\n", strlen("Welcome to channel.\n"), 0);
             _clients.push_back(tmp);
         }
